@@ -1,14 +1,31 @@
+const { User } = require('../models/user')
 const express = require('express')
 const router = express.Router()
-const { User } = require('../models/user')
+const bcrypt = require('bcryptjs')
 
-router.post(`/`, (req, res) => {
-    const user = new User({
+router.get(`/`, async (req, res) => {
+    const usersList = await User.find()
+
+    if (!usersList) {
+        res.status(500).json({ success: false })
+    }
+    res.send(usersList)
+})
+
+router.post(`/`, async (req, res) => {
+    let user = new User({
+        name: req.body.name,
         email: req.body.email,
-        password: req.body.password,
+        passwordHash: bcrypt.hashSync(req.body.password, 10),
+        phone: req.body.phone,
+        city: req.body.city,
+        country: req.body.country,
+        street: req.body.street,
+        zip: req.body.zip,
     })
 
-    user.save()
+    user = await user
+        .save()
         .then((createUser) => {
             res.status(201).json(createUser)
         })
@@ -18,6 +35,8 @@ router.post(`/`, (req, res) => {
                 success: false,
             })
         })
+
+    res.send(user)
 })
 
 module.exports = router
