@@ -16,7 +16,7 @@ const bookSchema = mongoose.Schema({
     condition: {
         type: String,
         required: true,
-    },
+    }
 })
 
 bookSchema.virtual('id').get(function () {

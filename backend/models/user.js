@@ -37,6 +37,10 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: '',
     },
+    book: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Book',
+    },
 })
 
 userSchema.virtual('id').get(function () {
