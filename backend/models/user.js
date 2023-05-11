@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
-    isAdmin: Boolean,
     name: {
         type: String,
         required: true,
@@ -32,6 +31,10 @@ const userSchema = mongoose.Schema({
     },
     zip: {
         type: String,
+        default: '',
+    },
+    isAdmin: {
+        type: Boolean,
         default: '',
     },
 })

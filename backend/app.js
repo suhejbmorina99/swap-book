@@ -14,10 +14,12 @@ app.options('*', cors())
 
 //Routes
 const userRouter = require('./routers/users')
+const bookRouter = require('./routers/books')
 
 const api = process.env.API_URL
 
 app.use(`${api}/user`, userRouter)
+app.use(`${api}/book`, bookRouter)
 
 //Database connection 
 mongoose
