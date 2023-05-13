@@ -16,7 +16,11 @@ const bookSchema = mongoose.Schema({
     condition: {
         type: String,
         required: true,
-    }
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    },
 })
 
 bookSchema.virtual('id').get(function () {

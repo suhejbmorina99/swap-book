@@ -36,11 +36,7 @@ const userSchema = mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: '',
-    },
-    book: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Book',
-    },
+    }
 })
 
 userSchema.virtual('id').get(function () {
@@ -53,4 +49,4 @@ userSchema.set('toJSON', {
 
 exports.User = mongoose.model('User', userSchema)
 //These needed if we want to change something in the schema this is the reason we separate
-exports.userSchema = userSchema
+// exports.userSchema = userSchema
