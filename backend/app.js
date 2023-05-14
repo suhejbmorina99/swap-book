@@ -3,6 +3,8 @@ const app = express()
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const cors = require('cors')
+// const authJwt = require('./helpers/jwt')
+// const errorHandler = require('./helpers/error-handler')
 
 require('dotenv/config')
 
@@ -10,6 +12,8 @@ require('dotenv/config')
 app.use(express.json())
 app.use(morgan('tiny'))
 app.use(cors())
+// app.use(authJwt())
+// app.use(errorHandler())
 app.options('*', cors())
 
 //Routes
@@ -21,7 +25,7 @@ const api = process.env.API_URL
 app.use(`${api}/user`, userRouter)
 app.use(`${api}/book`, bookRouter)
 
-//Database connection 
+//Database connection
 mongoose
     .connect(process.env.CONNECTION_STRING, {
         useNewUrlParser: true,
@@ -35,7 +39,7 @@ mongoose
         console.log(err)
     })
 
-//Server    
+//Server
 app.listen(3000, () => {
     console.log('The server is running')
 })
