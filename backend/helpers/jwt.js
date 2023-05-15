@@ -16,13 +16,10 @@ function authJwt() {
     })
 }
 
-async function isRevoked(req, payload) {
-    console.log(payload)
-    if (payload.isAdmin == false) {
-        console.log('Not Admin')
+async function isRevoked(req, token) {
+    if (token.payload.isAdmin == false) {
         return true
     }
-    console.log('Admin')
     return false
 }
 
