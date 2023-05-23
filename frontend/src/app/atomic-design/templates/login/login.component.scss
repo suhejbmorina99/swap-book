@@ -14,9 +14,17 @@
       .modal {
         margin: 3%;
         width: 94%;
-        background-color: #3C37FF;
+        background-color: #3c37ff;
         height: 96%;
         border-radius: 20px;
+
+        .modal-title {
+          display: flex;
+          justify-content: center;
+          color: #fff;
+          text-transform: uppercase;
+          padding-top: 10px;
+        }
       }
     }
 
