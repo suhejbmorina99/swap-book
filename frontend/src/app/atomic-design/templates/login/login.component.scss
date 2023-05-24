@@ -12,6 +12,9 @@
       height: 100%;
 
       .modal {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         margin: 3%;
         width: 94%;
         background-color: #3c37ff;
