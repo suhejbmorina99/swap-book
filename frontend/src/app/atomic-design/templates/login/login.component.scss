@@ -21,12 +21,12 @@
         height: 96%;
         border-radius: 20px;
 
-        .modal-title {
+        .main-text {
           display: flex;
-          justify-content: center;
+          justify-content: flex-start;
           color: #fff;
           text-transform: uppercase;
-          padding-top: 10px;
+          padding: 30px 0 0 40px;
         }
 
         .image {
@@ -35,20 +35,23 @@
           align-items: flex-end;
         }
 
-        h3 {
+        .focus-title {
           display: flex;
           justify-content: center;
           color: #fff;
-          text-transform: uppercase;
-          padding-top: 150px;
+          font-size: 52px;
+          padding: 100px 20px 0 40px;
         }
 
-        p {
+        .description-title {
           display: flex;
           justify-content: center;
           color: #fff;
-          text-transform: uppercase;
-          padding: 0px 30px 0 30px;
+          padding: 0px 30px 0 40px;
+          margin: 0;
+          font-size: 32px;
+          opacity: 0.85;
+          font-weight: 100;
         }
       }
     }
