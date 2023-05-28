@@ -101,6 +101,25 @@
                 width: 60%;
                 margin: 0 auto;
                 margin-top: 40px;
+                position: relative;
+
+                .hide-icon {
+                  position: absolute;
+                  right: 0.1rem;
+                  top: 1rem;
+                  cursor: pointer;
+                  opacity: 50%;
+                  border: 1px solid red;
+                }
+
+                .show-icon {
+                  position: absolute;
+                  right: 0.1rem;
+                  top: 1rem;
+                  cursor: pointer;
+                  opacity: 50%;
+                  border: 1px solid black;
+                }
               }
             }
           }

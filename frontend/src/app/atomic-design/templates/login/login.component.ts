@@ -46,4 +46,13 @@ export class LoginComponent {
   get password() {
     return this.loginForm.get('password');
   }
+
+  ngOnInit() {}
+
+  togglePassword(e: Event) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.showPassword = !this.showPassword;
+    this.type = this.showPassword ? 'text' : 'password';
+  }
 }

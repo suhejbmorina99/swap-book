@@ -49,6 +49,18 @@
                 formControlName="password"
                 required
               />
+              <mat-icon
+                (click)="togglePassword($event)"
+                *ngIf="showPassword"
+                svgIcon="sb:hide-text"
+                class="hide-icon"
+              ></mat-icon>
+              <mat-icon
+                (click)="togglePassword($event)"
+                *ngIf="!showPassword"
+                svgIcon="sb:show-text"
+                class="show-icon"
+              ></mat-icon>
               <mat-error
                 *ngIf="password && password.invalid && password.touched"
                 >{{ getErrorMessage() }}</mat-error
@@ -56,7 +68,7 @@
             </mat-form-field>
           </div>
         </div>
-      </form> 
+      </form>
     </div>
   </div>
 </div>

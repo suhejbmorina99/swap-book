@@ -10,6 +10,7 @@ import { LoginComponent } from './atomic-design/templates/login/login.component'
 import { RegisterComponent } from './atomic-design/templates/register/register.component';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SbMaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent],
@@ -21,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatInputModule,
     ReactiveFormsModule,
+    SbMaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
