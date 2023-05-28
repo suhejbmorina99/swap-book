@@ -17,7 +17,7 @@
         justify-content: space-between;
         margin: 3%;
         width: 94%;
-        background-color: #3068CB;
+        background-color: #3068cb;
         height: 96%;
         border-radius: 20px;
 
@@ -60,6 +60,52 @@
       width: 70%;
       height: 100%;
       border: 1px solid black;
+
+      .center-content {
+        width: 80%;
+        height: 80%;
+        border: 1px solid black;
+        margin: 0 auto;
+        margin-top: 80px;
+
+        .login-title {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          font-size: 36px;
+        }
+
+        .form {
+          width: 100%;
+          height: 70%;
+          .login-modal {
+            width: 60%;
+            height: 100%;
+            margin: 0 auto;
+            border: 1px solid black;
+
+            .email-container {
+              .email-form-field {
+                display: flex;
+                justify-content: center;
+                width: 60%;
+                margin: 0 auto;
+                margin-top: 40px;
+              }
+            }
+
+            .password-container {
+              .password-form-field {
+                display: flex;
+                justify-content: center;
+                width: 60%;
+                margin: 0 auto;
+                margin-top: 40px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

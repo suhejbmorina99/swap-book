@@ -20,5 +20,43 @@
       </div>
     </div>
   </div>
-  <div class="right-section"></div>
+  <div class="right-section">
+    <div class="center-content">
+      <h2 class="login-title">Login</h2>
+      <form [formGroup]="loginForm" class="form">
+        <div class="login-modal">
+          <div class="email-container">
+            <mat-form-field class="email-form-field">
+              <mat-label>Enter your email</mat-label>
+              <input
+                matInput
+                placeholder="pat@example.com"
+                formControlName="email"
+                required
+              />
+              <mat-error *ngIf="email && email.invalid && email.touched">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="password-container">
+            <mat-form-field class="password-form-field">
+              <mat-label>Enter your password</mat-label>
+              <input
+                matInput
+                placeholder="Password"
+                type="{{ type }}"
+                formControlName="password"
+                required
+              />
+              <mat-error
+                *ngIf="password && password.invalid && password.touched"
+                >{{ getErrorMessage() }}</mat-error
+              >
+            </mat-form-field>
+          </div>
+        </div>
+      </form> 
+    </div>
+  </div>
 </div>
