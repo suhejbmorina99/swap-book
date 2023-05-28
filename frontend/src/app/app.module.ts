@@ -11,6 +11,8 @@ import { RegisterComponent } from './atomic-design/templates/register/register.c
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SbMaterialModule } from './material/material.module';
+import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent],
@@ -22,7 +24,9 @@ import { SbMaterialModule } from './material/material.module';
     BrowserAnimationsModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatIconModule,
     SbMaterialModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
