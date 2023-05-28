@@ -27,11 +27,17 @@ export class LoginComponent {
   }
 
   getErrorMessage() {
-    if (this.loginForm.hasError('required')) {
+    const emailControl = this.loginForm.get('email');
+    const passwordControl = this.loginForm.get('password');
+
+    if (
+      emailControl?.hasError('required') ||
+      passwordControl?.hasError('required')
+    ) {
       return 'You must enter a value';
     }
 
-    return this.loginForm.hasError('email') ? 'Not a valid email' : '';
+    return '';
   }
 
   get email() {
