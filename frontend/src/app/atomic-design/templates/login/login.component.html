@@ -30,7 +30,7 @@
               <mat-label>Enter your email</mat-label>
               <input
                 matInput
-                placeholder="pat@example.com"
+                placeholder="Email"
                 formControlName="email"
                 required
               />
@@ -67,6 +67,9 @@
                 >{{ getErrorMessage() }}</mat-error
               >
             </mat-form-field>
+          </div>
+          <div class="button">
+            <button class="login" mat-raised-button>Login</button>
           </div>
         </div>
       </form>
