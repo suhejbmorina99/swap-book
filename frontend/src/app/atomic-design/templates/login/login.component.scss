@@ -59,12 +59,12 @@
     .right-section {
       width: 70%;
       height: 100%;
-      border: 1px solid black;
+      // border: 1px solid black;
 
       .center-content {
         width: 80%;
         height: 80%;
-        border: 1px solid black;
+        // border: 1px solid black;
         margin: 0 auto;
         margin-top: 80px;
 
@@ -78,11 +78,12 @@
         .form {
           width: 100%;
           height: 70%;
+          margin-top: 90px;
           .login-modal {
             width: 60%;
             height: 100%;
             margin: 0 auto;
-            border: 1px solid black;
+            // border: 1px solid black;
 
             .email-container {
               .email-form-field {
@@ -128,7 +129,7 @@
               display: flex;
               justify-content: center;
               margin: 0 auto;
-              margin-top: 50px;
+              margin-top: 100px;
               .login {
                 width: 60%;
                 height: 40px;
