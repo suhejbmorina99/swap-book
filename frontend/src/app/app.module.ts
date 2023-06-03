@@ -14,9 +14,10 @@ import { SbMaterialModule } from './material/material.module';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
+import { InputFormComponent } from './atomic-design/organisms/input-form/input-form.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, InputFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

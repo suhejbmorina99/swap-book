@@ -23,64 +23,12 @@
   <div class="right-section">
     <div class="center-content">
       <h2 class="login-title">Login</h2>
-      <form [formGroup]="loginForm" class="form">
-        <div class="login-modal">
-          <div class="email-container">
-            <mat-form-field class="email-form-field">
-              <mat-label>Enter your email</mat-label>
-              <input
-                matInput
-                placeholder="Email"
-                formControlName="email"
-                required
-              />
-              <mat-error *ngIf="email && email.invalid && email.touched">{{
-                getErrorMessage()
-              }}</mat-error>
-            </mat-form-field>
-          </div>
-          <div class="password-container">
-            <mat-form-field class="password-form-field">
-              <mat-label>Enter your password</mat-label>
-              <input
-                class="password-input"
-                matInput
-                placeholder="Password"
-                type="{{ type }}"
-                formControlName="password"
-                required
-              />
-              <mat-icon
-                (click)="togglePassword($event)"
-                *ngIf="showPassword"
-                svgIcon="sb:hide-text"
-                class="hide-icon"
-              ></mat-icon>
-              <mat-icon
-                (click)="togglePassword($event)"
-                *ngIf="!showPassword"
-                svgIcon="sb:show-text"
-                class="show-icon"
-              ></mat-icon>
-              <mat-error
-                *ngIf="password && password.invalid && password.touched"
-                >{{ getErrorMessage() }}</mat-error
-              >
-            </mat-form-field>
-          </div>
-          <div class="button">
-            <button class="login" mat-raised-button>Login</button>
-          </div>
-          <div class="google-button">
-            <div class="google-icon-wrapper">
-              <mat-icon class="google-icon" svgIcon="sb:google-icon"></mat-icon>
-            </div>
-            <p class="button-text"><b>Sign in with google</b></p>
-          </div>
-        </div>
-      </form>
+      <app-input-form class="form"></app-input-form>
       <div class="create-account">
-        <p>Don't have an account yet? <a class="register-link" href="#">Sign Up</a></p>
+        <p>
+          Don't have an account yet?
+          <a class="register-link" href="#">Sign Up</a>
+        </p>
       </div>
     </div>
   </div>
