@@ -45,8 +45,6 @@ export class InputFormComponent {
   }
 
   loginUser() {
-    console.log('111');
-
     this.store.dispatch(
       loginRequestAction({
         email: this.loginForm.controls[LoginFieldsEnum.Email].value,
