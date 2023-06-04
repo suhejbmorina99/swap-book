@@ -5,6 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { State } from '../../../store';
+import { loginRequestAction } from 'src/app/store/actions/auth.actions';
+import { LoginFieldsEnum } from 'src/shared/enums/login-field.enum';
 
 @Component({
   selector: 'app-input-form',
@@ -16,7 +20,7 @@ export class InputFormComponent {
   public type = 'password';
   public loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private store: Store<State>, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [
@@ -38,6 +42,17 @@ export class InputFormComponent {
     }
 
     return '';
+  }
+
+  loginUser() {
+    console.log('111');
+
+    this.store.dispatch(
+      loginRequestAction({
+        email: this.loginForm.controls[LoginFieldsEnum.Email].value,
+        password: this.loginForm.controls[LoginFieldsEnum.Password].value,
+      })
+    );
   }
 
   get email() {

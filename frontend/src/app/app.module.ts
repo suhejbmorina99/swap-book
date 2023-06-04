@@ -15,13 +15,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { InputFormComponent } from './atomic-design/organisms/input-form/input-form.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './store/effects/auth.effects';
+import { reducers } from './store';
+import { AuthServices } from './store/services/auth.services';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, InputFormComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    InputFormComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, {}),
     StoreDevtoolsModule.instrument(),
     BrowserAnimationsModule,
     MatInputModule,
@@ -30,8 +40,10 @@ import { InputFormComponent } from './atomic-design/organisms/input-form/input-f
     SbMaterialModule,
     HttpClientModule,
     MatButtonModule,
+    MatSnackBarModule,
+    EffectsModule.forRoot([AuthEffects]),
   ],
-  providers: [],
+  providers: [AuthServices],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

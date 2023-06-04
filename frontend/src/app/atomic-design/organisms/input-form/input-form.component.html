@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" class="form">
+<form [formGroup]="loginForm" class="form" (ngSubmit)="loginUser()">
   <div class="login-modal">
     <div class="email-container">
       <mat-form-field class="email-form-field">
