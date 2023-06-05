@@ -1,0 +1,100 @@
+:host {
+  display: block;
+  height: 100%;
+
+  .login-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../../src/assets/bc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+
+    .left-section {
+      width: 30%;
+      height: 100%;
+
+      .modal {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 3%;
+        width: 94%;
+        background-color: #3068cb;
+        height: 96%;
+        border-radius: 20px;
+
+        .main-text {
+          display: flex;
+          justify-content: flex-start;
+          color: #fff;
+          text-transform: uppercase;
+          padding: 30px 0 0 40px;
+        }
+
+        .image {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .focus-title {
+          display: flex;
+          justify-content: center;
+          color: #fff;
+          font-size: 52px;
+          padding: 100px 20px 0 40px;
+        }
+
+        .description-title {
+          display: flex;
+          justify-content: center;
+          color: #fff;
+          padding: 0px 30px 0 40px;
+          margin: 0;
+          font-size: 32px;
+          opacity: 0.85;
+          font-weight: 100;
+        }
+      }
+    }
+
+    .right-section {
+      width: 70%;
+      height: 100%;
+      // border: 1px solid black;
+
+      .center-content {
+        width: 80%;
+        height: 80%;
+        // border: 1px solid black;
+        margin: 0 auto;
+        margin-top: 80px;
+
+        .register-title {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          font-size: 36px;
+        }
+
+        .form {
+          width: 100%;
+          height: 70%;
+          margin-top: 90px;
+        }
+        .login-into-account {
+          display: flex;
+          justify-content: center;
+
+          .login-link {
+            text-decoration: none;
+            color: #3068cb;
+          }
+        }
+      }
+    }
+  }
+}

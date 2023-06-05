@@ -9,8 +9,12 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'dashboard',
+    path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'dashboard',
+    component: RegisterComponent, //new to change the component
   },
 ];
 
