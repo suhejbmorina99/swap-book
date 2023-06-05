@@ -20,6 +20,7 @@ import { AuthEffects } from './store/effects/auth.effects';
 import { reducers } from './store';
 import { AuthServices } from './store/services/auth.services';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RegisterFormComponent } from './atomic-design/organisms/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LoginComponent,
     RegisterComponent,
     InputFormComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,
