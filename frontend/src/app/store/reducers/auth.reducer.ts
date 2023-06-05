@@ -2,7 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as authAction from '../actions/auth.actions';
 
 export interface SessionData {
-  sessionToken: string;
+  token: string;
   userData: UserData;
 }
 

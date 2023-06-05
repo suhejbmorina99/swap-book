@@ -22,7 +22,7 @@ export class AuthEffects {
             .loginRequest(action.email, action.password)
             .pipe(
               map((session) => {
-                localStorage.setItem('jwt', session.sessionToken);
+                localStorage.setItem('jwt', session.token);
                 this.store.dispatch(setLoginDataAction({ session }));
                 this.router.navigate(['dashboard']);
                 return EMPTY;
