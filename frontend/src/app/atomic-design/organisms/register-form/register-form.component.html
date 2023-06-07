@@ -1,16 +1,16 @@
 <form [formGroup]="loginForm" class="form" (ngSubmit)="loginUser()">
   <div class="register-modal">
-    <div class="email-container">
-      <mat-form-field class="email-form-field">
+    <div class="form-container">
+      <mat-form-field class="form-field">
         <mat-label>Enter your full name</mat-label>
         <input matInput placeholder="Name" formControlName="name" required />
-        <mat-error *ngIf="email && email.invalid && email.touched">{{
+        <mat-error *ngIf="name && name.invalid && name.touched">{{
           getErrorMessage()
         }}</mat-error>
       </mat-form-field>
     </div>
-    <div class="email-container">
-      <mat-form-field class="email-form-field">
+    <div class="form-container">
+      <mat-form-field class="form-field">
         <mat-label>Enter your email</mat-label>
         <input matInput placeholder="Email" formControlName="email" required />
         <mat-error *ngIf="email && email.invalid && email.touched">{{
@@ -46,29 +46,39 @@
         }}</mat-error>
       </mat-form-field>
     </div>
-    <div class="email-container">
-      <mat-form-field class="email-form-field">
+    <div class="form-container">
+      <mat-form-field class="form-field">
         <mat-label>Enter your phone number</mat-label>
-        <input matInput placeholder="Phone number" formControlName="number" required />
-        <mat-error *ngIf="email && email.invalid && email.touched">{{
+        <input
+          matInput
+          placeholder="Phone number"
+          formControlName="number"
+          required
+        />
+        <mat-error *ngIf="phone && phone.invalid && phone.touched">{{
           getErrorMessage()
         }}</mat-error>
       </mat-form-field>
     </div>
-    <div class="email-container">
-      <mat-form-field class="email-form-field">
+    <div class="form-container">
+      <mat-form-field class="form-field">
         <mat-label>Choose your country</mat-label>
-        <input matInput placeholder="Country" formControlName="country" required />
-        <mat-error *ngIf="email && email.invalid && email.touched">{{
+        <input
+          matInput
+          placeholder="Country"
+          formControlName="country"
+          required
+        />
+        <mat-error *ngIf="country && country.invalid && country.touched">{{
           getErrorMessage()
         }}</mat-error>
       </mat-form-field>
     </div>
-    <div class="email-container">
-      <mat-form-field class="email-form-field">
+    <div class="form-container">
+      <mat-form-field class="form-field">
         <mat-label>Choose your city</mat-label>
-        <input matInput placeholder="City" formControlName="City" required />
-        <mat-error *ngIf="email && email.invalid && email.touched">{{
+        <input matInput placeholder="City" formControlName="city" required />
+        <mat-error *ngIf="city && city.invalid && city.touched">{{
           getErrorMessage()
         }}</mat-error>
       </mat-form-field>
