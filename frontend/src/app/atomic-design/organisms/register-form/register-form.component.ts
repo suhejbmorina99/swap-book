@@ -7,9 +7,9 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { State } from '../../../store';
-import { countries } from 'src/shared/enums/stores/country-data-store';
-import { City } from 'src/shared/enums/models/city';
-import { cities } from 'src/shared/enums/stores/city-data-store';
+import { countries } from 'src/shared/stores/country-data-store';
+import { City } from 'src/shared/models/city';
+import { cities } from 'src/shared/stores/city-data-store';
 
 @Component({
   selector: 'app-register-form',
