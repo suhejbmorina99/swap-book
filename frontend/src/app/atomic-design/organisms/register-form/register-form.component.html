@@ -63,16 +63,10 @@
     <div class="form-container">
       <mat-form-field class="form-field">
         <mat-label>Choose your country</mat-label>
-        <!-- <input
-          matInput
-          placeholder="Country"
-          formControlName="country"
-          required
-        /> -->
         <mat-select placeholder="Country" formControlName="country" required>
           <mat-option
             *ngFor="let country of countries"
-            [value]="country.name"
+            [value]="country.code"
             >{{ country.name }}</mat-option
           >
         </mat-select>
@@ -84,7 +78,14 @@
     <div class="form-container">
       <mat-form-field class="form-field">
         <mat-label>Choose your city</mat-label>
-        <input matInput placeholder="City" formControlName="city" required />
+        <mat-select placeholder="City" formControlName="city" required>
+          <mat-option
+            *ngFor="let city of getCitiesByCountryCode(country?.value)"
+            [value]="city.name"
+          >
+            {{ city.name }}
+          </mat-option>
+        </mat-select>
         <mat-error *ngIf="city && city.invalid && city.touched">{{
           getErrorMessage()
         }}</mat-error>

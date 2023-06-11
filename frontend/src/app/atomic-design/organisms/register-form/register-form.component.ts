@@ -8,6 +8,8 @@ import {
 import { Store } from '@ngrx/store';
 import { State } from '../../../store';
 import { countries } from 'src/shared/enums/stores/country-data-store';
+import { City } from 'src/shared/enums/models/city';
+import { cities } from 'src/shared/enums/stores/city-data-store';
 
 @Component({
   selector: 'app-register-form',
@@ -18,7 +20,7 @@ export class RegisterFormComponent {
   public showPassword = false;
   public type = 'password';
   public loginForm: FormGroup;
-  public countries: any = countries;  
+  public countries: any = countries;
 
   constructor(private store: Store<State>, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
@@ -94,5 +96,9 @@ export class RegisterFormComponent {
     e.preventDefault();
     this.showPassword = !this.showPassword;
     this.type = this.showPassword ? 'text' : 'password';
+  }
+
+  getCitiesByCountryCode(countryCode: string): City[] {
+    return cities.filter((city) => city.countryCode === countryCode);
   }
 }
