@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { State } from '../../../store';
+import { countries } from 'src/shared/enums/stores/country-data-store';
 
 @Component({
   selector: 'app-register-form',
@@ -17,6 +18,7 @@ export class RegisterFormComponent {
   public showPassword = false;
   public type = 'password';
   public loginForm: FormGroup;
+  public countries: any = countries;  
 
   constructor(private store: Store<State>, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({

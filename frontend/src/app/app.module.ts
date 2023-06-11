@@ -21,6 +21,7 @@ import { reducers } from './store';
 import { AuthServices } from './store/services/auth.services';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegisterFormComponent } from './atomic-design/organisms/register-form/register-form.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { RegisterFormComponent } from './atomic-design/organisms/register-form/r
     MatButtonModule,
     MatSnackBarModule,
     EffectsModule.forRoot([AuthEffects]),
+    MatSelectModule,
   ],
   providers: [AuthServices],
   bootstrap: [AppComponent],
