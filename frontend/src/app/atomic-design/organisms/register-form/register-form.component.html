@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" class="form" (ngSubmit)="loginUser()">
+<form [formGroup]="loginForm" class="form" (ngSubmit)="registerUser()">
   <div class="register-modal">
     <div class="form-container">
       <mat-form-field class="form-field">
@@ -52,7 +52,7 @@
         <input
           matInput
           placeholder="Phone number"
-          formControlName="number"
+          formControlName="phone"
           required
         />
         <mat-error *ngIf="phone && phone.invalid && phone.touched">{{
@@ -91,5 +91,14 @@
         }}</mat-error>
       </mat-form-field>
     </div>
+  </div>
+  <div class="button">
+    <button class="login" mat-raised-button>Register</button>
+  </div>
+  <div class="login-into-account">
+    <p>
+      Have an account?
+      <a class="login-link" routerLink="/login">Login</a>
+    </p>
   </div>
 </form>

@@ -10,6 +10,8 @@ import { State } from '../../../store';
 import { countries } from 'src/shared/stores/country-data-store';
 import { City } from 'src/shared/models/city';
 import { cities } from 'src/shared/stores/city-data-store';
+import { registerRequestAction } from 'src/app/store/actions/auth.actions';
+import { LoginFieldsEnum } from 'src/shared/enums/login-field.enum';
 
 @Component({
   selector: 'app-register-form',
@@ -30,7 +32,7 @@ export class RegisterFormComponent {
         Validators.minLength(8),
       ]),
       name: new FormControl('', [Validators.required]),
-      number: new FormControl('', [
+      phone: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
       ]),
@@ -43,7 +45,7 @@ export class RegisterFormComponent {
     const nameControl = this.loginForm.get('name');
     const emailControl = this.loginForm.get('email');
     const passwordControl = this.loginForm.get('password');
-    const phoneControl = this.loginForm.get('number');
+    const phoneControl = this.loginForm.get('phone');
     const countryControl = this.loginForm.get('country');
     const cityControl = this.loginForm.get('city');
 
@@ -61,13 +63,19 @@ export class RegisterFormComponent {
     return '';
   }
 
-  loginUser() {
-    // this.store.dispatch(
-    //   loginRequestAction({
-    //     email: this.loginForm.controls[LoginFieldsEnum.Email].value,
-    //     password: this.loginForm.controls[LoginFieldsEnum.Password].value,
-    //   })
-    // );
+  registerUser() {
+    console.log('1');
+
+    this.store.dispatch(
+      registerRequestAction({
+        name: this.loginForm.controls[LoginFieldsEnum.Name].value,
+        email: this.loginForm.controls[LoginFieldsEnum.Email].value,
+        password: this.loginForm.controls[LoginFieldsEnum.Password].value,
+        phone: this.loginForm.controls[LoginFieldsEnum.Phone].value,
+        country: this.loginForm.controls[LoginFieldsEnum.Country].value,
+        city: this.loginForm.controls[LoginFieldsEnum.City].value,
+      })
+    );
   }
 
   get name() {
@@ -80,7 +88,7 @@ export class RegisterFormComponent {
     return this.loginForm.get('password');
   }
   get phone() {
-    return this.loginForm.get('number');
+    return this.loginForm.get('phone');
   }
   get country() {
     return this.loginForm.get('country');

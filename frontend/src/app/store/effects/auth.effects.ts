@@ -7,6 +7,9 @@ import {
   loginFailAction,
   loginRequestAction,
   setLoginDataAction,
+  registerRequestAction,
+  setRegisterData,
+  registerFailAction,
 } from '../actions/auth.actions';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
@@ -38,6 +41,48 @@ export class AuthEffects {
               })
             );
         })
+      ),
+    { dispatch: false }
+  );
+
+  registerRequest$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(registerRequestAction),
+        switchMap(
+          (action: {
+            name: string;
+            email: string;
+            password: string;
+            phone: string;
+            country: string;
+            city: string;
+          }) => {
+            return this.authService
+              .registerRequest(
+                action.name,
+                action.email,
+                action.password,
+                action.phone,
+                action.country,
+                action.city
+              )
+              .pipe(
+                map((session) => {
+                  this.store.dispatch(setRegisterData({ session }));
+                  this.router.navigate(['login']);
+                  return EMPTY;
+                }),
+                catchError((err) => {
+                  this.snackBar.open('Fill the information', undefined, {
+                    duration: 2000,
+                  });
+
+                  return of(loginFailAction({ message: err.message }));
+                })
+              );
+          }
+        )
       ),
     { dispatch: false }
   );

@@ -40,7 +40,7 @@ export const registerRequestAction = createAction(
 
 export const setRegisterData = createAction(
   authActionsType.SET_REGISTER_DATA,
-  props<{ userData: UserData | undefined }>()
+  props<{ session: SessionData | undefined }>()
 );
 
 export const registerFailAction = createAction(
