@@ -22,6 +22,7 @@ import { AuthServices } from './store/services/auth.services';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegisterFormComponent } from './atomic-design/organisms/register-form/register-form.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MainComponent } from './atomic-design/templates/main/main.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatSelectModule } from '@angular/material/select';
     RegisterComponent,
     InputFormComponent,
     RegisterFormComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,

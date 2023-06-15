@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './atomic-design/templates/login/login.component';
 import { RegisterComponent } from './atomic-design/templates/register/register.component';
+import { MainComponent } from './atomic-design/templates/main/main.component';
 
 const routes: Routes = [
   {
@@ -13,8 +14,8 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'dashboard',
-    component: RegisterComponent, //new to change the component
+    path: 'main',
+    component: MainComponent,
   },
 ];
 
