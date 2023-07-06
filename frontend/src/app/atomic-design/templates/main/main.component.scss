@@ -6,18 +6,28 @@
     display: flex;
     width: 100%;
     height: 100vh;
-    
 
     .book-form {
-        height: 100%;
-        width: 50%;
-        border: 1px solid black;
+      height: 100%;
+      width: 50%;
+      border: 1px solid black;
     }
 
     .all-books {
-        height: 100%;
-        width: 50%;
-        border: 1px solid black;
+      height: 100%;
+      width: 50%;
+      border: 1px solid black;
+    }
+
+    .book-title {
+      display: flex;
+      justify-content: center;
+      color: #000000;
+      padding: 10px;
+      margin: 0;
+      font-size: 36px;
+      opacity: 0.95;
+      font-weight: 100;
     }
   }
 }
