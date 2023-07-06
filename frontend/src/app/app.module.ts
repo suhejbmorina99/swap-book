@@ -24,6 +24,7 @@ import { RegisterFormComponent } from './atomic-design/organisms/register-form/r
 import { MatSelectModule } from '@angular/material/select';
 import { MainComponent } from './atomic-design/templates/main/main.component';
 import { AnimationComponent } from './atomic-design/pages/animation/animation.component';
+import { BookFormComponent } from './atomic-design/organisms/book-form/book-form.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AnimationComponent } from './atomic-design/pages/animation/animation.co
     RegisterFormComponent,
     MainComponent,
     AnimationComponent,
+    BookFormComponent,
   ],
   imports: [
     BrowserModule,
