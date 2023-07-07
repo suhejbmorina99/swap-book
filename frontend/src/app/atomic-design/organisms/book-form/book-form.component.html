@@ -1,1 +1,67 @@
-<span>book-form works!</span>
+<form [formGroup]="loginForm" class="form" (ngSubmit)="registerUser()">
+  <div class="register-modal">
+    <div class="form-container">
+      <mat-form-field class="form-field">
+        <mat-label>Enter your full name</mat-label>
+        <input matInput placeholder="Name" formControlName="name" required />
+        <mat-error *ngIf="name && name.invalid && name.touched">{{
+          getErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-container">
+      <mat-form-field class="form-field">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="Email" formControlName="email" required />
+        <mat-error *ngIf="email && email.invalid && email.touched">{{
+          getErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="password-container">
+      <mat-form-field class="password-form-field">
+        <mat-label>Enter your password</mat-label>
+        <input
+          class="password-input"
+          matInput
+          placeholder="Password"
+          type="{{ type }}"
+          formControlName="password"
+          required
+        />
+        <mat-icon
+          (click)="togglePassword($event)"
+          *ngIf="showPassword"
+          svgIcon="sb:hide-text"
+          class="hide-icon"
+        ></mat-icon>
+        <mat-icon
+          (click)="togglePassword($event)"
+          *ngIf="!showPassword"
+          svgIcon="sb:show-text"
+          class="show-icon"
+        ></mat-icon>
+        <mat-error *ngIf="password && password.invalid && password.touched">{{
+          getErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-container">
+      <mat-form-field class="form-field">
+        <mat-label>Enter your phone number</mat-label>
+        <input
+          matInput
+          placeholder="Phone number"
+          formControlName="phone"
+          required
+        />
+        <mat-error *ngIf="phone && phone.invalid && phone.touched">{{
+          getErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="button">
+    <button class="login" mat-raised-button>Save</button>
+  </div>
+</form>
