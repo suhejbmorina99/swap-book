@@ -64,8 +64,6 @@ export class RegisterFormComponent {
   }
 
   registerUser() {
-    console.log('1');
-
     this.store.dispatch(
       registerRequestAction({
         name: this.loginForm.controls[LoginFieldsEnum.Name].value,
