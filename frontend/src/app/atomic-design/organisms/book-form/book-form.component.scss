@@ -1,6 +1,6 @@
 :host {
   display: block;
-  height: 100%;
+
   .form {
     margin-top: 10%;
 
@@ -23,38 +23,6 @@
           margin-top: 40px;
         }
       }
-
-      .password-container {
-        width: 40%;
-        .password-form-field {
-          display: flex;
-          justify-content: center;
-          // width: 60%;
-          margin: 0 auto;
-          margin-top: 40px;
-          position: relative;
-
-          .password-input {
-            width: 80%;
-          }
-
-          .hide-icon {
-            position: absolute;
-            right: 0.1rem;
-            top: 1rem;
-            cursor: pointer;
-            opacity: 50%;
-          }
-
-          .show-icon {
-            position: absolute;
-            right: 0.1rem;
-            top: 1rem;
-            cursor: pointer;
-            opacity: 50%;
-          }
-        }
-      }
     }
     .button {
       display: flex;
@@ -67,15 +35,6 @@
         background-color: #3068cb;
         color: #fff;
         font-size: 18px;
-      }
-    }
-    .login-into-account {
-      display: flex;
-      justify-content: center;
-
-      .login-link {
-        text-decoration: none;
-        color: #3068cb;
       }
     }
   }
