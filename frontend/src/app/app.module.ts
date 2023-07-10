@@ -26,6 +26,7 @@ import { MainComponent } from './atomic-design/templates/main/main.component';
 import { AnimationComponent } from './atomic-design/pages/animation/animation.component';
 import { BookFormComponent } from './atomic-design/organisms/book-form/book-form.component';
 import { AllBooksComponent } from './atomic-design/organisms/all-books/all-books.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AllBooksComponent } from './atomic-design/organisms/all-books/all-books
     MatSnackBarModule,
     EffectsModule.forRoot([AuthEffects]),
     MatSelectModule,
+    MatCardModule,
   ],
   providers: [AuthServices],
   bootstrap: [AppComponent],
