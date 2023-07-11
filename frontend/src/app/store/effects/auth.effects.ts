@@ -27,10 +27,7 @@ export class AuthEffects {
               map((session) => {
                 localStorage.setItem('jwt', session.token);
                 this.store.dispatch(setLoginDataAction({ session }));
-                setTimeout(() => {
-                  this.router.navigate(['main']);
-                }, 2000);
-                this.router.navigate(['success-login']);
+                this.router.navigate(['main']);
                 return EMPTY;
               }),
               catchError((err) => {
