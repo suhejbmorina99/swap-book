@@ -3,7 +3,7 @@ import * as authAction from '../actions/auth.actions';
 
 export interface SessionData {
   token: string;
-  userData: UserData;
+  user: string;
 }
 
 export interface UserData {
