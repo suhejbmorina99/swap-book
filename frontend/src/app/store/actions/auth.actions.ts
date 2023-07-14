@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
 import { SessionData } from '../reducers/auth.reducer';
-import { UserData } from '../reducers/auth.reducer';
 
 enum authActionsType {
   LOGIN = '[Auth] Login',
