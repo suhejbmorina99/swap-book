@@ -8,6 +8,8 @@ import {
 import { Store } from '@ngrx/store';
 import { State } from '../../../store';
 import { condition } from 'src/shared/stores/book-condition-store';
+import { BookFieldsEnum } from 'src/shared/enums/book-field.enum';
+import { bookRequestAction } from 'src/app/store/actions/book.actions';
 
 @Component({
   selector: 'app-book-form',
@@ -45,15 +47,15 @@ export class BookFormComponent {
     return '';
   }
 
-  registerUser() {
-    // this.store.dispatch(
-    //   registerRequestAction({
-    //     title: this.loginForm.controls[BookFieldsEnum.Title].value,
-    //     isbn: this.loginForm.controls[BookFieldsEnum.Isbn].value,
-    //     language: this.loginForm.controls[BookFieldsEnum.Language].value,
-    //     condition: this.loginForm.controls[BookFieldsEnum.Condition].value,
-    //   })
-    // );
+  registerBook() {
+    this.store.dispatch(
+      bookRequestAction({
+        title: this.bookForm.controls[BookFieldsEnum.Title].value,
+        isbn: this.bookForm.controls[BookFieldsEnum.Isbn].value,
+        language: this.bookForm.controls[BookFieldsEnum.Language].value,
+        condition: this.bookForm.controls[BookFieldsEnum.Condition].value,
+      })
+    );
   }
 
   get title() {
