@@ -26,6 +26,8 @@ import { MainComponent } from './atomic-design/templates/main/main.component';
 import { BookFormComponent } from './atomic-design/organisms/book-form/book-form.component';
 import { AllBooksComponent } from './atomic-design/organisms/all-books/all-books.component';
 import { MatCardModule } from '@angular/material/card';
+import { BookEffects } from './store/effects/book.effects';
+import { BookServices } from './store/services/book.services';
 
 @NgModule({
   declarations: [
@@ -51,11 +53,11 @@ import { MatCardModule } from '@angular/material/card';
     HttpClientModule,
     MatButtonModule,
     MatSnackBarModule,
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, BookEffects]),
     MatSelectModule,
     MatCardModule,
   ],
-  providers: [AuthServices],
+  providers: [AuthServices, BookServices],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

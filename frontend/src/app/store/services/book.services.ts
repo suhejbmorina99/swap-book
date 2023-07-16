@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
@@ -23,7 +23,13 @@ export class BookServices {
       condition: condition,
     };
 
-    return this.http.post<any>(url, body);
+    const token = localStorage.getItem('jwt');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.post<any>(url, body, { headers: headers });
   }
 
   //   public registerRequest(
