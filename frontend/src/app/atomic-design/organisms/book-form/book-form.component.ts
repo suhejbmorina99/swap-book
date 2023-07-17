@@ -56,6 +56,8 @@ export class BookFormComponent {
         condition: this.bookForm.controls[BookFieldsEnum.Condition].value,
       })
     );
+
+    this.bookForm.reset();
   }
 
   get title() {
