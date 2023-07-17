@@ -10,6 +10,7 @@ import { State } from '../../../store';
 import { condition } from 'src/shared/stores/book-condition-store';
 import { BookFieldsEnum } from 'src/shared/enums/book-field.enum';
 import { bookRequestAction } from 'src/app/store/actions/book.actions';
+import { language } from 'src/shared/stores/language-store';
 
 @Component({
   selector: 'app-book-form',
@@ -19,6 +20,7 @@ import { bookRequestAction } from 'src/app/store/actions/book.actions';
 export class BookFormComponent {
   public bookForm: FormGroup;
   public conditionData: any = condition;
+  public languageSource: any = language;
 
   constructor(private store: Store<State>, private formBuilder: FormBuilder) {
     this.bookForm = this.formBuilder.group({

@@ -21,12 +21,13 @@
     <div class="form-container">
       <mat-form-field class="form-field">
         <mat-label>Enter book language</mat-label>
-        <input
-          matInput
-          placeholder="Language"
-          formControlName="language"
-          required
-        />
+        <mat-select placeholder="Language" formControlName="language" required>
+          <mat-option
+            *ngFor="let language of languageSource"
+            [value]="language.original"
+            >{{ language.original }}</mat-option
+          >
+        </mat-select>
         <mat-error *ngIf="language && language.invalid && language.touched">{{
           getErrorMessage()
         }}</mat-error>
