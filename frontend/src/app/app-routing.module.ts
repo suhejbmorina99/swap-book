@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './atomic-design/templates/login/login.component';
 import { RegisterComponent } from './atomic-design/templates/register/register.component';
 import { MainComponent } from './atomic-design/templates/main/main.component';
+import { SwapComponent } from './atomic-design/templates/swap/swap.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
+  },
+  {
+    path: 'swap',
+    component: SwapComponent,
   },
 ];
 
