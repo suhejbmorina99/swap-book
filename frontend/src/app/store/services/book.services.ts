@@ -19,6 +19,7 @@ export class BookServices {
     const url = this.baseUrl + '/book';
     const body = {
       title: title,
+      author: author,
       isbn: isbn,
       language: language,
       condition: condition,

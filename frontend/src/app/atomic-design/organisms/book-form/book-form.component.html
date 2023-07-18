@@ -21,7 +21,7 @@
     <div class="form-container">
       <mat-form-field class="form-field">
         <mat-label>Enter book isbn</mat-label>
-        <input matInput placeholder="isbn" formControlName="isbn" required />
+        <input matInput placeholder="Isbn" formControlName="isbn" required />
         <mat-error *ngIf="isbn && isbn.invalid && isbn.touched">{{
           getErrorMessage()
         }}</mat-error>
