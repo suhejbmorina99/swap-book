@@ -25,6 +25,7 @@ export class BookFormComponent {
   constructor(private store: Store<State>, private formBuilder: FormBuilder) {
     this.bookForm = this.formBuilder.group({
       title: new FormControl('', [Validators.required]),
+      author: new FormControl('', [Validators.required]),
       isbn: new FormControl('', [Validators.required]),
       language: new FormControl('', [Validators.required]),
       condition: new FormControl('', [Validators.required]),
@@ -33,12 +34,14 @@ export class BookFormComponent {
 
   getErrorMessage() {
     const titleControl = this.bookForm.get('title');
+    const authorControl = this.bookForm.get('author');
     const isbnControl = this.bookForm.get('isbn');
     const languageControl = this.bookForm.get('language');
     const conditionControl = this.bookForm.get('condition');
 
     if (
       titleControl?.hasError('required') ||
+      authorControl?.hasError('required') ||
       isbnControl?.hasError('required') ||
       languageControl?.hasError('required') ||
       conditionControl?.hasError('required')
@@ -53,6 +56,7 @@ export class BookFormComponent {
     this.store.dispatch(
       bookRequestAction({
         title: this.bookForm.controls[BookFieldsEnum.Title].value,
+        author: this.bookForm.controls[BookFieldsEnum.Author].value,
         isbn: this.bookForm.controls[BookFieldsEnum.Isbn].value,
         language: this.bookForm.controls[BookFieldsEnum.Language].value,
         condition: this.bookForm.controls[BookFieldsEnum.Condition].value,
@@ -64,6 +68,9 @@ export class BookFormComponent {
 
   get title() {
     return this.bookForm.get('title');
+  }
+  get author() {
+    return this.bookForm.get('author');
   }
   get isbn() {
     return this.bookForm.get('isbn');

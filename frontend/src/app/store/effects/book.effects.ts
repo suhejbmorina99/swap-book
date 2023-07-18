@@ -20,6 +20,7 @@ export class BookEffects {
         switchMap(
           (action: {
             title: string;
+            author: string;
             isbn: string;
             language: string;
             condition: string;
@@ -27,6 +28,7 @@ export class BookEffects {
             return this.bookService
               .bookRequest(
                 action.title,
+                action.author,
                 action.isbn,
                 action.language,
                 action.condition

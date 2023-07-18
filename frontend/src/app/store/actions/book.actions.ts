@@ -8,7 +8,13 @@ enum bookActionsType {
 
 export const bookRequestAction = createAction(
   bookActionsType.BOOK,
-  props<{ title: string; isbn: string; language: string; condition: string }>()
+  props<{
+    title: string;
+    author: string;
+    isbn: string;
+    language: string;
+    condition: string;
+  }>()
 );
 
 export const setBookDataAction = createAction(

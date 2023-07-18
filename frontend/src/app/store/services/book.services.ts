@@ -11,6 +11,7 @@ export class BookServices {
 
   public bookRequest(
     title: string,
+    author: string,
     isbn: string,
     language: string,
     condition: string
