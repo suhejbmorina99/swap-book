@@ -5,6 +5,15 @@
     margin-top: 5%;
     margin-left: 12%;
     width: 160px;
-    border: 2px solid #3068cb;
+    border: 2px solid #956f32;
+
+    .mat-mdc-card-header {
+      padding: 5px 0 0 10px;
+    }
+
+    .mdc-card__media:last-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 }
