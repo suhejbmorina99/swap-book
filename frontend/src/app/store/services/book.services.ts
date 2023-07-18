@@ -32,24 +32,8 @@ export class BookServices {
     return this.http.post<any>(url, body, { headers: headers });
   }
 
-  //   public registerRequest(
-  //     name: string,
-  //     email: string,
-  //     password: string,
-  //     phone: string,
-  //     country: string,
-  //     city: string
-  //   ): Observable<SessionData> {
-  //     const url = this.baseUrl + '/user/register';
-  //     const body = {
-  //       name: name,
-  //       email: email,
-  //       password: password,
-  //       phone: phone,
-  //       country: country,
-  //       city: city,
-  //     };
-
-  //     return this.http.post<SessionData>(url, body);
-  //   }
+  public getBooks(): Observable<any> {
+    const url = this.baseUrl + '/book';
+    return this.http.get<any>(url);
+  }
 }

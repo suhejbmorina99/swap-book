@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BookServices } from 'src/app/store/services/book.services';
 
 @Component({
   selector: 'app-all-books',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AllBooksComponent {
 
+  public allBook: any[] = [];
+
+  constructor(private bookService: BookServices) {}
+
+
+  ngOnInit() {
+    this.bookService.getBooks().subscribe((data: any[]) => {
+      this.allBook = data;
+    });
+  }
 }

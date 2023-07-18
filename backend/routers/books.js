@@ -14,6 +14,7 @@ router.get(`/`, async (req, res) => {
 router.post(`/`, async (req, res) => {
     let book = new Book({
         title: req.body.title,
+        author: req.body.author,
         isbn: req.body.isbn,
         language: req.body.language,
         condition: req.body.condition,
