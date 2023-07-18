@@ -6,6 +6,7 @@ import { MainComponent } from './atomic-design/templates/main/main.component';
 import { SwapComponent } from './atomic-design/templates/swap/swap.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'login',
     component: LoginComponent,
