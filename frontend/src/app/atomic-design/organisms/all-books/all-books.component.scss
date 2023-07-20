@@ -7,6 +7,14 @@
     width: 180px;
     border: 2px solid #956f32;
 
+    .title-card {
+      font-size: 14px;
+      width: 160px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .mat-mdc-card-header {
       padding: 5px 0 0 10px;
     }
