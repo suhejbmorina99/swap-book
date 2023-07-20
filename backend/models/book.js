@@ -24,7 +24,7 @@ const bookSchema = mongoose.Schema({
     numerOfPages: {
         type: Number,
         required: true,
-    }
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
