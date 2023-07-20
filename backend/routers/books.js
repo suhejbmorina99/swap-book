@@ -18,7 +18,7 @@ router.post(`/`, async (req, res) => {
         isbn: req.body.isbn,
         language: req.body.language,
         condition: req.body.condition,
-        numerOfPages: req.body.numerOfPages,
+        numberOfPages: req.body.numberOfPages,
         user: req.body.user,
     })
 

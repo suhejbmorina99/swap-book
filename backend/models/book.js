@@ -21,7 +21,7 @@ const bookSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    numerOfPages: {
+    numberOfPages: {
         type: Number,
         required: true,
     },
