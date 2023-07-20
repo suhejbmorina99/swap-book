@@ -14,7 +14,8 @@ export class BookServices {
     author: string,
     isbn: string,
     language: string,
-    condition: string
+    condition: string,
+    numberOfPages: number
   ): Observable<any> {
     const url = this.baseUrl + '/book';
     const body = {
@@ -23,6 +24,7 @@ export class BookServices {
       isbn: isbn,
       language: language,
       condition: condition,
+      numberOfPages: numberOfPages,
     };
 
     const token = localStorage.getItem('jwt');

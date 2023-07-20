@@ -24,6 +24,7 @@ export class BookEffects {
             isbn: string;
             language: string;
             condition: string;
+            numberOfPages: number;
           }) => {
             return this.bookService
               .bookRequest(
@@ -31,7 +32,8 @@ export class BookEffects {
                 action.author,
                 action.isbn,
                 action.language,
-                action.condition
+                action.condition,
+                action.numberOfPages
               )
               .pipe(
                 map(() => {

@@ -29,6 +29,10 @@ export class BookFormComponent {
       isbn: new FormControl('', [Validators.required]),
       language: new FormControl('', [Validators.required]),
       condition: new FormControl('', [Validators.required]),
+      numberOfPages: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]+$'),
+      ]),
     });
   }
 
@@ -38,13 +42,15 @@ export class BookFormComponent {
     const isbnControl = this.bookForm.get('isbn');
     const languageControl = this.bookForm.get('language');
     const conditionControl = this.bookForm.get('condition');
+    const numberOfPagesControl = this.bookForm.get('numberOfPages');
 
     if (
       titleControl?.hasError('required') ||
       authorControl?.hasError('required') ||
       isbnControl?.hasError('required') ||
       languageControl?.hasError('required') ||
-      conditionControl?.hasError('required')
+      conditionControl?.hasError('required') ||
+      numberOfPagesControl?.hasError('required')
     ) {
       return 'You must enter a value';
     }
@@ -60,6 +66,8 @@ export class BookFormComponent {
         isbn: this.bookForm.controls[BookFieldsEnum.Isbn].value,
         language: this.bookForm.controls[BookFieldsEnum.Language].value,
         condition: this.bookForm.controls[BookFieldsEnum.Condition].value,
+        numberOfPages:
+          this.bookForm.controls[BookFieldsEnum.NumberOfPages].value,
       })
     );
 
@@ -80,6 +88,9 @@ export class BookFormComponent {
   }
   get condition() {
     return this.bookForm.get('condition');
+  }
+  get numberOfPages() {
+    return this.bookForm.get('numberOfPages');
   }
 
   ngOnInit() {}

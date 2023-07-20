@@ -12,7 +12,12 @@
     <div class="form-container">
       <mat-form-field class="form-field">
         <mat-label>Enter author book</mat-label>
-        <input matInput placeholder="Author" formControlName="author" required />
+        <input
+          matInput
+          placeholder="Author"
+          formControlName="author"
+          required
+        />
         <mat-error *ngIf="author && author.invalid && author.touched">{{
           getErrorMessage()
         }}</mat-error>
@@ -60,6 +65,21 @@
           *ngIf="condition && condition.invalid && condition.touched"
           >{{ getErrorMessage() }}</mat-error
         >
+      </mat-form-field>
+    </div>
+
+    <div class="form-container">
+      <mat-form-field class="form-field">
+        <mat-label>Number of pages</mat-label>
+        <input
+          matInput
+          placeholder="Number of pages"
+          formControlName="numberOfPages"
+          required
+        />
+        <mat-error *ngIf="isbn && isbn.invalid && isbn.touched">{{
+          getErrorMessage()
+        }}</mat-error>
       </mat-form-field>
     </div>
   </div>

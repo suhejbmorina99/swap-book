@@ -14,6 +14,7 @@ export const bookRequestAction = createAction(
     isbn: string;
     language: string;
     condition: string;
+    numberOfPages: number;
   }>()
 );
 
