@@ -15,6 +15,7 @@ export const bookRequestAction = createAction(
     language: string;
     condition: string;
     numberOfPages: number;
+    user: { id: string };
   }>()
 );
 

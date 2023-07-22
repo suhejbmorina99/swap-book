@@ -21,6 +21,7 @@ export class BookFormComponent {
   public bookForm: FormGroup;
   public conditionData: any = condition;
   public languageSource: any = language;
+  public userBookId: string = '';
 
   constructor(private store: Store<State>, private formBuilder: FormBuilder) {
     this.bookForm = this.formBuilder.group({
@@ -68,6 +69,9 @@ export class BookFormComponent {
         condition: this.bookForm.controls[BookFieldsEnum.Condition].value,
         numberOfPages:
           this.bookForm.controls[BookFieldsEnum.NumberOfPages].value,
+        user: {
+          id: this.userBookId,
+        },
       })
     );
 
@@ -93,5 +97,10 @@ export class BookFormComponent {
     return this.bookForm.get('numberOfPages');
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.userBookId = userId;
+    }
+  }
 }
