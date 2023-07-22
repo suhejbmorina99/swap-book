@@ -19,7 +19,7 @@ router.post(`/`, async (req, res) => {
         language: req.body.language,
         condition: req.body.condition,
         numberOfPages: req.body.numberOfPages,
-        user: req.body.user,
+        user: req.body.user.id,
     })
 
     book = await book
