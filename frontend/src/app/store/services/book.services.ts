@@ -27,7 +27,7 @@ export class BookServices {
       condition: condition,
       numberOfPages: numberOfPages,
       user: {
-        id: user.id
+        id: user.id,
       },
     };
 
@@ -42,6 +42,11 @@ export class BookServices {
 
   public getBooks(): Observable<any> {
     const url = this.baseUrl + '/book';
+    return this.http.get<any>(url);
+  }
+
+  public getUserBooks(user: { id: string }): Observable<any> {
+    const url = `${this.baseUrl}/book/${user.id}`;
     return this.http.get<any>(url);
   }
 }
