@@ -11,6 +11,16 @@ router.get(`/`, async (req, res) => {
     res.send(booksList)
 })
 
+router.get(`/:userId`, async (req, res) => {
+    const userId = req.params.userId
+    const userBooks = await Book.find({ user: userId })
+
+    if (!userBooks) {
+        res.status(500).json({ success: false })
+    }
+    res.send(userBooks)
+})
+
 router.post(`/`, async (req, res) => {
     let book = new Book({
         title: req.body.title,
