@@ -26,5 +26,9 @@ export class MainComponent {
     this.redirectTo = redirectTo;
   }
 
+  editBook() {
+    this.router.navigate(['edit-book']);
+  }
+
   ngOnInit() {}
 }

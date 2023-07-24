@@ -4,6 +4,7 @@ import { LoginComponent } from './atomic-design/templates/login/login.component'
 import { RegisterComponent } from './atomic-design/templates/register/register.component';
 import { MainComponent } from './atomic-design/templates/main/main.component';
 import { SwapComponent } from './atomic-design/templates/swap/swap.component';
+import { EditBookComponent } from './atomic-design/pages/edit-book/edit-book.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'swap',
     component: SwapComponent,
+  },
+  {
+    path: 'edit-book',
+    component: EditBookComponent,
   },
 ];
 

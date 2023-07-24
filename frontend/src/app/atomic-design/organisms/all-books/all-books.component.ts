@@ -18,7 +18,6 @@ export class AllBooksComponent {
     if (userId) {
       this.bookService.getUserBooks({ id: userId }).subscribe((data: any[]) => {
         this.userBooks = data;
-        console.log(this.userBooks);
       });
     }
 

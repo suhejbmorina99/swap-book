@@ -29,6 +29,7 @@ import { MatCardModule } from '@angular/material/card';
 import { BookEffects } from './store/effects/book.effects';
 import { BookServices } from './store/services/book.services';
 import { SwapComponent } from './atomic-design/templates/swap/swap.component';
+import { EditBookComponent } from './atomic-design/pages/edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SwapComponent } from './atomic-design/templates/swap/swap.component';
     BookFormComponent,
     AllBooksComponent,
     SwapComponent,
+    EditBookComponent,
   ],
   imports: [
     BrowserModule,
