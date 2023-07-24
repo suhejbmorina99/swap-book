@@ -47,4 +47,31 @@ router.post(`/`, async (req, res) => {
     res.send(book)
 })
 
+router.put('/:bookId', async (req, res) => {
+    const bookId = req.params.bookId
+
+    try {
+        const bookToUpdate = await Book.findById(bookId)
+
+        if (!bookToUpdate) {
+            return res
+                .status(404)
+                .json({ success: false, message: 'Book not found' })
+        }
+
+        bookToUpdate.title = req.body.title || bookToUpdate.title
+        bookToUpdate.author = req.body.author || bookToUpdate.author
+        bookToUpdate.isbn = req.body.isbn || bookToUpdate.isbn
+        bookToUpdate.language = req.body.language || bookToUpdate.language
+        bookToUpdate.condition = req.body.condition || bookToUpdate.condition
+        bookToUpdate.numberOfPages =
+            req.body.numberOfPages || bookToUpdate.numberOfPages
+
+        const updatedBook = await bookToUpdate.save()
+        res.status(200).json({ success: true, updatedBook })
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message })
+    }
+})
+
 module.exports = router
