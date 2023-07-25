@@ -2,26 +2,31 @@
   <img src="../../../../assets/back.png" alt="" />
 </div>
 <div class="edit-container">
-  <mat-card class="example-card" *ngFor="let book of allBooks">
-    <mat-card-header style="background-color: #f6f7f9">
-      <mat-card-title class="title-card"
-        >Title: {{ book.title }}</mat-card-title
-      >
-      <mat-card-subtitle style="font-size: 12px"
-        >Author: {{ book.author }}</mat-card-subtitle
-      >
-      <mat-card-subtitle style="font-size: 12px"
-        >Condition: {{ book.condition }}</mat-card-subtitle
-      >
-    </mat-card-header>
-    <img
-      mat-card-image
-      src="../../../../assets/book-cover.png"
-      alt="Photo of a Shiba Inu"
-      style="height: 210px"
-    />
-    <div class="edit-book-icon">
-      <img src="../../../../assets/pen.png" alt="" />
-    </div>
-  </mat-card>
+  <div class="edit-mode-off" *ngIf="editModeOn === false">
+    <mat-card class="example-card" *ngFor="let book of allBooks">
+      <mat-card-header style="background-color: #f6f7f9">
+        <mat-card-title class="title-card"
+          >Title: {{ book.title }}</mat-card-title
+        >
+        <mat-card-subtitle style="font-size: 12px"
+          >Author: {{ book.author }}</mat-card-subtitle
+        >
+        <mat-card-subtitle style="font-size: 12px"
+          >Condition: {{ book.condition }}</mat-card-subtitle
+        >
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="../../../../assets/book-cover.png"
+        alt="Photo of a Shiba Inu"
+        style="height: 210px"
+      />
+      <div class="edit-book-icon" (click)="openEditMode()">
+        <img src="../../../../assets/pen.png" alt="" />
+      </div>
+    </mat-card>
+  </div>
+  <div class="edit-mode-on" *ngIf="editModeOn">
+    <p>test</p>
+  </div>
 </div>

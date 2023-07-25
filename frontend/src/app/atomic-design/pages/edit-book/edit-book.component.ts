@@ -8,8 +8,13 @@ import { BookServices } from 'src/app/store/services/book.services';
 })
 export class EditBookComponent {
   public allBooks: any[] = [];
+  public editModeOn: boolean = false;
 
   constructor(private bookService: BookServices) {}
+
+  openEditMode() {
+    this.editModeOn = !this.editModeOn;
+  }
 
   ngOnInit() {
     const userId = localStorage.getItem('userId');
