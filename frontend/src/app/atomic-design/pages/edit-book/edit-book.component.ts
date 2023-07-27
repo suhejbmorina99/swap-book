@@ -7,7 +7,7 @@ import { BookServices } from 'src/app/store/services/book.services';
   styleUrls: ['./edit-book.component.scss'],
 })
 export class EditBookComponent {
-  public allBooks: any[] = [];
+  public userBook: any[] = [];
   public editModeOn: boolean = false;
 
   constructor(private bookService: BookServices) {}
@@ -15,12 +15,15 @@ export class EditBookComponent {
   openEditMode() {
     this.editModeOn = !this.editModeOn;
   }
+  closeEditMode() {
+    this.editModeOn === false;
+  }
 
   ngOnInit() {
     const userId = localStorage.getItem('userId');
     if (userId) {
       this.bookService.getUserBooks({ id: userId }).subscribe((data: any[]) => {
-        this.allBooks = data;
+        this.userBook = data;
       });
     }
   }
