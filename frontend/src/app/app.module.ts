@@ -30,6 +30,7 @@ import { BookEffects } from './store/effects/book.effects';
 import { BookServices } from './store/services/book.services';
 import { SwapComponent } from './atomic-design/templates/swap/swap.component';
 import { EditBookComponent } from './atomic-design/pages/edit-book/edit-book.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { EditBookComponent } from './atomic-design/pages/edit-book/edit-book.com
     EffectsModule.forRoot([AuthEffects, BookEffects]),
     MatSelectModule,
     MatCardModule,
+    FormsModule,
   ],
   providers: [AuthServices, BookServices],
   bootstrap: [AppComponent],

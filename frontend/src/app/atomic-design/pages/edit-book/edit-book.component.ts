@@ -24,4 +24,8 @@ export class EditBookComponent {
       });
     }
   }
+
+  saveChanges() {
+    console.log('1');
+  }
 }

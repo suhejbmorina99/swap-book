@@ -27,6 +27,31 @@
     </mat-card>
   </div>
   <div class="edit-mode-on" *ngIf="editModeOn">
-    <p>test</p>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Condition</th>
+        <th>Action</th>
+      </tr>
+      <!-- Loop through allBooks in edit mode -->
+      <ng-container *ngFor="let book of allBooks">
+        <tr>
+          <td>
+            <input type="text" [(ngModel)]="book.title" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="book.author" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="book.condition" />
+          </td>
+          <td>
+            <!-- Add a button to save the changes -->
+            <button (click)="saveChanges()">Save</button>
+          </td>
+        </tr>
+      </ng-container>
+    </table>
   </div>
 </div>
