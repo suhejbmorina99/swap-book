@@ -41,5 +41,27 @@
         left: 95%;
       }
     }
+
+    .edit-mode-on {
+      display: flex;
+      flex-wrap: wrap;
+
+      .edit-form {
+        margin-top: 2%;
+        margin-left: 10%;
+        width: 260px;
+        height: 295px;
+        border: 2px solid #956f32;
+
+        .edit-area {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          .inputs {
+            width: 90%;
+          }
+        }
+      }
+    }
   }
 }

@@ -27,31 +27,49 @@
     </mat-card>
   </div>
   <div class="edit-mode-on" *ngIf="editModeOn">
-    <table>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Condition</th>
-        <th>Action</th>
-      </tr>
-      <!-- Loop through allBooks in edit mode -->
+    <div class="edit-form">
       <ng-container *ngFor="let book of allBooks">
-        <tr>
-          <td>
-            <input type="text" [(ngModel)]="book.title" />
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="book.author" />
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="book.condition" />
-          </td>
-          <td>
-            <!-- Add a button to save the changes -->
-            <button (click)="saveChanges()">Save</button>
-          </td>
-        </tr>
+        <p class="edit-area">
+          Title:<input type="text" class="inputs" [(ngModel)]="book.title" />
+        </p>
+        <p class="edit-area">
+          Author:<input type="text" class="inputs" [(ngModel)]="book.author" />
+        </p>
+        <p class="edit-area">
+          Condition:<input
+            type="text"
+            class="inputs"
+            [(ngModel)]="book.condition"
+          />
+        </p>
       </ng-container>
-    </table>
+    </div>
   </div>
 </div>
+
+<!-- <table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Condition</th>
+    <th>Action</th>
+  </tr> -->
+<!-- Loop through allBooks in edit mode -->
+<!-- <ng-container *ngFor="let book of allBooks">
+    <tr>
+      <td>
+        <input type="text" [(ngModel)]="book.title" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="book.author" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="book.condition" />
+      </td>
+      <td> -->
+<!-- Add a button to save the changes -->
+<!-- <button (click)="saveChanges()">Save</button>
+      </td>
+    </tr>
+  </ng-container>
+</table> -->
