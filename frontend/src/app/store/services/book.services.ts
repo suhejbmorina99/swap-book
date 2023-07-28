@@ -49,4 +49,25 @@ export class BookServices {
     const url = `${this.baseUrl}/book/${user.id}`;
     return this.http.get<any>(url);
   }
+
+  public updateUserBook(
+    bookId: string,
+    title: string,
+    author: string,
+    isbn: string,
+    language: string,
+    condition: string,
+    numberOfPages: number
+  ): Observable<any> {
+    const url = `${this.baseUrl}/book/${bookId}`;
+    const body = {
+      title: title,
+      author: author,
+      isbn: isbn,
+      language: language,
+      condition: condition,
+      numberOfPages: numberOfPages,
+    };
+    return this.http.patch<any>(url, body);
+  }
 }
