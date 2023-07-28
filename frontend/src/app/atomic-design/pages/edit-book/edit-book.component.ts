@@ -16,7 +16,7 @@ export class EditBookComponent {
     this.editModeOn = !this.editModeOn;
   }
   closeEditMode() {
-    this.editModeOn === false;
+    this.editModeOn = false;
   }
 
   ngOnInit() {
