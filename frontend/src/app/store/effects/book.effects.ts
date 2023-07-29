@@ -40,10 +40,8 @@ export class BookEffects {
                 action.user
               )
               .pipe(
-                map(() => {
-                  this.store.dispatch(
-                    setBookDataAction({ message: 'New Message' })
-                  );
+                map((books) => {
+                  this.store.dispatch(setBookDataAction({ books }));
                   return EMPTY;
                 }),
                 catchError((err) => {

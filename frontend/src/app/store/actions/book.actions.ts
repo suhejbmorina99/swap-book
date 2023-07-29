@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { BookData } from '../reducers/book.reducer';
 
 enum bookActionsType {
   BOOK = '[Book] Book',
@@ -21,7 +22,7 @@ export const bookRequestAction = createAction(
 
 export const setBookDataAction = createAction(
   bookActionsType.BOOK_SUCCESS,
-  props<{ message: string }>()
+  props<{ books: BookData | undefined }>()
 );
 
 export const bookFailAction = createAction(
