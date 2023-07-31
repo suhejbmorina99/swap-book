@@ -5,6 +5,7 @@ import { RegisterComponent } from './atomic-design/templates/register/register.c
 import { MainComponent } from './atomic-design/templates/main/main.component';
 import { SwapComponent } from './atomic-design/templates/swap/swap.component';
 import { EditBookComponent } from './atomic-design/pages/edit-book/edit-book.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'swap',

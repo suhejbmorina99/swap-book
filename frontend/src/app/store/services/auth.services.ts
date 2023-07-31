@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SessionData, UserData } from '../reducers/auth.reducer';
 import { Injectable } from '@angular/core';
+import { jwtHeaders } from 'src/shared/enums/utils';
 
 @Injectable()
 export class AuthServices {
@@ -39,5 +40,11 @@ export class AuthServices {
     };
 
     return this.http.post<SessionData>(url, body);
+  }
+
+  public sessionToken(): Observable<SessionData> {
+    const url = this.baseUrl + '/user/session';
+
+    return this.http.get<SessionData>(url, { headers: jwtHeaders() });
   }
 }
