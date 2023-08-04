@@ -132,4 +132,36 @@ router.post(`/login`, async (req, res) => {
     }
 })
 
+router.get(`/session`, async (req, res) => {
+    // Assuming the session token is sent as a bearer token in the Authorization header
+    const token = req.headers.authorization
+    const secret = process.env.secret
+
+    // Verify the session token and extract the user ID from it
+    let userId
+    try {
+        const decodedToken = jwt.verify(token, secret)
+        userId = decodedToken.userId
+    } catch (err) {
+        // If the token is invalid, return an error response
+        return res.status(401).json({ message: 'Invalid session token' })
+    }
+
+    // Fetch the user based on the extracted user ID
+    const user = await User.findById(userId)
+
+    // If the user is not found, return an error response
+    if (!user) {
+        return res.status(404).json({ message: 'User not found' })
+    }
+
+    // Return the relevant session data
+    const sessionData = {
+        user: user.id,
+        token: token,
+    }
+
+    res.status(200).json(sessionData)
+})
+
 module.exports = router
