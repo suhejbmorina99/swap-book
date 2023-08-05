@@ -22,6 +22,27 @@ router.get(`/:id`, async (req, res) => {
     res.status(200).send({ user })
 })
 
+router.get(`/token`, async (req, res) => {
+    const token = req.headers.authorization
+    const secret = process.env.secret
+
+    let userId
+    try {
+        const decodedToken = jwt.verify(token, secret)
+        userId = decodedToken.userId
+    } catch (err) {
+        return res.status(401).json({ message: 'Invalid session token' })
+    }
+
+    const user = await User.findById(userId)
+
+    if (!user) {
+        return res.status(404).json({ message: 'User not found' })
+    }
+
+    res.status(200).json({ user: user.id, token: token })
+})
+
 router.post(`/`, async (req, res) => {
     let user = new User({
         name: req.body.name,
@@ -130,27 +151,6 @@ router.post(`/login`, async (req, res) => {
     ) {
         res.status(400).send('Email or password are wrong')
     }
-})
-
-router.get('/token', async (req, res) => {
-    const token = req.headers.authorization
-    const secret = process.env.secret
-
-    let userId
-    try {
-        const decodedToken = jwt.verify(token, secret)
-        userId = decodedToken.userId
-    } catch (err) {
-        return res.status(401).json({ message: 'Invalid session token' })
-    }
-
-    const user = await User.findById(userId)
-
-    if (!user) {
-        return res.status(404).json({ message: 'User not found' })
-    }
-
-    res.status(200).json({ user: user.id, token: token })
 })
 
 module.exports = router
