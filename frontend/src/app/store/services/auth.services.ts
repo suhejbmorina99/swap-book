@@ -42,9 +42,9 @@ export class AuthServices {
     return this.http.post<SessionData>(url, body);
   }
 
-  public sessionToken(): Observable<SessionData> {
+  public sessionToken(): Observable<any> {
     const url = this.baseUrl + '/user/session';
 
-    return this.http.get<SessionData>(url, { headers: jwtHeaders() });
+    return this.http.get<any>(url, { headers: jwtHeaders() });
   }
 }
