@@ -34,8 +34,8 @@ export class AuthGuard implements CanActivate {
       return this.router.navigate(['login']);
     } else {
       return this.service.sessionToken().pipe(
-        map((response) => {
-          this.store.dispatch(setLoginDataAction({ session: response }));
+        map((session) => {
+          this.store.dispatch(setLoginDataAction({ session }));
           return true;
         }),
         catchError((e) => {

@@ -20,14 +20,17 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'swap',
     component: SwapComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'edit-book',
     component: EditBookComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

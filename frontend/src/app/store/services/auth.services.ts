@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SessionData, UserData } from '../reducers/auth.reducer';
 import { Injectable } from '@angular/core';
-import { jwtHeaders } from 'src/shared/enums/utils';
 
 @Injectable()
 export class AuthServices {
@@ -43,8 +42,13 @@ export class AuthServices {
   }
 
   public sessionToken(): Observable<any> {
-    const url = this.baseUrl + '/user/session';
+    const url = this.baseUrl + '/user/token';
+    const token = localStorage.getItem('jwt');
 
-    return this.http.get<any>(url, { headers: jwtHeaders() });
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get<any>(url, { headers: headers });
   }
 }
