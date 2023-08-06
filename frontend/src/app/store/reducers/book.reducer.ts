@@ -2,13 +2,15 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as bookAction from '../actions/book.actions';
 
 export interface BookData {
-  accountActivated: boolean;
-  email: string;
-  emailConfirmed: boolean;
-  lastname: string;
-  name: string;
-  role: string;
-  userId: string;
+  title: string;
+  author: string;
+  isbn: string;
+  language: string;
+  condition: string;
+  numberOfPages: number;
+  user: {
+    id: string;
+  };
 }
 
 export interface State {
