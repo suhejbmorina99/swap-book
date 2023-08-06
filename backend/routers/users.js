@@ -13,17 +13,8 @@ router.get(`/`, async (req, res) => {
     res.send(usersList)
 })
 
-router.get(`/:id`, async (req, res) => {
-    const user = await User.findById(req.params.id).select('-passwordHash')
-
-    if (!user) {
-        res.status(500).json({ message: 'The user ID not found' })
-    }
-    res.status(200).send({ user })
-})
-
 router.get(`/token`, async (req, res) => {
-    const token = req.headers.authorization
+    const token = req.headers.authorization.substring(7)
     const secret = process.env.secret
 
     let userId
@@ -151,6 +142,15 @@ router.post(`/login`, async (req, res) => {
     ) {
         res.status(400).send('Email or password are wrong')
     }
+})
+
+router.get(`/:id`, async (req, res) => {
+    const user = await User.findById(req.params.id).select('-passwordHash')
+
+    if (!user) {
+        res.status(500).json({ message: 'The user ID not found' })
+    }
+    res.status(200).send({ user })
 })
 
 module.exports = router
