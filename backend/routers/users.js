@@ -14,7 +14,7 @@ router.get(`/`, async (req, res) => {
 })
 
 router.get(`/token`, async (req, res) => {
-    const token = req.headers.authorization.substring(7)
+    const token = req.headers.authorization.replace(/^Bearer\s+/i, '')
     const secret = process.env.secret
 
     let userId
