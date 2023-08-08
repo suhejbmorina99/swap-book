@@ -11,6 +11,7 @@ router.get(`/`, async (req, res) => {
     res.send(booksList)
 })
 
+//This route return all books of specific user
 router.get(`/:userId`, async (req, res) => {
     const userId = req.params.userId
     const userBooks = await Book.find({ user: userId })
