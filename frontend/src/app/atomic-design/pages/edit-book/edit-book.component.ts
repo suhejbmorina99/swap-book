@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { State } from '../../../store';
 import { BookServices } from 'src/app/store/services/book.services';
 
 @Component({
@@ -10,7 +12,7 @@ export class EditBookComponent {
   public userBook: any[] = [];
   public editModeOn: boolean = false;
 
-  constructor(private bookService: BookServices) {}
+  constructor(private bookService: BookServices, private store: Store<State>) {}
 
   openEditMode() {
     this.editModeOn = !this.editModeOn;
