@@ -2,6 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as bookAction from '../actions/book.actions';
 
 export interface BookData {
+  id: string;
   title: string;
   author: string;
   isbn: string;

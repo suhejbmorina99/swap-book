@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from '../../../store';
 import { BookServices } from 'src/app/store/services/book.services';
+import { getBooksData } from 'src/app/store/selectors/book.selectors';
 
 @Component({
   selector: 'app-edit-book',
@@ -11,8 +12,15 @@ import { BookServices } from 'src/app/store/services/book.services';
 export class EditBookComponent {
   public userBook: any[] = [];
   public editModeOn: boolean = false;
+  public bookId = '';
 
-  constructor(private bookService: BookServices, private store: Store<State>) {}
+  constructor(private bookService: BookServices, private store: Store<State>) {
+    this.store.select(getBooksData).subscribe((books) => {
+      if (books) {
+        this.bookId = books.id;
+      }
+    });
+  }
 
   openEditMode() {
     this.editModeOn = !this.editModeOn;
@@ -28,7 +36,7 @@ export class EditBookComponent {
         this.userBook = data;
       });
     }
-
+    console.log(this.bookId);
     // this.bookService.updateUserBook(bookId: '',book.title);
   }
 
