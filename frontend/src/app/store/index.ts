@@ -3,7 +3,7 @@ import * as fromBook from './reducers/book.reducer';
 
 export interface State {
   auth: fromAuth.State;
-  book: fromAuth.State;
+  book: fromBook.State;
 }
 
 export const initialState = {
