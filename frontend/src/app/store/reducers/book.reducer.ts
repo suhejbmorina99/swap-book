@@ -15,7 +15,7 @@ export interface BookData {
 }
 
 export interface State {
-  bookData: BookData | undefined;
+  bookData: BookData[] | undefined;
 }
 
 export const initialBookDataState: State = {

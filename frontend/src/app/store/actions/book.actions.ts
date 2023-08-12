@@ -22,7 +22,7 @@ export const bookRequestAction = createAction(
 
 export const setBookDataAction = createAction(
   bookActionsType.BOOK_SUCCESS,
-  props<{ books: BookData | undefined }>()
+  props<{ books: BookData[] | undefined }>()
 );
 
 export const bookFailAction = createAction(

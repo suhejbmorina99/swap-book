@@ -15,9 +15,13 @@ export class EditBookComponent {
   public bookId = '';
 
   constructor(private bookService: BookServices, private store: Store<State>) {
-    this.store.select(getBooksData).subscribe((books) => {
-      if (books) {
-        this.bookId = books.id;
+    this.store.select(getBooksData).subscribe((bookData) => {
+      if (bookData) {
+        console.log(bookData[0]);
+
+        this.bookId = bookData[0].id;
+        console.log(this.bookId);
+        
       }
     });
   }
@@ -36,7 +40,6 @@ export class EditBookComponent {
         this.userBook = data;
       });
     }
-    console.log(this.bookId);
     // this.bookService.updateUserBook(bookId: '',book.title);
   }
 
