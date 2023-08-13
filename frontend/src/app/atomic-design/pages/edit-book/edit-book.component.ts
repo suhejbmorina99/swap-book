@@ -13,24 +13,37 @@ export class EditBookComponent {
   public userBook: any[] = [];
   public editModeOn: boolean = false;
   public bookId = '';
+  public editedBook: any;
+  public selectedBookId: string = '';
 
   constructor(private bookService: BookServices, private store: Store<State>) {
     this.store.select(getBooksData).subscribe((bookData) => {
       if (bookData) {
-        console.log(bookData[0]);
+        const targetBookId = this.selectedBookId;
 
-        this.bookId = bookData[0].id;
-        console.log(this.bookId);
-        
+        this.editedBook = bookData.find((book) => book.id === targetBookId);
+
+        if (this.editedBook) {
+          this.selectedBookId = this.editedBook.id;
+          console.log(this.selectedBookId);
+        }
       }
     });
   }
 
-  openEditMode() {
-    this.editModeOn = !this.editModeOn;
+  openEditMode(bookId: any) {
+    // this.selectedBookId = bookId;
+    // console.log(this.selectedBookId);
+    // if (this.editedBook.id === this.selectedBookId) {
+
+    this.editModeOn = true;
+    // }
+
+    // this.editModeOn = !this.editModeOn;
   }
   closeEditMode() {
     this.editModeOn = false;
+    // this.editedBook = null;
   }
 
   ngOnInit() {
@@ -45,5 +58,7 @@ export class EditBookComponent {
 
   saveChanges() {
     console.log('1');
+
+    this.closeEditMode();
   }
 }
