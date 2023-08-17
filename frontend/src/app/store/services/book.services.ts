@@ -45,6 +45,11 @@ export class BookServices {
     return this.http.get<any>(url);
   }
 
+  public getBookId(id: string): Observable<any> {
+    const url = this.baseUrl + `/book/bookId/${id}`;
+    return this.http.get<any>(url);
+  }
+
   public getUserBooks(user: { id: string }): Observable<any> {
     const url = `${this.baseUrl}/book/${user.id}`;
     return this.http.get<any>(url);

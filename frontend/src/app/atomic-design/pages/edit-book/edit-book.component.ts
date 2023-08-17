@@ -45,7 +45,7 @@ export class EditBookComponent {
   ngOnInit() {
     const userId = localStorage.getItem('userId');
     if (userId) {
-      this.bookService.getUserBooks({ id: userId }).subscribe((data: any[]) => {
+      this.bookService.getBookId(userId).subscribe((data: any[]) => {
         this.userBook = data;
       });
     }

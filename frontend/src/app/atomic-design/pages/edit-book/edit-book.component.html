@@ -1,4 +1,4 @@
-<div class="back-icon" routerLink="/main">
+<!-- <div class="back-icon" routerLink="/main">
   <img src="../../../../assets/back.png" alt="" />
 </div>
 <div class="edit-container" *ngFor="let book of userBook">
@@ -30,7 +30,7 @@
     <div class="exit-icon" (click)="closeEditMode()">
       <img src="../../../../assets/cross.png" alt="" />
     </div>
-    <div class="edit-form">
+    <div class="edit-form" *ngIf="editModeOn && selectedBookId === book.id">
       <ng-container *ngFor="let book of userBook">
         <p class="edit-area">
           Title:<input type="text" class="inputs" [(ngModel)]="book.title" />
@@ -49,4 +49,4 @@
       </ng-container>
     </div>
   </div>
-</div>
+</div> -->

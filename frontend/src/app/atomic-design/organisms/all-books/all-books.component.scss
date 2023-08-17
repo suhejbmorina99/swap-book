@@ -1,27 +1,30 @@
 :host {
   display: block;
 
-  .example-card {
-    margin-top: 5%;
-    margin-left: 12%;
-    width: 180px;
-    border: 2px solid #956f32;
+  .select-book {
+    display: flex;
+    .example-card {
+      margin-top: 5%;
+      margin-left: 12%;
+      width: 180px;
+      border: 2px solid #956f32;
 
-    .title-card {
-      font-size: 14px;
-      width: 160px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+      .title-card {
+        font-size: 14px;
+        width: 160px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
-    .mat-mdc-card-header {
-      padding: 5px 0 0 10px;
-    }
+      .mat-mdc-card-header {
+        padding: 5px 0 0 10px;
+      }
 
-    .mdc-card__media:last-child {
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
+      .mdc-card__media:last-child {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
     }
   }
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { BookServices } from 'src/app/store/services/book.services';
 
 @Component({
@@ -11,7 +12,9 @@ export class AllBooksComponent {
   public userBooks: any[] = [];
   @Output() redirectToSwap = new EventEmitter<boolean>();
 
-  constructor(private bookService: BookServices) {}
+  public selectedBookId: string = '';
+
+  constructor(private bookService: BookServices, private router: Router) {}
 
   ngOnInit() {
     const userId = localStorage.getItem('userId');
@@ -27,5 +30,12 @@ export class AllBooksComponent {
         this.redirectToSwap.emit(true);
       }
     });
+  }
+
+  public selectBook(bookId: string) {
+    // this.router.navigate(['edit-book'])
+    this.selectedBookId = bookId;
+    console.log(this.selectedBookId);
+    
   }
 }
