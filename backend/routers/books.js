@@ -75,4 +75,13 @@ router.put('/:bookId', async (req, res) => {
     }
 })
 
+router.get(`/bookId/:id`, async (req, res) => {
+    const book = await Book.findById(req.params.id)
+
+    if (!book) {
+        res.status(500).json({ message: 'The book ID not found' })
+    }
+    res.status(200).send({ book })
+})
+
 module.exports = router
