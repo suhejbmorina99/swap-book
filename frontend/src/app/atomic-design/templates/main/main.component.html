@@ -3,9 +3,14 @@
     <h2 class="book-title">add a new book</h2>
     <app-book-form></app-book-form>
   </div>
-  <button class="swap-button" mat-raised-button (click)="navigateTo()">Swap</button>
+  <button class="swap-button" mat-raised-button (click)="navigateTo()">
+    Swap
+  </button>
   <div class="all-books">
-    <h2 class="book-title" (click)="editBook()">my books</h2>
-    <app-all-books (redirectToSwap)="onRedirectToSwap($event)" class="books-component"></app-all-books>
+    <h2 class="book-title">my books</h2>
+    <app-all-books
+      (redirectToSwap)="onRedirectToSwap($event)"
+      class="books-component"
+    ></app-all-books>
   </div>
 </div>

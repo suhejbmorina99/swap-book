@@ -29,7 +29,7 @@ const routes: Routes = [
     canActivate: [AuthGuard, BookGuard],
   },
   {
-    path: 'edit-book',
+    path: 'edit-book/:bookId',
     component: EditBookComponent,
     canActivate: [AuthGuard, BookGuard],
   },

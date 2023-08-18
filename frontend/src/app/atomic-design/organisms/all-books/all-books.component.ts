@@ -10,6 +10,7 @@ import { BookServices } from 'src/app/store/services/book.services';
 export class AllBooksComponent {
   public allBooks: any[] = [];
   public userBooks: any[] = [];
+  public userBookId: any;
   @Output() redirectToSwap = new EventEmitter<boolean>();
 
   public selectedBookId: string = '';
@@ -19,6 +20,8 @@ export class AllBooksComponent {
   ngOnInit() {
     const userId = localStorage.getItem('userId');
     if (userId) {
+      console.log(1);
+
       this.bookService.getUserBooks({ id: userId }).subscribe((data: any[]) => {
         this.userBooks = data;
       });
@@ -30,12 +33,21 @@ export class AllBooksComponent {
         this.redirectToSwap.emit(true);
       }
     });
+
+    const bookId = this.selectedBookId;
+    console.log(bookId);
+
+    if (bookId) {
+      this.bookService.getBookId(bookId).subscribe((data: any[]) => {
+        this.userBookId = data;
+        console.log(this.userBookId);
+      });
+    }
   }
 
   public selectBook(bookId: string) {
-    // this.router.navigate(['edit-book'])
     this.selectedBookId = bookId;
     console.log(this.selectedBookId);
-    
+    this.router.navigate(['edit-book', this.selectedBookId]);
   }
 }

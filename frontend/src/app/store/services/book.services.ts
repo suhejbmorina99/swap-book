@@ -45,16 +45,6 @@ export class BookServices {
     return this.http.get<any>(url);
   }
 
-  public getBookId(id: string): Observable<any> {
-    const url = this.baseUrl + `/book/bookId/${id}`;
-    return this.http.get<any>(url);
-  }
-
-  public getUserBooks(user: { id: string }): Observable<any> {
-    const url = `${this.baseUrl}/book/${user.id}`;
-    return this.http.get<any>(url);
-  }
-
   public updateUserBook(
     bookId: string,
     title: string,
@@ -74,5 +64,15 @@ export class BookServices {
       numberOfPages: numberOfPages,
     };
     return this.http.patch<any>(url, body);
+  }
+
+  public getBookId(bookId: string): Observable<any> {
+    const url = `${this.baseUrl}/book/bookId/${bookId}`;
+    return this.http.get<any>(url);
+  }
+
+  public getUserBooks(user: { id: string }): Observable<any> {
+    const url = `${this.baseUrl}/book/${user.id}`;
+    return this.http.get<any>(url);
   }
 }
