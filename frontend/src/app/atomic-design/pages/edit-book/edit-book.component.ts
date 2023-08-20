@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { State } from '../../../store';
 import { BookServices } from 'src/app/store/services/book.services';
 import { getBooksData } from 'src/app/store/selectors/book.selectors';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-book',
@@ -10,14 +11,6 @@ import { getBooksData } from 'src/app/store/selectors/book.selectors';
   styleUrls: ['./edit-book.component.scss'],
 })
 export class EditBookComponent {
-  // public userBook: any[] = [];
-  // public editModeOn: boolean = false;
-  // public bookId = '';
-  // public editedBook: any;
-  // public selectedBookId: string = '';
-
-  // constructor(private bookService: BookServices, private store: Store<State>) {}
-
   // openEditMode(bookId: any) {
   //   this.selectedBookId = bookId;
   //   console.log(this.selectedBookId);
@@ -57,4 +50,27 @@ export class EditBookComponent {
 
   //   this.closeEditMode();
   // }
+
+  private bookId: string = '';
+  public userBook: any[] = [];
+
+  constructor(
+    private route: ActivatedRoute,
+    private bookService: BookServices,
+    private store: Store<State>
+  ) {
+    const selectedBookId = this.bookId;
+    if (selectedBookId) {
+      this.bookService.getBookId(selectedBookId).subscribe((data: any[]) => {
+        this.userBook = data;
+      });
+    }
+  }
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.bookId = params['bookId'];
+      // Fetch book details or perform other actions based on this.bookId
+    });
+  }
 }
