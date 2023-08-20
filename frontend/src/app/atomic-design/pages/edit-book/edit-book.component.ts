@@ -52,25 +52,28 @@ export class EditBookComponent {
   // }
 
   private bookId: string = '';
-  public userBook: any[] = [];
+  public userBook: any;
 
   constructor(
     private route: ActivatedRoute,
     private bookService: BookServices,
     private store: Store<State>
-  ) {
-    const selectedBookId = this.bookId;
-    if (selectedBookId) {
-      this.bookService.getBookId(selectedBookId).subscribe((data: any[]) => {
-        this.userBook = data;
-      });
-    }
-  }
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.bookId = params['bookId'];
+      console.log(this.bookId);
+      
       // Fetch book details or perform other actions based on this.bookId
     });
+
+    const selectedBookId = this.bookId;
+    if (selectedBookId) {
+      this.bookService.getBookId(selectedBookId).subscribe((data) => {
+        this.userBook = data;
+        console.log(this.userBook);
+      });
+    }
   }
 }

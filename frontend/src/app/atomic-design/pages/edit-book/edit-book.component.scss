@@ -5,77 +5,76 @@
     margin-top: 1%;
     margin-left: 2%;
   }
-  .edit-container {
-    position: relative;
+  //   .edit-container {
+  //     position: relative;
 
-    .edit-mode-off {
-      display: flex;
-      flex-wrap: wrap;
-    }
+  //     .edit-mode-off {
+  //       display: flex;
+  //       flex-wrap: wrap;
+  //     }
 
-    .example-card {
+  //     .example-card {
+  //       margin-top: 2%;
+  //       margin-left: 10%;
+  //       width: 260px;
+  //       border: 2px solid #956f32;
+
+  //       .title-card {
+  //         font-size: 14px;
+  //         width: 240px;
+  //         white-space: nowrap;
+  //         overflow: hidden;
+  //         text-overflow: ellipsis;
+  //       }
+
+  //       .mat-mdc-card-header {
+  //         padding: 5px 0 0 10px;
+  //       }
+
+  //       .mdc-card__media:last-child {
+  //         border-bottom-right-radius: 0;
+  //         border-bottom-left-radius: 0;
+  //       }
+  //       .edit-book-icon {
+  //         position: absolute;
+  //         top: -3%;
+  //         left: 95%;
+  //       }
+  //     }
+
+      .exit-icon {
+        position: absolute;
+        top: 8.2%;
+        left: 23.9%;
+      }
+
+  .edit-mode-on {
+    display: flex;
+    flex-wrap: wrap;
+
+    .edit-form {
       margin-top: 2%;
       margin-left: 10%;
       width: 260px;
+      height: 295px;
       border: 2px solid #956f32;
 
-      .title-card {
-        font-size: 14px;
-        width: 240px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .mat-mdc-card-header {
-        padding: 5px 0 0 10px;
-      }
-
-      .mdc-card__media:last-child {
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-      .edit-book-icon {
-        position: absolute;
-        top: -3%;
-        left: 95%;
-      }
-    }
-
-    .exit-icon {
-      position: absolute;
-      top: 8.2%;
-      left: 23.9%;
-    }
-
-    .edit-mode-on {
-      display: flex;
-      flex-wrap: wrap;
-
-      .edit-form {
-        margin-top: 2%;
-        margin-left: 10%;
-        width: 260px;
-        height: 295px;
-        border: 2px solid #956f32;
-
-        .edit-area {
-          display: flex;
-          justify-content: center;
-          flex-wrap: wrap;
-          .inputs {
-            width: 90%;
-          }
-        }
-        .save-button {
-          display: flex;
-          justify-content: center;
+      .edit-area {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        .inputs {
           width: 90%;
-          margin: 0 auto;
-          margin-top: 80px;
-          background-color: #3068cb;
-          color: white;
         }
+      }
+      .save-button {
+        display: flex;
+        justify-content: center;
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 80px;
+        background-color: #3068cb;
+        color: white;
       }
     }
   }

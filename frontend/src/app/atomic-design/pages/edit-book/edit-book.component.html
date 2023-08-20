@@ -1,52 +1,26 @@
-<!-- <div class="back-icon" routerLink="/main">
+<div class="back-icon" routerLink="/main">
   <img src="../../../../assets/back.png" alt="" />
 </div>
-<div class="edit-container" *ngFor="let book of userBook">
-  <div class="edit-mode-off" *ngIf="!editModeOn">
-    <mat-card class="example-card">
-      <mat-card-header style="background-color: #f6f7f9">
-        <mat-card-title class="title-card"
-          >Title: {{ book.title }}</mat-card-title
-        >
-        <mat-card-subtitle style="font-size: 12px"
-          >Author: {{ book.author }}</mat-card-subtitle
-        >
-        <mat-card-subtitle style="font-size: 12px"
-          >Condition: {{ book.condition }}</mat-card-subtitle
-        >
-      </mat-card-header>
-      <img
-        mat-card-image
-        src="../../../../assets/book-cover.png"
-        alt="Photo of a Shiba Inu"
-        style="height: 210px"
-      />
-      <div class="edit-book-icon" (click)="openEditMode(book.id)">
-        <img src="../../../../assets/pen.png" alt="" />
-      </div>
-    </mat-card>
+<div class="edit-mode-on">
+  <!-- <img class="exit-icon" src="../../../../assets/cross.png" alt="" /> -->
+
+  <div class="edit-form">
+    <ng-container *ngIf="userBook | json">
+      <p class="edit-area">
+        Title:<input type="text" class="inputs" [(ngModel)]="userBook.book.title" />
+      </p>
+      <p class="edit-area">
+        Author:<input type="text" class="inputs" [(ngModel)]="userBook.book.author" />
+      </p>
+      <p class="edit-area">
+        Pages:<input
+          type="text"
+          class="inputs"
+          [(ngModel)]="userBook.book.numberOfPages"
+        />
+      </p>
+      <button class="save-button">Save</button>
+    </ng-container>
   </div>
-  <div class="edit-mode-on" *ngIf="editModeOn && selectedBookId === book.id">
-    <div class="exit-icon" (click)="closeEditMode()">
-      <img src="../../../../assets/cross.png" alt="" />
-    </div>
-    <div class="edit-form" *ngIf="editModeOn && selectedBookId === book.id">
-      <ng-container *ngFor="let book of userBook">
-        <p class="edit-area">
-          Title:<input type="text" class="inputs" [(ngModel)]="book.title" />
-        </p>
-        <p class="edit-area">
-          Author:<input type="text" class="inputs" [(ngModel)]="book.author" />
-        </p>
-        <p class="edit-area">
-          Pages:<input
-            type="text"
-            class="inputs"
-            [(ngModel)]="book.numberOfPages"
-          />
-        </p>
-        <button class="save-button" (click)="saveChanges()">Save</button>
-      </ng-container>
-    </div>
-  </div>
-</div> -->
+</div>
+<!-- </div> -->
