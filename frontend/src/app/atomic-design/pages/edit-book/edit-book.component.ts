@@ -24,14 +24,12 @@ export class EditBookComponent {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.bookId = params['bookId'];
-      console.log(this.bookId);
     });
 
     const selectedBookId = this.bookId;
     if (selectedBookId) {
       this.bookService.getBookId(selectedBookId).subscribe((data) => {
         this.userBook = data;
-        console.log(this.userBook);
       });
     }
 
@@ -39,7 +37,6 @@ export class EditBookComponent {
     if (bookId) {
       this.bookService.updateUserBook(bookId).subscribe((data) => {
         this.updateBook = data;
-        console.log(this.updateBook);
       });
     }
   }
