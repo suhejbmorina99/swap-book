@@ -46,13 +46,13 @@ export class BookServices {
   }
 
   public updateUserBook(
-    bookId: string,
-    title: string,
-    author: string,
-    isbn: string,
-    language: string,
-    condition: string,
-    numberOfPages: number
+    bookId?: string,
+    title?: string,
+    author?: string,
+    isbn?: string,
+    language?: string,
+    condition?: string,
+    numberOfPages?: number
   ): Observable<any> {
     const url = `${this.baseUrl}/book/${bookId}`;
     const body = {

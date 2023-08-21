@@ -11,48 +11,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-book.component.scss'],
 })
 export class EditBookComponent {
-  // openEditMode(bookId: any) {
-  //   this.selectedBookId = bookId;
-  //   console.log(this.selectedBookId);
-
-  //   this.store.select(getBooksData).subscribe((bookData) => {
-  //     if (bookData) {
-  //       console.log(bookData);
-
-  //       this.editedBook = bookData.find(
-  //         (book) => book.id === this.selectedBookId
-  //       );
-  //       console.log(this.editedBook.id);
-  //     }
-  //   });
-
-  //   if (this.editedBook.id === this.selectedBookId) {
-  //     this.editModeOn = true;
-  //     console.log(1);
-  //   }
-  // }
-  // closeEditMode() {
-  //   this.editModeOn = false;
-  // }
-
-  // ngOnInit() {
-  //   const userId = localStorage.getItem('userId');
-  //   if (userId) {
-  //     this.bookService.getBookId(userId).subscribe((data: any[]) => {
-  //       this.userBook = data;
-  //     });
-  //   }
-  //   // this.bookService.updateUserBook(bookId: '',book.title);
-  // }
-
-  // saveChanges() {
-  //   console.log('1');
-
-  //   this.closeEditMode();
-  // }
-
   private bookId: string = '';
   public userBook: any;
+  public updateBook: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -64,8 +25,6 @@ export class EditBookComponent {
     this.route.queryParams.subscribe((params) => {
       this.bookId = params['bookId'];
       console.log(this.bookId);
-      
-      // Fetch book details or perform other actions based on this.bookId
     });
 
     const selectedBookId = this.bookId;
@@ -73,6 +32,14 @@ export class EditBookComponent {
       this.bookService.getBookId(selectedBookId).subscribe((data) => {
         this.userBook = data;
         console.log(this.userBook);
+      });
+    }
+
+    const bookId = this.bookId;
+    if (bookId) {
+      this.bookService.updateUserBook(bookId).subscribe((data) => {
+        this.updateBook = data;
+        console.log(this.updateBook);
       });
     }
   }

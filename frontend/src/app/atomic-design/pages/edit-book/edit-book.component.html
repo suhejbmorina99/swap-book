@@ -2,18 +2,28 @@
   <img src="../../../../assets/back.png" alt="" />
 </div>
 <div class="edit-mode-on">
-  <!-- <img class="exit-icon" src="../../../../assets/cross.png" alt="" /> -->
-
   <div class="edit-form">
     <ng-container *ngIf="userBook | json">
       <p class="edit-area">
-        Title:<input type="text" class="inputs" [(ngModel)]="userBook.book.title" />
+        Title:<input
+          type="text"
+          class="inputs"
+          [(ngModel)]="userBook.book.title"
+        />
       </p>
       <p class="edit-area">
-        Author:<input type="text" class="inputs" [(ngModel)]="userBook.book.author" />
+        Author:<input
+          type="text"
+          class="inputs"
+          [(ngModel)]="userBook.book.author"
+        />
       </p>
       <p class="edit-area">
-        Isbn:<input type="text" class="inputs" [(ngModel)]="userBook.book.isbn" />
+        Isbn:<input
+          type="text"
+          class="inputs"
+          [(ngModel)]="userBook.book.isbn"
+        />
       </p>
       <p class="edit-area">
         Pages:<input
@@ -28,4 +38,3 @@
     </ng-container>
   </div>
 </div>
-<!-- </div> -->
