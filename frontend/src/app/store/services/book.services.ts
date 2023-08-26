@@ -63,7 +63,14 @@ export class BookServices {
       condition: condition,
       numberOfPages: numberOfPages,
     };
-    return this.http.patch<any>(url, body);
+
+    const token = localStorage.getItem('jwt');
+    
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.patch<any>(url, body, { headers: headers });
   }
 
   public getBookId(bookId: string): Observable<any> {

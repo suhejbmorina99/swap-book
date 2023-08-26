@@ -1,11 +1,12 @@
 import { createAction, props } from '@ngrx/store';
-import { BookData } from '../reducers/book.reducer';
+import { BookData, UpdateBookData } from '../reducers/book.reducer';
 
 enum bookActionsType {
   BOOK = '[Book] Book',
   BOOK_SUCCESS = '[Book] Book Register Success',
   BOOK_FAIL = '[Book] Book Register Fail',
   UPDATE_BOOK = '[Book] Update Book',
+  UPDATE_BOOK_SUCCESS = '[Book] Update Book Success',
   UPDATE_BOOK_FAIL = '[Book] Update Book Fail',
 }
 
@@ -43,6 +44,11 @@ export const updateBookAction = createAction(
     condition?: string;
     numberOfPages?: number;
   }>()
+);
+
+export const updateBookSuccessAction = createAction(
+  bookActionsType.UPDATE_BOOK_SUCCESS,
+  props<{ updateBook: UpdateBookData }>()
 );
 
 export const updateBookFailAction = createAction(

@@ -9,6 +9,9 @@ import {
   bookFailAction,
   bookRequestAction,
   setBookDataAction,
+  updateBookAction,
+  updateBookFailAction,
+  updateBookSuccessAction,
 } from '../actions/book.actions';
 
 @Injectable()
@@ -50,6 +53,45 @@ export class BookEffects {
                   });
 
                   return of(bookFailAction({ message: err.message }));
+                })
+              );
+          }
+        )
+      ),
+    { dispatch: false }
+  );
+
+  bookUpdate$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(updateBookAction),
+        switchMap(
+          (action: {
+            bookId?: string;
+            title?: string;
+            author?: string;
+            isbn?: string;
+            language?: string;
+            condition?: string;
+            numberOfPages?: number;
+          }) => {
+            return this.bookService
+              .updateUserBook(
+                action.bookId,
+                action.title,
+                action.author,
+                action.isbn,
+                action.language,
+                action.condition,
+                action.numberOfPages
+              )
+              .pipe(
+                map((updateBook) => {
+                  this.store.dispatch(updateBookSuccessAction({ updateBook }));
+                  return EMPTY;
+                }),
+                catchError((err) => {
+                  return of(updateBookFailAction({ message: err.message }));
                 })
               );
           }

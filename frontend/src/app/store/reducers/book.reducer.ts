@@ -14,6 +14,16 @@ export interface BookData {
   };
 }
 
+export interface UpdateBookData {
+  bookId: string;
+  title: string;
+  author: string;
+  isbn: string;
+  language: string;
+  condition: string;
+  numberOfPages: number;
+}
+
 export interface State {
   bookData: BookData[] | undefined;
 }
