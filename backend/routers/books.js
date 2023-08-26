@@ -48,7 +48,7 @@ router.post(`/`, async (req, res) => {
     res.send(book)
 })
 
-router.put('/:bookId', async (req, res) => {
+router.patch('/:bookId', async (req, res) => {
     const bookId = req.params.bookId
 
     try {
