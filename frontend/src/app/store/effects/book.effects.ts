@@ -88,6 +88,7 @@ export class BookEffects {
               .pipe(
                 map((updateBook) => {
                   this.store.dispatch(updateBookSuccessAction({ updateBook }));
+                  this.router.navigate(['main'])
                   return EMPTY;
                 }),
                 catchError((err) => {
