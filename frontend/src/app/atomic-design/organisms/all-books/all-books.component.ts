@@ -35,7 +35,6 @@ export class AllBooksComponent {
 
   public selectBook(bookId: string) {
     this.selectedBookId = bookId;
-    console.log(this.selectedBookId);
     this.router.navigate(['edit-book'], {
       queryParams: { bookId: this.selectedBookId },
     });
