@@ -76,6 +76,12 @@ export class BookFormComponent {
     );
 
     this.bookForm.reset();
+    this.bookForm.controls['title'].setErrors(null);
+    this.bookForm.controls['author'].setErrors(null);
+    this.bookForm.controls['isbn'].setErrors(null);
+    this.bookForm.controls['language'].setErrors(null);
+    this.bookForm.controls['condition'].setErrors(null);
+    this.bookForm.controls['numberOfPages'].setErrors(null);
   }
 
   get title() {
