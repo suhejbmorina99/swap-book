@@ -48,4 +48,10 @@ export class EditBookComponent {
       })
     );
   }
+
+  deleteBook(bookId: string) {
+    if (bookId === this.bookId) {
+      this.bookService.deleteUserBook(bookId);
+    }
+  }
 }
