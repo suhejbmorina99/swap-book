@@ -84,4 +84,23 @@ router.get(`/bookId/:id`, async (req, res) => {
     res.status(200).send({ book })
 })
 
+router.delete(`/:id`, async (req, res) => {
+    try {
+        const book = await Book.findById(req.params.id)
+
+        if (!book) {
+            return res.status(404).json({ message: 'The book ID not found' })
+        }
+
+        await book.deleteOne()
+
+        res.status(200).json({ message: 'Book deleted successfully' })
+    } catch (err) {
+        res.status(500).json({
+            message: 'An error occurred',
+            error: err.message,
+        })
+    }
+})
+
 module.exports = router
