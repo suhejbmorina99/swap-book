@@ -65,7 +65,7 @@ export class BookServices {
     };
 
     const token = localStorage.getItem('jwt');
-    
+
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
@@ -81,5 +81,10 @@ export class BookServices {
   public getUserBooks(user: { id: string }): Observable<any> {
     const url = `${this.baseUrl}/book/${user.id}`;
     return this.http.get<any>(url);
+  }
+
+  public deleteUserBook(id: string): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<any>(url);
   }
 }
