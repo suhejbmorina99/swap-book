@@ -84,7 +84,13 @@ export class BookServices {
   }
 
   public deleteUserBook(id: string): Observable<any> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<any>(url);
+    const url = `${this.baseUrl}/book/${id}`;
+
+    const token = localStorage.getItem('jwt');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.delete<any>(url, { headers: headers });
   }
 }

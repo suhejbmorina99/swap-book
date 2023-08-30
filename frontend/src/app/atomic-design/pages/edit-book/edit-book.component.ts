@@ -3,8 +3,9 @@ import { Store } from '@ngrx/store';
 import { State } from '../../../store';
 import { BookServices } from 'src/app/store/services/book.services';
 import { getBooksData } from 'src/app/store/selectors/book.selectors';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { updateBookAction } from 'src/app/store/actions/book.actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-book',
@@ -19,7 +20,9 @@ export class EditBookComponent {
   constructor(
     private route: ActivatedRoute,
     private bookService: BookServices,
-    private store: Store<State>
+    private store: Store<State>,
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +54,14 @@ export class EditBookComponent {
 
   deleteBook(bookId: string) {
     if (bookId === this.bookId) {
-      this.bookService.deleteUserBook(bookId);
+      this.bookService.deleteUserBook(bookId).subscribe(() => {
+        this.snackBar.open('The book is deleted successfully', undefined, {
+          duration: 500,
+        });
+        setTimeout(() => {
+          this.router.navigate(['main']);
+        }, 530);
+      });
     }
   }
 }
