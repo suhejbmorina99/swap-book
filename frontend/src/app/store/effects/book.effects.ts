@@ -87,14 +87,30 @@ export class BookEffects {
               )
               .pipe(
                 map((updateBook) => {
-                  this.store.dispatch(updateBookSuccessAction({ updateBook }));
-                  this.snackBar.open('The book its updated', undefined, {
-                    duration: 700,
-                  });
-                  setTimeout(() => {
-                    this.router.navigate(['main']);
-                  }, 750);
-                  return EMPTY;
+                  if (
+                    updateBook.updatedBook.title === action.title &&
+                    updateBook.updatedBook.author === action.author &&
+                    updateBook.updatedBook.isbn === action.isbn &&
+                    updateBook.updatedBook.numberOfPages ===
+                      action.numberOfPages
+                  ) {
+                    this.snackBar.open('Nothing is updated', undefined, {
+                      duration: 1000,
+                    });
+
+                    return EMPTY;
+                  } else {
+                    this.store.dispatch(
+                      updateBookSuccessAction({ updateBook })
+                    );
+                    this.snackBar.open('The book its updated', undefined, {
+                      duration: 700,
+                    });
+                    setTimeout(() => {
+                      this.router.navigate(['main']);
+                    }, 750);
+                    return EMPTY;
+                  }
                 }),
                 catchError((err) => {
                   return of(updateBookFailAction({ message: err.message }));
