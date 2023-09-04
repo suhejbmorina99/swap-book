@@ -1,9 +1,11 @@
-<div
-  class="select-book"
-  *ngFor="let book of userBooks"
-  (click)="selectBook(book.id)"
->
+<div class="select-book" *ngFor="let book of userBooks">
   <mat-card class="example-card">
+    <img
+      src="../../../../assets/pen.png"
+      alt=""
+      class="pen"
+      (click)="selectBook(book.id)"
+    />
     <mat-card-header style="background-color: #f6f7f9">
       <mat-card-title class="title-card"
         >Title: {{ book.title }}</mat-card-title
@@ -18,7 +20,7 @@
     <img
       mat-card-image
       src="../../../../assets/book-cover.png"
-      alt="Photo of a Shiba Inu"
+      alt="Photo of a Book"
       style="height: 150px"
     />
   </mat-card>
