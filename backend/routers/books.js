@@ -45,6 +45,7 @@ router.post(`/`, async (req, res) => {
             })
         })
 
+    io.emit('book created', book)
     res.send(book)
 })
 
