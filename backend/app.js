@@ -5,11 +5,12 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const authJwt = require('./helpers/jwt')
 
-const socketIo = require('socket.io')
+// const socketIo = require('socket.io')
 const http = require('http')
 const server = http.createServer(app) // Create an HTTP server
-const io = socketIo(server)
+// const io = socketIo(server, { cors: { origin: '*' } })
 // const errorHandler = require('./helpers/error-handler')
+const { initializeSocket } = require('./socket.service')
 
 require('dotenv/config')
 
@@ -21,29 +22,20 @@ app.use(authJwt())
 // app.use(errorHandler())
 app.options('*', cors())
 
+app.use((req, res, next) => {
+    req.io = io
+    return next()
+})
+
 //Routes
 const userRouter = require('./routers/users')
 const bookRouter = require('./routers/books')
+const io = initializeSocket(server)
 
 const api = process.env.API_URL
 
 app.use(`${api}/user`, userRouter)
 app.use(`${api}/book`, bookRouter)
-
-io.on('connection', (socket) => {
-    console.log('A user connected')
-
-    // You can add socket.io event handlers here
-    // For example, to handle a book created event:
-    socket.on('book created', (book) => {
-        console.log('Book Created:', book)
-        io.emit('book created', book)
-    })
-
-    socket.on('disconnect', () => {
-        console.log('A user disconnected')
-    })
-})
 
 //Database connection
 mongoose

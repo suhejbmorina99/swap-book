@@ -1,6 +1,7 @@
 const { Book } = require('../models/book')
 const express = require('express')
 const router = express.Router()
+const { io } = require('../socket.service');
 
 router.get(`/`, async (req, res) => {
     const booksList = await Book.find()
@@ -45,8 +46,9 @@ router.post(`/`, async (req, res) => {
             })
         })
 
-    io.emit('book created', book)
+   
     res.send(book)
+    req.io.emit('book created', book)
 })
 
 router.patch('/:bookId', async (req, res) => {
