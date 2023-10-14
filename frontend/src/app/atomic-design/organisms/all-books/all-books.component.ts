@@ -1,6 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { BookServices } from 'src/app/store/services/book.services';
+import { WebsocketService } from 'src/app/store/services/websocket.service';
 
 @Component({
   selector: 'app-all-books',
@@ -15,13 +21,26 @@ export class AllBooksComponent {
 
   public selectedBookId: string = '';
 
-  constructor(private bookService: BookServices, private router: Router) {}
+  constructor(
+    private bookService: BookServices,
+    private router: Router,
+    private websocketService: WebsocketService
+  ) {}
 
   ngOnInit() {
     const userId = localStorage.getItem('userId');
     if (userId) {
+      this.websocketService
+        .onEvent('userBooksUpdated')
+        .subscribe((updatedBooks) => {
+          // Handle updates to user books in real-time
+          this.userBooks.push(updatedBooks);
+          console.log(this.userBooks);
+        });
+
       this.bookService.getUserBooks({ id: userId }).subscribe((data: any[]) => {
         this.userBooks = data;
+        console.log(data);
       });
     }
 
