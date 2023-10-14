@@ -23,33 +23,63 @@ router.get(`/:userId`, async (req, res) => {
     res.send(userBooks)
 })
 
-router.post(`/`, async (req, res) => {
-    let book = new Book({
-        title: req.body.title,
-        author: req.body.author,
-        isbn: req.body.isbn,
-        language: req.body.language,
-        condition: req.body.condition,
-        numberOfPages: req.body.numberOfPages,
-        user: req.body.user.id,
-    })
+// router.post(`/`, async (req, res) => {
+//     let book = new Book({
+//         title: req.body.title,
+//         author: req.body.author,
+//         isbn: req.body.isbn,
+//         language: req.body.language,
+//         condition: req.body.condition,
+//         numberOfPages: req.body.numberOfPages,
+//         user: req.body.user.id,
+//     })
 
-    book = await book
-        .save()
-        .then((createBook) => {
-            res.status(201).json(createBook)
-        })
-        .catch((err) => {
-            res.status(500).json({
-                error: err,
-                success: false,
-            })
-        })
+//     book = await book
+//         .save()
+//         .then((createBook) => {
+//             res.status(201).json(createBook)
+//         })
+//         .catch((err) => {
+//             res.status(500).json({
+//                 error: err,
+//                 success: false,
+//             })
+//         })
 
    
-    res.send(book)
-    req.io.emit('book created', book)
-})
+//     res.send(book)
+//     console.log(book);
+//     req.io.emit('book created', book)
+//     console.log(book);
+// })
+
+router.post(`/`, async (req, res) => {
+    try {
+        const book = new Book({
+            title: req.body.title,
+            author: req.body.author,
+            isbn: req.body.isbn,
+            language: req.body.language,
+            condition: req.body.condition,
+            numberOfPages: req.body.numberOfPages,
+            user: req.body.user.id,
+        });
+
+        const createdBook = await book.save();
+        res.status(201).json(createdBook);
+
+        console.log(createdBook); // Log the saved book
+
+        req.io.emit('userBooksUpdated', createdBook); // Emit the saved book
+
+    } catch (err) {
+        res.status(500).json({
+            error: err,
+            success: false,
+        });
+    }
+});
+
 
 router.patch('/:bookId', async (req, res) => {
     const bookId = req.params.bookId
