@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  .container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    .ready-to-swap-books {
+      width: 39%;
+      height: 98%;
+      border: 1px solid red;
+    }
+
+    .filter-of-swapping {
+      width: 20%;
+      height: 98%;
+      border: 1px solid green;
+    }
+
+    .ready-for-swap-books {
+      width: 39%;
+      height: 98%;
+      border: 1px solid black;
+    }
+  }
+}
