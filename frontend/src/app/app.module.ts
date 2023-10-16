@@ -31,6 +31,9 @@ import { BookServices } from './store/services/book.services';
 import { SwapComponent } from './atomic-design/templates/swap/swap.component';
 import { EditBookComponent } from './atomic-design/pages/edit-book/edit-book.component';
 import { FormsModule } from '@angular/forms';
+import { ReadyToSwapComponent } from './atomic-design/organisms/ready-to-swap/ready-to-swap.component';
+import { ReadyForSwapComponent } from './atomic-design/organisms/ready-for-swap/ready-for-swap.component';
+import { FilterComponent } from './atomic-design/organisms/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { FormsModule } from '@angular/forms';
     AllBooksComponent,
     SwapComponent,
     EditBookComponent,
+    ReadyToSwapComponent,
+    ReadyForSwapComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
