@@ -20,9 +20,31 @@
 
     .my-books {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
       border: 1px solid black;
       width: 95%;
       height: 68%;
+
+      .example-card {
+        margin-top: 1.5rem;
+        width: 135px;
+        height: 160px;
+        border: 2px solid #956f32;
+        position: relative;
+
+        .title-card {
+          font-size: 12px;
+          width: 110px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .mat-mdc-card-header {
+          padding: 5px 0 0 10px;
+        }
+      }
     }
   }
 }
