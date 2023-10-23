@@ -107,13 +107,11 @@ router.delete(`/:id`, async (req, res) => {
 // This route get all books that are not owned by the logged-in user
 router.get(`/not-owned/:userId`, async (req, res) => {
     const userId = req.params.userId
-    console.log(userId)
 
     try {
         const userBooks = await Book.find({ user: { $ne: userId } })
 
         if (!userBooks || userBooks.length === 0) {
-            console.log('1')
             return res
                 .status(404)
                 .json({ message: 'No books found for other users' })
