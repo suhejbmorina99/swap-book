@@ -1,7 +1,7 @@
 const { Book } = require('../models/book')
 const express = require('express')
 const router = express.Router()
-const { io } = require('../socket.service');
+const { io } = require('../socket.service')
 
 router.get(`/`, async (req, res) => {
     const booksList = await Book.find()
@@ -23,36 +23,6 @@ router.get(`/:userId`, async (req, res) => {
     res.send(userBooks)
 })
 
-// router.post(`/`, async (req, res) => {
-//     let book = new Book({
-//         title: req.body.title,
-//         author: req.body.author,
-//         isbn: req.body.isbn,
-//         language: req.body.language,
-//         condition: req.body.condition,
-//         numberOfPages: req.body.numberOfPages,
-//         user: req.body.user.id,
-//     })
-
-//     book = await book
-//         .save()
-//         .then((createBook) => {
-//             res.status(201).json(createBook)
-//         })
-//         .catch((err) => {
-//             res.status(500).json({
-//                 error: err,
-//                 success: false,
-//             })
-//         })
-
-   
-//     res.send(book)
-//     console.log(book);
-//     req.io.emit('book created', book)
-//     console.log(book);
-// })
-
 router.post(`/`, async (req, res) => {
     try {
         const book = new Book({
@@ -63,23 +33,21 @@ router.post(`/`, async (req, res) => {
             condition: req.body.condition,
             numberOfPages: req.body.numberOfPages,
             user: req.body.user.id,
-        });
+        })
 
-        const createdBook = await book.save();
-        res.status(201).json(createdBook);
+        const createdBook = await book.save()
+        res.status(201).json(createdBook)
 
-        console.log(createdBook); // Log the saved book
+        console.log(createdBook) // Log the saved book
 
-        req.io.emit('userBooksUpdated', createdBook); // Emit the saved book
-
+        req.io.emit('userBooksUpdated', createdBook) // Emit the saved book
     } catch (err) {
         res.status(500).json({
             error: err,
             success: false,
-        });
+        })
     }
-});
-
+})
 
 router.patch('/:bookId', async (req, res) => {
     const bookId = req.params.bookId
@@ -128,6 +96,30 @@ router.delete(`/:id`, async (req, res) => {
         await book.deleteOne()
 
         res.status(200).json({ message: 'Book deleted successfully' })
+    } catch (err) {
+        res.status(500).json({
+            message: 'An error occurred',
+            error: err.message,
+        })
+    }
+})
+
+// This route get all books that are not owned by the logged-in user
+router.get(`/not-owned/:userId`, async (req, res) => {
+    const userId = req.params.userId
+    console.log(userId)
+
+    try {
+        const userBooks = await Book.find({ user: { $ne: userId } })
+
+        if (!userBooks || userBooks.length === 0) {
+            console.log('1')
+            return res
+                .status(404)
+                .json({ message: 'No books found for other users' })
+        }
+
+        res.status(200).json(userBooks)
     } catch (err) {
         res.status(500).json({
             message: 'An error occurred',
