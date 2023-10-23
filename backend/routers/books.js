@@ -38,7 +38,6 @@ router.post(`/`, async (req, res) => {
         const createdBook = await book.save()
         res.status(201).json(createdBook)
 
-        console.log(createdBook) // Log the saved book
 
         req.io.emit('userBooksUpdated', createdBook) // Emit the saved book
     } catch (err) {
