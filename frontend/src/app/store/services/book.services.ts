@@ -93,4 +93,9 @@ export class BookServices {
     });
     return this.http.delete<any>(url, { headers: headers });
   }
+
+  public getOtherBooks(user: { id: string }): Observable<any> {
+    const url = `${this.baseUrl}/book/not-owned/${user.id}`;
+    return this.http.get<any>(url);
+  }
 }

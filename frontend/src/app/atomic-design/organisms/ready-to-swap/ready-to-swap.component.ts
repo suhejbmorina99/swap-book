@@ -9,7 +9,7 @@ import { BookServices } from 'src/app/store/services/book.services';
 })
 export class ReadyToSwapComponent {
   public userBooks: any[] = [];
-  
+
   constructor(private bookService: BookServices, private router: Router) {}
 
   ngOnInit() {
@@ -17,7 +17,6 @@ export class ReadyToSwapComponent {
     if (userId) {
       this.bookService.getUserBooks({ id: userId }).subscribe((data: any[]) => {
         this.userBooks = data;
-        console.log(data);
       });
     }
   }
