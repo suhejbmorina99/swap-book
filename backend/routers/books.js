@@ -32,6 +32,8 @@ router.post(`/`, async (req, res) => {
             language: req.body.language,
             condition: req.body.condition,
             numberOfPages: req.body.numberOfPages,
+            category: req.body.category,
+            publisher: req.body.publisher,
             user: req.body.user.id,
         })
 
@@ -67,6 +69,8 @@ router.patch('/:bookId', async (req, res) => {
         bookToUpdate.condition = req.body.condition || bookToUpdate.condition
         bookToUpdate.numberOfPages =
             req.body.numberOfPages || bookToUpdate.numberOfPages
+        bookToUpdate.category = req.body.category || bookToUpdate.category
+        bookToUpdate.publisher = req.body.publisher || bookToUpdate.publisher
 
         const updatedBook = await bookToUpdate.save()
         res.status(200).json({ success: true, updatedBook })
