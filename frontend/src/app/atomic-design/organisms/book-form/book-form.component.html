@@ -85,11 +85,11 @@
     <div class="form-container">
       <mat-form-field class="form-field">
         <mat-label>Enter book category</mat-label>
-        <mat-select placeholder="Publisher" formControlName="publisher" required>
+        <mat-select placeholder="Category" formControlName="category" required>
           <mat-option
-            *ngFor="let category of categorySource"
-            [value]="category.category"
-            >{{ category.category }}</mat-option
+            *ngFor="let book of categorySource"
+            [value]="book.original"
+            >{{ book.original }}</mat-option
           >
         </mat-select>
         <mat-error *ngIf="category && category.invalid && category.touched">{{

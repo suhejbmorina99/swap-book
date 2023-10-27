@@ -11,7 +11,7 @@ import { condition } from 'src/shared/stores/book-condition-store';
 import { BookFieldsEnum } from 'src/shared/enums/book-field.enum';
 import { bookRequestAction } from 'src/app/store/actions/book.actions';
 import { language } from 'src/shared/stores/language-store';
-import { categories } from 'src/shared/stores/categories-data.store';
+import { category } from 'src/shared/stores/categories-data.store';
 
 @Component({
   selector: 'app-book-form',
@@ -22,7 +22,7 @@ export class BookFormComponent {
   public bookForm: FormGroup;
   public conditionData: any = condition;
   public languageSource: any = language;
-  public categorySource: any = categories;
+  public categorySource: any = category;
   public userBookId: string = '';
 
   constructor(private store: Store<State>, private formBuilder: FormBuilder) {
