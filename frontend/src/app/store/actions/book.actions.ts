@@ -19,6 +19,8 @@ export const bookRequestAction = createAction(
     language: string;
     condition: string;
     numberOfPages: number;
+    category: string;
+    publisher: string;
     user: { id: string };
   }>()
 );

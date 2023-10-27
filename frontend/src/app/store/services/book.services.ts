@@ -16,6 +16,8 @@ export class BookServices {
     language: string,
     condition: string,
     numberOfPages: number,
+    category: string,
+    publisher: string,
     user: { id: string }
   ): Observable<any> {
     const url = this.baseUrl + '/book';
@@ -26,6 +28,8 @@ export class BookServices {
       language: language,
       condition: condition,
       numberOfPages: numberOfPages,
+      category: category,
+      publisher: publisher,
       user: {
         id: user.id,
       },
@@ -52,7 +56,9 @@ export class BookServices {
     isbn?: string,
     language?: string,
     condition?: string,
-    numberOfPages?: number
+    numberOfPages?: number,
+    category?: string,
+    publisher?: string
   ): Observable<any> {
     const url = `${this.baseUrl}/book/${bookId}`;
     const body = {
@@ -62,6 +68,8 @@ export class BookServices {
       language: language,
       condition: condition,
       numberOfPages: numberOfPages,
+      category: category,
+      publisher: publisher,
     };
 
     const token = localStorage.getItem('jwt');

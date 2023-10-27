@@ -28,6 +28,8 @@ export class BookEffects {
             language: string;
             condition: string;
             numberOfPages: number;
+            category: string;
+            publisher: string;
             user: {
               id: string;
             };
@@ -40,6 +42,8 @@ export class BookEffects {
                 action.language,
                 action.condition,
                 action.numberOfPages,
+                action.category,
+                action.publisher,
                 action.user
               )
               .pipe(
@@ -74,6 +78,8 @@ export class BookEffects {
             language?: string;
             condition?: string;
             numberOfPages?: number;
+            category?: string;
+            publisher?: string;
           }) => {
             return this.bookService
               .updateUserBook(
@@ -83,7 +89,9 @@ export class BookEffects {
                 action.isbn,
                 action.language,
                 action.condition,
-                action.numberOfPages
+                action.numberOfPages,
+                action.category,
+                action.publisher
               )
               .pipe(
                 map((updateBook) => {

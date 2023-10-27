@@ -34,6 +34,8 @@ export class BookFormComponent {
         Validators.required,
         Validators.pattern('^[0-9]+$'),
       ]),
+      category: new FormControl('', [Validators.required]),
+      publisher: new FormControl('', [Validators.required]),
     });
   }
 
@@ -44,6 +46,8 @@ export class BookFormComponent {
     const languageControl = this.bookForm.get('language');
     const conditionControl = this.bookForm.get('condition');
     const numberOfPagesControl = this.bookForm.get('numberOfPages');
+    const categoryControl = this.bookForm.get('category');
+    const publisherControl = this.bookForm.get('publisher');
 
     if (
       titleControl?.hasError('required') ||
@@ -51,7 +55,9 @@ export class BookFormComponent {
       isbnControl?.hasError('required') ||
       languageControl?.hasError('required') ||
       conditionControl?.hasError('required') ||
-      numberOfPagesControl?.hasError('required')
+      numberOfPagesControl?.hasError('required') ||
+      categoryControl?.hasError('required') ||
+      publisherControl?.hasError('required')
     ) {
       return 'You must enter a value';
     }
@@ -69,6 +75,8 @@ export class BookFormComponent {
         condition: this.bookForm.controls[BookFieldsEnum.Condition].value,
         numberOfPages:
           this.bookForm.controls[BookFieldsEnum.NumberOfPages].value,
+        category: this.bookForm.controls[BookFieldsEnum.Category].value,
+        publisher: this.bookForm.controls[BookFieldsEnum.Publisher].value,
         user: {
           id: this.userBookId,
         },
@@ -82,6 +90,8 @@ export class BookFormComponent {
     this.bookForm.controls['language'].setErrors(null);
     this.bookForm.controls['condition'].setErrors(null);
     this.bookForm.controls['numberOfPages'].setErrors(null);
+    this.bookForm.controls['category'].setErrors(null);
+    this.bookForm.controls['publisher'].setErrors(null);
   }
 
   get title() {
@@ -101,6 +111,12 @@ export class BookFormComponent {
   }
   get numberOfPages() {
     return this.bookForm.get('numberOfPages');
+  }
+  get category() {
+    return this.bookForm.get('category');
+  }
+  get publisher() {
+    return this.bookForm.get('publisher');
   }
 
   ngOnInit() {

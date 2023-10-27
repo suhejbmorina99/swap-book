@@ -82,6 +82,35 @@
         }}</mat-error>
       </mat-form-field>
     </div>
+    <div class="form-container">
+      <mat-form-field class="form-field">
+        <mat-label>Enter book category</mat-label>
+        <mat-select placeholder="Language" formControlName="language" required>
+          <mat-option
+            *ngFor="let language of languageSource"
+            [value]="language.original"
+            >{{ language.original }}</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="language && language.invalid && language.touched">{{
+          getErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-container">
+      <mat-form-field class="form-field">
+        <mat-label>Enter book publisher</mat-label>
+        <input
+          matInput
+          placeholder="Publisher"
+          formControlName="publisher"
+          required
+        />
+        <mat-error *ngIf="publisher && publisher.invalid && publisher.touched">{{
+          getErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
   </div>
   <div class="button">
     <button class="login" mat-raised-button>Save</button>

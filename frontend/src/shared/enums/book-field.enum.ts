@@ -5,4 +5,6 @@ export enum BookFieldsEnum {
   Language = 'language',
   Condition = 'condition',
   NumberOfPages = 'numberOfPages',
+  Category = 'category',
+  Publisher = 'publisher',
 }

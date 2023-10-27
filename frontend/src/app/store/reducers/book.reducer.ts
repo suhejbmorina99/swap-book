@@ -9,6 +9,8 @@ export interface BookData {
   language: string;
   condition: string;
   numberOfPages: number;
+  category: string;
+  publisher: string;
   user: {
     id: string;
   };
@@ -22,6 +24,8 @@ export interface UpdateBookData {
   language: string;
   condition: string;
   numberOfPages: number;
+  category: string;
+  publisher: string;
 }
 
 export interface State {
