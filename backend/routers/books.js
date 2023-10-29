@@ -129,4 +129,24 @@ router.get(`/not-owned/:userId`, async (req, res) => {
     }
 })
 
+router.get(`/authors-except-me/:userId`, async (req, res) => {
+    const userId = req.params.userId;
+
+    try {
+        // Find all books that are not owned by the specified user
+        const authorsExceptMe = await Book.distinct('author', { user: { $ne: userId } });
+
+        if (!authorsExceptMe || authorsExceptMe.length === 0) {
+            return res.status(404).json({ message: 'No authors found except the current user' });
+        }
+
+        res.status(200).json(authorsExceptMe);
+    } catch (err) {
+        res.status(500).json({
+            message: 'An error occurred',
+            error: err.message,
+        });
+    }
+});
+
 module.exports = router
