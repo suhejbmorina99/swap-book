@@ -4,7 +4,6 @@
 
   .container {
     height: 100%;
-    background-color: #f6f7f9;
     .buttons {
       display: flex;
       flex-wrap: wrap;
@@ -13,6 +12,7 @@
       width: 100%;
       align-items: center;
       justify-content: center;
+      background-color: #f6f7f9;
       .back-icon {
         background-color: transparent;
         color: #000;
@@ -34,7 +34,27 @@
       }
     }
     .filter-settings {
-      height: 70%;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: 10%;
+
+      .find-by {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        .author {
+          background-color: #fff;
+          color: #fff;
+          width: 94%;
+        }
+        .category {
+          background-color: #fff;
+          color: #fff;
+          width: 94%;
+        }
+      }
     }
   }
 }
