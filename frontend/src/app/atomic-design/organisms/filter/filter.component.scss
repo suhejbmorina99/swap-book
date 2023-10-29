@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  height: 100%;
+
+  .container {
+    height: 100%;
+    background-color: #f6f7f9;
+    .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        border: 1px solid black;
+        height: 30%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+      .swap-button {
+        background-color: #3068cb;
+        color: #fff;
+        width: 94%;
+      }
+      .auto-button {
+        background-color: transparent;
+        color: #000000;
+        width: 94%;
+      }
+    }
+    .filter-settings {
+        height: 70%;
+    }
+  }
+}
