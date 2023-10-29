@@ -6,26 +6,35 @@
     height: 100%;
     background-color: #f6f7f9;
     .buttons {
-        display: flex;
-        flex-wrap: wrap;
-        border: 1px solid black;
-        height: 30%;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      border: 1px solid black;
+      height: 30%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      .back-icon {
+        background-color: transparent;
+        color: #000;
+        width: 94%;
+        .icon {
+          height: 32px;
+          width: 32px;
+        }
+      }
       .swap-button {
         background-color: #3068cb;
         color: #fff;
         width: 94%;
       }
       .auto-button {
-        background-color: transparent;
-        color: #000000;
+        background-color: #656f6c;
+        color: #fff;
         width: 94%;
       }
     }
     .filter-settings {
-        height: 70%;
+      height: 70%;
     }
   }
 }
