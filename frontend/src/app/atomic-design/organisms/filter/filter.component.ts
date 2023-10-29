@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { BookServices } from 'src/app/store/services/book.services';
 import { category } from 'src/shared/stores/categories-data.store';
 import { language } from 'src/shared/stores/language-store';
 
@@ -9,9 +11,23 @@ import { language } from 'src/shared/stores/language-store';
   styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent {
+  public otherAuthor: any[] = [];
   public categorySource: any = category;
   public languageSource: any = language;
 
   category = new FormControl('');
   language = new FormControl('');
+
+  constructor(private bookService: BookServices, private router: Router) {}
+
+  ngOnInit() {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.bookService
+        .getOtherAuthors({ id: userId })
+        .subscribe((data: any[]) => {
+          this.otherAuthor = data;
+        });
+    }
+  }
 }

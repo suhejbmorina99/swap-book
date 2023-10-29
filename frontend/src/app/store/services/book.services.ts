@@ -106,4 +106,9 @@ export class BookServices {
     const url = `${this.baseUrl}/book/not-owned/${user.id}`;
     return this.http.get<any>(url);
   }
+
+  public getOtherAuthors(user: { id: string }): Observable<any> {
+    const url = `${this.baseUrl}/book/authors-except-me/${user.id}`;
+    return this.http.get<any>(url);
+  }
 }

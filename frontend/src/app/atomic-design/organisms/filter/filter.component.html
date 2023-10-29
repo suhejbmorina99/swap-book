@@ -15,11 +15,11 @@
     <div class="find-by">
       <mat-form-field class="author">
         <mat-label>Filter by author</mat-label>
-        <mat-select [formControl]="category">
+        <mat-select>
           <mat-option
-            *ngFor="let category of categorySource"
-            [value]="category.original"
-            >{{ category.original }}</mat-option
+            *ngFor="let author of otherAuthor"
+            [value]="author"
+            >{{ author }}</mat-option
           >
         </mat-select>
       </mat-form-field>
