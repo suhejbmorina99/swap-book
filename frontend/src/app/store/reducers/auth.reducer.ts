@@ -4,6 +4,7 @@ import * as authAction from '../actions/auth.actions';
 export interface SessionData {
   token: string;
   user: string;
+  userName: string;
 }
 
 export interface UserData {

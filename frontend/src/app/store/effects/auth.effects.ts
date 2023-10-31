@@ -27,6 +27,7 @@ export class AuthEffects {
               map((session) => {
                 localStorage.setItem('jwt', session.token);
                 localStorage.setItem('userId', session.user);
+                localStorage.setItem('userName', session.userName);
                 this.store.dispatch(setLoginDataAction({ session }));
                 this.router.navigate(['main']);
                 return EMPTY;
