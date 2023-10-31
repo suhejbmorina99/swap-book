@@ -31,6 +31,7 @@ export class AuthGuard implements CanActivate {
     | UrlTree {
     const token = localStorage.getItem('jwt');
     if (token === null) {
+      localStorage.clear();
       return this.router.navigate(['login']);
     } else {
       return this.service.sessionToken().pipe(
