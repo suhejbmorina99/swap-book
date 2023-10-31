@@ -34,6 +34,7 @@ import { FormsModule } from '@angular/forms';
 import { ReadyToSwapComponent } from './atomic-design/organisms/ready-to-swap/ready-to-swap.component';
 import { ReadyForSwapComponent } from './atomic-design/organisms/ready-for-swap/ready-for-swap.component';
 import { FilterComponent } from './atomic-design/organisms/filter/filter.component';
+import { HeaderComponent } from './atomic-design/organisms/header/header.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { FilterComponent } from './atomic-design/organisms/filter/filter.compone
     ReadyToSwapComponent,
     ReadyForSwapComponent,
     FilterComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
