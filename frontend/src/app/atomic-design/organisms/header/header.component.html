@@ -5,7 +5,24 @@
   <div class="user-settings">
     <span class="menu" [matMenuTriggerFor]="menu">Hi, {{ name }}</span>
     <mat-menu #menu="matMenu">
-      <span mat-menu-item (click)="logout()">Logout</span>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          cursor: pointer;
+          padding: 0 10px;
+        "
+        (click)="logout()"
+      >
+        <p>Logout</p>
+        <img
+          style="width: 18px; height: 18px;"
+          src="../../../../assets/logout.png"
+          alt=""
+        />
+      </div>
     </mat-menu>
   </div>
 </div>
