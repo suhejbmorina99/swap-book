@@ -35,6 +35,7 @@ import { ReadyToSwapComponent } from './atomic-design/organisms/ready-to-swap/re
 import { ReadyForSwapComponent } from './atomic-design/organisms/ready-for-swap/ready-for-swap.component';
 import { FilterComponent } from './atomic-design/organisms/filter/filter.component';
 import { HeaderComponent } from './atomic-design/organisms/header/header.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { HeaderComponent } from './atomic-design/organisms/header/header.compone
     MatSelectModule,
     MatCardModule,
     FormsModule,
+    MatMenuModule,
   ],
   providers: [AuthServices, BookServices],
   bootstrap: [AppComponent],

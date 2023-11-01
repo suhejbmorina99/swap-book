@@ -3,6 +3,9 @@
     <span>Swap Book</span>
   </div>
   <div class="user-settings">
-    <span>Hi, {{ name }}</span>
+    <span class="menu" [matMenuTriggerFor]="menu">Hi, {{ name }}</span>
+    <mat-menu #menu="matMenu">
+      <span mat-menu-item (click)="logout()">Logout</span>
+    </mat-menu>
   </div>
 </div>
