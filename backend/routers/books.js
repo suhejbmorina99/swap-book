@@ -12,17 +12,6 @@ router.get(`/`, async (req, res) => {
     res.send(booksList)
 })
 
-//This route return all books of specific user
-router.get(`/:userId`, async (req, res) => {
-    const userId = req.params.userId
-    const userBooks = await Book.find({ user: userId })
-
-    if (!userBooks) {
-        res.status(500).json({ success: false })
-    }
-    res.send(userBooks)
-})
-
 router.post(`/`, async (req, res) => {
     try {
         const book = new Book({
@@ -47,6 +36,17 @@ router.post(`/`, async (req, res) => {
             success: false,
         })
     }
+})
+
+//This route return all books of specific user
+router.get(`/:userId`, async (req, res) => {
+    const userId = req.params.userId
+    const userBooks = await Book.find({ user: userId })
+
+    if (!userBooks) {
+        res.status(500).json({ success: false })
+    }
+    res.send(userBooks)
 })
 
 router.patch('/:bookId', async (req, res) => {
