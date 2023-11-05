@@ -15,12 +15,10 @@
     <div class="find-by">
       <mat-form-field class="author">
         <mat-label>Filter by author</mat-label>
-        <mat-select>
-          <mat-option
-            *ngFor="let author of otherAuthor"
-            [value]="author"
-            >{{ author }}</mat-option
-          >
+        <mat-select [(ngModel)]="authorName">
+          <mat-option *ngFor="let author of otherAuthor" [value]="author">{{
+            author
+          }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -49,4 +47,5 @@
       </mat-form-field>
     </div>
   </div>
+  <p>Autori: {{ authorName }}</p>
 </div>
