@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, catchError, map, of, switchMap } from 'rxjs';
+import { EMPTY, catchError, map, mergeMap, of, switchMap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
@@ -102,6 +102,8 @@ export class BookEffects {
                     updateBook.updatedBook.numberOfPages ===
                       action.numberOfPages
                   ) {
+                    
+                    
                     this.snackBar.open('Nothing is updated', undefined, {
                       duration: 1000,
                     });
@@ -117,6 +119,7 @@ export class BookEffects {
                     setTimeout(() => {
                       this.router.navigate(['main']);
                     }, 750);
+
                     return EMPTY;
                   }
                 }),

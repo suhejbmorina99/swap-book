@@ -35,12 +35,10 @@ export class AllBooksComponent {
         .subscribe((updatedBooks) => {
           // Handle updates to user books in real-time
           this.userBooks.push(updatedBooks);
-          console.log(this.userBooks);
         });
 
       this.bookService.getUserBooks({ id: userId }).subscribe((data: any[]) => {
         this.userBooks = data;
-        console.log(data);
       });
     }
 

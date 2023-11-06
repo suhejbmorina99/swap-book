@@ -45,6 +45,8 @@ export const updateBookAction = createAction(
     language?: string;
     condition?: string;
     numberOfPages?: number;
+    category?: string;
+    publisher?: string;
   }>()
 );
 
