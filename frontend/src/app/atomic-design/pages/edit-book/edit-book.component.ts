@@ -48,6 +48,8 @@ export class EditBookComponent {
         language: this.userBook.book.language,
         condition: this.userBook.book.condition,
         numberOfPages: this.userBook.book.numberOfPages,
+        category: this.userBook.book.category,
+        publisher: this.userBook.book.publisher,
       })
     );
   }
