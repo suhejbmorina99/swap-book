@@ -102,14 +102,6 @@ export class BookEffects {
                     updateBook.updatedBook.numberOfPages ===
                       action.numberOfPages
                   ) {
-                    
-                    
-                    this.snackBar.open('Nothing is updated', undefined, {
-                      duration: 1000,
-                    });
-
-                    return EMPTY;
-                  } else {
                     this.store.dispatch(
                       updateBookSuccessAction({ updateBook })
                     );
@@ -119,6 +111,12 @@ export class BookEffects {
                     setTimeout(() => {
                       this.router.navigate(['main']);
                     }, 750);
+
+                    return EMPTY;
+                  } else {
+                    this.snackBar.open('Nothing is updated', undefined, {
+                      duration: 1000,
+                    });
 
                     return EMPTY;
                   }
