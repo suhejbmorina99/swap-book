@@ -2,8 +2,32 @@
   <div class="selected-book">
     <p>selected book</p>
   </div>
-  <div class="other-books">
+  <!-- <div class="other-books" *ngIf="otherBooks">
     <mat-card class="example-card" *ngFor="let book of otherBooks">
+      <mat-card-header style="background-color: #f6f7f9">
+        <mat-card-title class="title-card" style="margin-top: -4px"
+          >Title: {{ book.title }}</mat-card-title
+        >
+        <mat-card-subtitle
+          style="font-size: 10px; margin-top: -7px"
+          class="author"
+          >Author: {{ book.author }}</mat-card-subtitle
+        >
+        <mat-card-subtitle style="font-size: 10px; margin-top: -4px"
+          >Condition: {{ book.condition }}</mat-card-subtitle
+        >
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="../../../../assets/book-cover.png"
+        alt="Photo of a Book"
+        style="height: 100px"
+      />
+    </mat-card>
+  </div> -->
+
+  <div class="other-books" *ngIf="otherAuthors">
+    <mat-card class="example-card" *ngFor="let book of otherAuthors">
       <mat-card-header style="background-color: #f6f7f9">
         <mat-card-title class="title-card" style="margin-top: -4px"
           >Title: {{ book.title }}</mat-card-title

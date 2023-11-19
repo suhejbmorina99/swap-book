@@ -111,4 +111,9 @@ export class BookServices {
     const url = `${this.baseUrl}/book/authors-except-me/${user.id}`;
     return this.http.get<any>(url);
   }
+
+  public getFilterAuthor(user: { author: string }): Observable<any> {
+    const url = `${this.baseUrl}/book/specific-author/${user.author}`;
+    return this.http.get<any>(url);
+  }
 }

@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-swap',
   templateUrl: './swap.component.html',
-  styleUrls: ['./swap.component.scss']
+  styleUrls: ['./swap.component.scss'],
 })
 export class SwapComponent {
+  @Input() specificAuthor = '';
 
+  returnAuthor(name: string) {
+    this.specificAuthor = name;
+  }
 }

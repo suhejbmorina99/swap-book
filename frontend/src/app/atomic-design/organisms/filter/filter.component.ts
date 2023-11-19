@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BookServices } from 'src/app/store/services/book.services';
@@ -14,7 +14,7 @@ export class FilterComponent {
   public otherAuthor: any[] = [];
   public categorySource: any = category;
   public languageSource: any = language;
-  public authorName: string = '';
+  @Output() authorName = new EventEmitter<string>();
 
   category = new FormControl('');
   language = new FormControl('');
