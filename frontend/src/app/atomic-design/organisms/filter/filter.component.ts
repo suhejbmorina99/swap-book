@@ -19,7 +19,10 @@ export class FilterComponent {
   category = new FormControl('');
   language = new FormControl('');
 
-  constructor(private bookService: BookServices, private router: Router) {}
+  constructor(
+    private bookService: BookServices,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     const userId = localStorage.getItem('userId');
@@ -30,5 +33,11 @@ export class FilterComponent {
           this.otherAuthor = data;
         });
     }
+  }
+
+  returnAuthor(author: string) {
+    console.log('1');
+    console.log(author);
+    this.authorName.emit(author);
   }
 }

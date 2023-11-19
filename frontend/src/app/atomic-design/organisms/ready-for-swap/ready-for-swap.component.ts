@@ -13,7 +13,12 @@ export class ReadyForSwapComponent {
   public otherAuthors: any[] = [];
   public filteredAuthor: string = '';
 
-  constructor(private bookService: BookServices, private router: Router) {}
+  constructor(
+    private bookService: BookServices,
+    private router: Router,
+  ) {
+    // console.log(this.specificAuthor);
+  }
 
   ngOnInit() {
     const userId = localStorage.getItem('userId');
@@ -25,6 +30,7 @@ export class ReadyForSwapComponent {
         });
     }
     if (this.specificAuthor) {
+      console.log(this.specificAuthor);
       this.bookService
         .getFilterAuthor({ author: this.specificAuthor })
         .subscribe((data: any[]) => {
