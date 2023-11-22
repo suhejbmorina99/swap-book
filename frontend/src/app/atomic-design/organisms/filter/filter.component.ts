@@ -14,6 +14,7 @@ export class FilterComponent {
   public otherAuthor: any[] = [];
   public categorySource: any = category;
   public languageSource: any = language;
+  public author = '';
   @Output() authorName = new EventEmitter<string>();
 
   category = new FormControl('');
@@ -39,5 +40,6 @@ export class FilterComponent {
     console.log('1');
     console.log(author);
     this.authorName.emit(author);
+    console.log(this.authorName.emit(author));
   }
 }
