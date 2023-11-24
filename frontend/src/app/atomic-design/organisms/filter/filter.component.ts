@@ -11,11 +11,12 @@ import { language } from 'src/shared/stores/language-store';
   styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent {
+  @Output() authorName = new EventEmitter<string>();
+
   public otherAuthor: any[] = [];
   public categorySource: any = category;
   public languageSource: any = language;
   public author = '';
-  @Output() authorName = new EventEmitter<string>();
 
   category = new FormControl('');
   language = new FormControl('');
@@ -37,9 +38,8 @@ export class FilterComponent {
   }
 
   returnAuthor(author: string) {
-    console.log('1');
-    console.log(author);
+    // console.log('1');
+    // console.log(author);
     this.authorName.emit(author);
-    console.log(this.authorName.emit(author));
   }
 }

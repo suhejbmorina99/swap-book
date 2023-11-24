@@ -1,4 +1,10 @@
-import { Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { BookServices } from 'src/app/store/services/book.services';
 
@@ -6,19 +12,17 @@ import { BookServices } from 'src/app/store/services/book.services';
   selector: 'app-ready-for-swap',
   templateUrl: './ready-for-swap.component.html',
   styleUrls: ['./ready-for-swap.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReadyForSwapComponent {
+export class ReadyForSwapComponent implements OnChanges {
   @Input() specificAuthor = '';
   public otherBooks: any[] = [];
   public otherAuthors: any[] = [];
-  public filteredAuthor: string = '';
 
   constructor(
     private bookService: BookServices,
     private router: Router,
-  ) {
-    // console.log(this.specificAuthor);
-  }
+  ) {}
 
   ngOnInit() {
     const userId = localStorage.getItem('userId');
@@ -29,12 +33,16 @@ export class ReadyForSwapComponent {
           this.otherBooks = data;
         });
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
     if (this.specificAuthor) {
       console.log(this.specificAuthor);
       this.bookService
-        .getFilterAuthor({ author: this.specificAuthor })
+        .getFilterAuthor(this.specificAuthor)
         .subscribe((data: any[]) => {
           this.otherAuthors = data;
+          console.log(this.otherAuthors);
         });
     }
   }

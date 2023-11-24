@@ -18,7 +18,7 @@ export class BookServices {
     numberOfPages: number,
     category: string,
     publisher: string,
-    user: { id: string }
+    user: { id: string },
   ): Observable<any> {
     const url = this.baseUrl + '/book';
     const body = {
@@ -58,7 +58,7 @@ export class BookServices {
     condition?: string,
     numberOfPages?: number,
     category?: string,
-    publisher?: string
+    publisher?: string,
   ): Observable<any> {
     const url = `${this.baseUrl}/book/${bookId}`;
     const body = {
@@ -112,8 +112,8 @@ export class BookServices {
     return this.http.get<any>(url);
   }
 
-  public getFilterAuthor(user: { author: string }): Observable<any> {
-    const url = `${this.baseUrl}/book/specific-author/${user.author}`;
+  public getFilterAuthor(author: string): Observable<any> {
+    const url = `${this.baseUrl}/book/specific-author/${author}`;
     return this.http.get<any>(url);
   }
 }
