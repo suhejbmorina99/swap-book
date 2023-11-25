@@ -31,7 +31,6 @@ export class ReadyForSwapComponent implements OnChanges {
         .getOtherBooks({ id: userId })
         .subscribe((data: any[]) => {
           this.otherBooks = data;
-          console.log(this.otherAuthors)
         });
     }
   }
