@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   Input,
   OnChanges,
@@ -12,7 +13,6 @@ import { BookServices } from 'src/app/store/services/book.services';
   selector: 'app-ready-for-swap',
   templateUrl: './ready-for-swap.component.html',
   styleUrls: ['./ready-for-swap.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReadyForSwapComponent implements OnChanges {
   @Input() specificAuthor = '';
