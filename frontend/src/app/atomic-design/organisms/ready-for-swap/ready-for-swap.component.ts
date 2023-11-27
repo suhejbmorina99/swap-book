@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookServices } from 'src/app/store/services/book.services';
 
@@ -42,7 +35,6 @@ export class ReadyForSwapComponent implements OnChanges {
         .getFilterAuthor(this.specificAuthor)
         .subscribe((data: any[]) => {
           this.otherAuthors = data;
-          console.log(this.otherAuthors);
         });
     }
   }

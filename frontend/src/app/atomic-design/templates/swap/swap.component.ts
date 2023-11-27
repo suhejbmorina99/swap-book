@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-swap',
@@ -8,15 +8,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 export class SwapComponent {
   public specificAuthor = '';
 
-  returnAuthortWP(name: string) {
-    // console.log('1');
-    // console.log(name);
+  authorName(name: string) {
     this.specificAuthor = name;
   }
-
-  // ngOnChanges(changes: SimpleChanges) {
-  //   console.log('ngOnChanges triggered');
-  //   console.log('specificAuthor:', this.specificAuthor);
-  //   console.log(this.specificAuthor);
-  // }
 }

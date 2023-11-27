@@ -38,8 +38,6 @@ export class FilterComponent {
   }
 
   returnAuthor(author: string) {
-    // console.log('1');
-    // console.log(author);
     this.authorName.emit(author);
   }
 }
