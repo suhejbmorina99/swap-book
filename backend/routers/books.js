@@ -38,6 +38,36 @@ router.post(`/`, async (req, res) => {
     }
 })
 
+router.get('/categories', async (req, res) => {
+    try {
+        // Check if specific categories are provided in the query parameters
+        const { categories } = req.query
+        let query = {}
+
+        if (categories) {
+            // If categories are provided, create a query to filter by those categories
+            const categoriesArray = categories.split(',')
+            query = { category: { $in: categoriesArray } }
+        }
+
+        // Query the database to get distinct categories based on the provided filter
+        const resultCategories = await Book.distinct('category', query)
+
+        if (!resultCategories || resultCategories.length === 0) {
+            return res
+                .status(404)
+                .json({ message: 'No matching book categories found' })
+        }
+
+        res.status(200).json(resultCategories)
+    } catch (err) {
+        res.status(500).json({
+            message: 'An error occurred',
+            error: err.message,
+        })
+    }
+})
+
 //This route return all books of specific user
 router.get(`/:userId`, async (req, res) => {
     const userId = req.params.userId
