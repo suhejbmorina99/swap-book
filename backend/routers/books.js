@@ -48,6 +48,8 @@ router.get('/categories', async (req, res) => {
             // If categories are provided, create a query to filter by those categories
             const categoriesArray = categories.split(',')
             query = { category: { $in: categoriesArray } }
+            // $in: This is a MongoDB operator that selects the documents where the value of the category field
+            // equals any value in the specified array.
         }
 
         // Query the database to get distinct categories based on the provided filter
