@@ -116,4 +116,8 @@ export class BookServices {
     const url = `${this.baseUrl}/book/specific-author/${author}`;
     return this.http.get<any>(url);
   }
+  public getCategories(): Observable<any> {
+    const url = `${this.baseUrl}/book/categories/`;
+    return this.http.get<any>(url);
+  }
 }
