@@ -41,34 +41,30 @@ router.post(`/`, async (req, res) => {
 router.get('/categories', async (req, res) => {
     try {
         // Check if specific categories are provided in the query parameters
-        const { categories } = req.query
-        let query = {}
+        const { categories } = req.query;
+        let query = {};
 
         if (categories) {
             // If categories are provided, create a query to filter by those categories
-            const categoriesArray = categories.split(',')
-            query = { category: { $in: categoriesArray } }
-            // $in: This is a MongoDB operator that selects the documents where the value of the category field
-            // equals any value in the specified array.
+            const categoriesArray = categories.split(',');
+            query = { category: { $in: categoriesArray } };
         }
 
-        // Query the database to get distinct categories based on the provided filter
-        const resultCategories = await Book.distinct('category', query)
+        // Query the database to get books based on the provided filter
+        const booksWithCategories = await Book.find(query);
 
-        if (!resultCategories || resultCategories.length === 0) {
-            return res
-                .status(404)
-                .json({ message: 'No matching book categories found' })
+        if (!booksWithCategories || booksWithCategories.length === 0) {
+            return res.status(404).json({ message: 'No matching books found for the specified categories' });
         }
 
-        res.status(200).json(resultCategories)
+        res.status(200).json(booksWithCategories);
     } catch (err) {
         res.status(500).json({
             message: 'An error occurred',
             error: err.message,
-        })
+        });
     }
-})
+});
 
 //This route return all books of specific user
 router.get(`/:userId`, async (req, res) => {
