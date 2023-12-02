@@ -3,9 +3,15 @@
     <app-ready-to-swap></app-ready-to-swap>
   </div>
   <div class="filter-of-swapping">
-    <app-filter (authorName)="authorName($event)"></app-filter>
+    <app-filter
+      (authorName)="authorName($event)"
+      (selectedCategory)="selectedCategory($event)"
+    ></app-filter>
   </div>
   <div class="ready-for-swap-books">
-    <app-ready-for-swap [specificAuthor]="specificAuthor"></app-ready-for-swap>
+    <app-ready-for-swap
+      [specificAuthor]="specificAuthor"
+      [specificCategory]="specificCategories"
+    ></app-ready-for-swap>
   </div>
 </div>

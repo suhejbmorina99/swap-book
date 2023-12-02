@@ -32,7 +32,7 @@
           <mat-option
             *ngFor="let category of categorySource"
             [value]="category.original"
-            (click)="selectedCategories(category)"
+            (click)="selectedCategories(category.original)"
             >{{ category.original }}</mat-option
           >
         </mat-select>

@@ -9,6 +9,7 @@ import { BookServices } from 'src/app/store/services/book.services';
 })
 export class ReadyForSwapComponent implements OnChanges {
   @Input() specificAuthor = '';
+  @Input() specificCategory = '';
   public otherBooks: any[] = [];
   public otherAuthors: any[] = [];
 
@@ -36,6 +37,10 @@ export class ReadyForSwapComponent implements OnChanges {
         .subscribe((data: any[]) => {
           this.otherAuthors = data;
         });
+    }
+
+    if (this.specificCategory) {
+      console.log(this.specificCategory);
     }
   }
 }
