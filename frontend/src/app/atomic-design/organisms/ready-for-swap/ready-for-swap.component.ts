@@ -12,6 +12,7 @@ export class ReadyForSwapComponent implements OnChanges {
   @Input() specificCategory = '';
   public otherBooks: any[] = [];
   public otherAuthors: any[] = [];
+  public specificCategories: any[] = [];
 
   constructor(
     private bookService: BookServices,
@@ -40,7 +41,11 @@ export class ReadyForSwapComponent implements OnChanges {
     }
 
     if (this.specificCategory) {
-      console.log(this.specificCategory);
+      this.bookService
+        .getCategories(this.specificCategory)
+        .subscribe((data: any[]) => {
+          this.specificCategories = data;
+        });
     }
   }
 }
