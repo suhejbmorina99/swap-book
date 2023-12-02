@@ -12,11 +12,13 @@ import { language } from 'src/shared/stores/language-store';
 })
 export class FilterComponent {
   @Output() authorName = new EventEmitter<string>();
+  @Output() selectedCategory = new EventEmitter<string>();
 
   public otherAuthor: any[] = [];
   public categorySource: any = category;
   public languageSource: any = language;
   public author = '';
+  public categories: string = '';
 
   category = new FormControl('');
   language = new FormControl('');
@@ -39,5 +41,9 @@ export class FilterComponent {
 
   returnAuthor(author: string) {
     this.authorName.emit(author);
+  }
+
+  selectedCategories(selectedCategories: string) {
+    this.selectedCategory.emit(selectedCategories);
   }
 }
