@@ -9,7 +9,7 @@ import { BookServices } from 'src/app/store/services/book.services';
 })
 export class ReadyForSwapComponent implements OnChanges {
   @Input() specificAuthor = '';
-  @Input() specificCategory = '';
+  @Input() specificCategory: string[] = [];
   public otherBooks: any[] = [];
   public otherAuthors: any[] = [];
   public specificCategories: any[] = [];
@@ -41,6 +41,7 @@ export class ReadyForSwapComponent implements OnChanges {
     }
 
     if (this.specificCategory) {
+      console.log(this.specificCategory);
       this.bookService
         .getCategories(this.specificCategory)
         .subscribe((data: any[]) => {

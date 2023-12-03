@@ -7,13 +7,14 @@ import { Component } from '@angular/core';
 })
 export class SwapComponent {
   public specificAuthor = '';
-  public specificCategories =  '';
+  public specificCategories: string[] = [];
 
   authorName(name: string) {
     this.specificAuthor = name;
   }
 
-  selectedCategory(category: string) {
-    this.specificCategories = category
+  selectedCategory(categories: string[]) {
+    this.specificCategories = categories;
+    console.log(categories);
   }
 }

@@ -12,13 +12,13 @@ import { language } from 'src/shared/stores/language-store';
 })
 export class FilterComponent {
   @Output() authorName = new EventEmitter<string>();
-  @Output() selectedCategory = new EventEmitter<string>();
+  @Output() selectedCategory = new EventEmitter<string[]>();
 
   public otherAuthor: any[] = [];
   public categorySource: any = category;
   public languageSource: any = language;
   public author = '';
-  public categories: string = '';
+  public categories: string[] = [];
 
   category = new FormControl('');
   language = new FormControl('');
@@ -43,7 +43,19 @@ export class FilterComponent {
     this.authorName.emit(author);
   }
 
-  selectedCategories(selectedCategories: string) {
-    this.selectedCategory.emit(selectedCategories);
+  selectedCategories(category: string) {
+    // Check if the category is already selected
+    if (!this.categories.includes(category)) {
+      // If not selected, add it to the array
+      this.categories.push(category);
+    } else {
+      // If already selected, remove it from the array
+      this.categories = this.categories.filter(
+        (selectedCategory) => selectedCategory !== category,
+      );
+    }
+
+    // Emit the updated array of selected categories
+    this.selectedCategory.emit(this.categories);
   }
 }
