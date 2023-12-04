@@ -31,7 +31,6 @@ export class ReadyForSwapComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('1');
     if (this.specificAuthor) {
       console.log(this.specificAuthor);
       this.bookService
@@ -42,12 +41,10 @@ export class ReadyForSwapComponent implements OnChanges {
     }
 
     if (this.specificCategory) {
-      console.log(this.specificCategory);
       this.bookService
         .getCategories(this.specificCategory)
         .subscribe((data: any[]) => {
           this.specificCategories = data;
-          console.log(this.specificCategories);
         });
     }
   }
