@@ -28,7 +28,7 @@
     <div class="find-by">
       <mat-form-field class="category">
         <mat-label>Filter by book category</mat-label>
-        <mat-select [formControl]="category" multiple>
+        <mat-select [formControl]="category">
           <mat-option
             *ngFor="let category of categorySource"
             [value]="category.original"

@@ -9,7 +9,7 @@ import { BookServices } from 'src/app/store/services/book.services';
 })
 export class ReadyForSwapComponent implements OnChanges {
   @Input() specificAuthor = '';
-  @Input() specificCategory: string[] = [];
+  @Input() specificCategory = '';
   public otherBooks: any[] = [];
   public otherAuthors: any[] = [];
   public specificCategories: any[] = [];
@@ -31,6 +31,7 @@ export class ReadyForSwapComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log('1');
     if (this.specificAuthor) {
       console.log(this.specificAuthor);
       this.bookService
@@ -46,6 +47,7 @@ export class ReadyForSwapComponent implements OnChanges {
         .getCategories(this.specificCategory)
         .subscribe((data: any[]) => {
           this.specificCategories = data;
+          console.log(this.specificCategories);
         });
     }
   }
