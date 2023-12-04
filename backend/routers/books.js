@@ -38,33 +38,58 @@ router.post(`/`, async (req, res) => {
     }
 })
 
-router.get('/categories', async (req, res) => {
+// router.get('/categories', async (req, res) => {
+//     try {
+//         // Check if specific categories are provided in the query parameters
+//         const { categories } = req.query;
+//         let query = {};
+
+//         if (categories) {
+//             // If categories are provided, create a query to filter by those categories
+//             const categoriesArray = categories.split(',');
+//             query = { category: { $in: categoriesArray } };
+//         }
+
+//         // Query the database to get books based on the provided filter
+//         const booksWithCategories = await Book.find(query);
+
+//         if (!booksWithCategories || booksWithCategories.length === 0) {
+//             return res.status(404).json({ message: 'No matching books found for the specified categories' });
+//         }
+
+//         res.status(200).json(booksWithCategories);
+//     } catch (err) {
+//         res.status(500).json({
+//             message: 'An error occurred',
+//             error: err.message,
+//         });
+//     }
+// });
+
+router.get('/categories/:category', async (req, res) => {
     try {
-        // Check if specific categories are provided in the query parameters
-        const { categories } = req.query;
-        let query = {};
+        const category = req.params.category
 
-        if (categories) {
-            // If categories are provided, create a query to filter by those categories
-            const categoriesArray = categories.split(',');
-            query = { category: { $in: categoriesArray } };
+        // Query the database to get books based on the provided category
+        const booksWithCategory = await Book.find({ category })
+
+        if (!booksWithCategory || booksWithCategory.length === 0) {
+            return res
+                .status(404)
+                .json({
+                    message:
+                        'No matching books found for the specified category',
+                })
         }
 
-        // Query the database to get books based on the provided filter
-        const booksWithCategories = await Book.find(query);
-
-        if (!booksWithCategories || booksWithCategories.length === 0) {
-            return res.status(404).json({ message: 'No matching books found for the specified categories' });
-        }
-
-        res.status(200).json(booksWithCategories);
+        res.status(200).json(booksWithCategory)
     } catch (err) {
         res.status(500).json({
             message: 'An error occurred',
             error: err.message,
-        });
+        })
     }
-});
+})
 
 //This route return all books of specific user
 router.get(`/:userId`, async (req, res) => {
