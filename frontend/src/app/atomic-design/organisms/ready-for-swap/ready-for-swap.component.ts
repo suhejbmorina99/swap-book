@@ -32,7 +32,6 @@ export class ReadyForSwapComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.specificAuthor) {
-      console.log(this.specificAuthor);
       this.bookService
         .getFilterAuthor(this.specificAuthor)
         .subscribe((data: any[]) => {
