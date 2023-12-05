@@ -44,22 +44,6 @@ export class FilterComponent {
   }
 
   selectedCategories(category: string) {
-    // Check if the category is already selected
-    // if (!this.categories.includes(category)) {
-    //   // If not selected, add it to the array
-    //   this.categories.push(category);
-    // } else {
-    //   // If already selected, remove it from the array
-    //   this.categories = this.categories.filter(
-    //     (selectedCategory) => selectedCategory !== category,
-    //   );
-    // }
-    //
-    // // Log the categories before emitting the event
-    // console.log('Updated Categories:', this.categories);
-
-    // Emit the updated array of selected categories
     this.selectedCategory.emit(category);
-    console.log(category)
   }
 }

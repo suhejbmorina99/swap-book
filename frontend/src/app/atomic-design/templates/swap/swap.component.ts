@@ -15,6 +15,5 @@ export class SwapComponent {
 
   selectedCategory(categories: string) {
     this.specificCategories = categories;
-    console.log(this.specificCategories);
   }
 }
