@@ -17,11 +17,11 @@ export class FilterComponent {
   public otherAuthor: any[] = [];
   public categorySource: any = category;
   public languageSource: any = language;
-  public author = '';
   public categories = '';
 
   category = new FormControl('');
   language = new FormControl('');
+  author = new FormControl('');
 
   constructor(
     private bookService: BookServices,

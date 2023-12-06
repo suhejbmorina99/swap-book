@@ -15,7 +15,7 @@
     <div class="find-by">
       <mat-form-field class="author">
         <mat-label>Filter by author</mat-label>
-        <mat-select [(ngModel)]="author">
+        <mat-select [formControl]="author">
           <mat-option
             *ngFor="let author of otherAuthor"
             [value]="author"
