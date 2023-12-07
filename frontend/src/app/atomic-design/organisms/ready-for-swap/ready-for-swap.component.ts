@@ -37,6 +37,8 @@ export class ReadyForSwapComponent implements OnChanges {
         .subscribe((data: any[]) => {
           this.otherAuthors = data;
         });
+    } else {
+      this.otherAuthors = [];
     }
 
     if (this.specificCategory) {
@@ -45,6 +47,8 @@ export class ReadyForSwapComponent implements OnChanges {
         .subscribe((data: any[]) => {
           this.specificCategories = data;
         });
+    } else {
+      this.specificCategories = [];
     }
   }
 }
