@@ -41,9 +41,13 @@ export class FilterComponent {
 
   returnAuthor(author: string) {
     this.authorName.emit(author);
+    this.selectedCategory.emit('');
+    this.category.setValue('');
   }
 
   selectedCategories(category: string) {
     this.selectedCategory.emit(category);
+    this.authorName.emit('');
+    this.author.setValue('');
   }
 }
