@@ -36,6 +36,7 @@ export class ReadyForSwapComponent implements OnChanges {
         .getFilterAuthor(this.specificAuthor)
         .subscribe((data: any[]) => {
           this.otherAuthors = data;
+          this.otherBooks = [];
         });
     } else {
       this.otherAuthors = [];
@@ -46,6 +47,7 @@ export class ReadyForSwapComponent implements OnChanges {
         .getCategories(this.specificCategory)
         .subscribe((data: any[]) => {
           this.specificCategories = data;
+          this.otherBooks = [];
         });
     } else {
       this.specificCategories = [];
