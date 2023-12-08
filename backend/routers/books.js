@@ -74,12 +74,9 @@ router.get('/categories/:category', async (req, res) => {
         const booksWithCategory = await Book.find({ category })
 
         if (!booksWithCategory || booksWithCategory.length === 0) {
-            return res
-                .status(404)
-                .json({
-                    message:
-                        'No matching books found for the specified category',
-                })
+            return res.status(404).json({
+                message: 'No matching books found for the specified category',
+            })
         }
 
         res.status(200).json(booksWithCategory)
@@ -224,6 +221,28 @@ router.get('/specific-author/:authorName', async (req, res) => {
         }
 
         res.status(200).json(booksByAuthor)
+    } catch (err) {
+        res.status(500).json({
+            message: 'An error occurred',
+            error: err.message,
+        })
+    }
+})
+
+router.get(`/language/:language`, async (req, res) => {
+    try {
+        const language = req.params.language
+
+        // Query the database to get books based on the provided language
+        const booksWithLanguage = await Book.find({ language })
+
+        if (!booksWithLanguage || booksWithLanguage.length === 0) {
+            return res.status(404).json({
+                message: 'No matching books found for the specified language',
+            })
+        }
+
+        res.status(200).json(booksWithLanguage)
     } catch (err) {
         res.status(500).json({
             message: 'An error occurred',
