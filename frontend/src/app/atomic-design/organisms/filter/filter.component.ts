@@ -13,11 +13,11 @@ import { language } from 'src/shared/stores/language-store';
 export class FilterComponent {
   @Output() authorName = new EventEmitter<string>();
   @Output() selectedCategory = new EventEmitter<string>();
+  @Output() selectedLanguage = new EventEmitter<string>();
 
   public otherAuthor: any[] = [];
   public categorySource: any = category;
   public languageSource: any = language;
-  public categories = '';
 
   category = new FormControl('');
   language = new FormControl('');
@@ -43,11 +43,23 @@ export class FilterComponent {
     this.authorName.emit(author);
     this.selectedCategory.emit('');
     this.category.setValue('');
+    this.selectedLanguage.emit('');
+    this.language.setValue('');
   }
 
   selectedCategories(category: string) {
     this.selectedCategory.emit(category);
     this.authorName.emit('');
     this.author.setValue('');
+    this.selectedLanguage.emit('');
+    this.language.setValue('');
+  }
+
+  selectedLanguages(language: string) {
+    this.selectedLanguage.emit(language);
+    this.authorName.emit('');
+    this.author.setValue('');
+    this.selectedCategory.emit('');
+    this.category.setValue('');
   }
 }
