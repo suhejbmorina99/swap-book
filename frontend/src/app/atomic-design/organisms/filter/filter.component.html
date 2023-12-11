@@ -45,6 +45,7 @@
           <mat-option
             *ngFor="let language of languageSource"
             [value]="language.original"
+            (click)="selectedLanguage(language.original)"
             >{{ language.original }}</mat-option
           >
         </mat-select>

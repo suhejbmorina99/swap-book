@@ -13,7 +13,7 @@ import { language } from 'src/shared/stores/language-store';
 export class FilterComponent {
   @Output() authorName = new EventEmitter<string>();
   @Output() selectedCategory = new EventEmitter<string>();
-  @Output() selectedLanguage = new EventEmitter<string>();
+  @Output() setLanguage = new EventEmitter<string>();
 
   public otherAuthor: any[] = [];
   public categorySource: any = category;
@@ -43,7 +43,7 @@ export class FilterComponent {
     this.authorName.emit(author);
     this.selectedCategory.emit('');
     this.category.setValue('');
-    this.selectedLanguage.emit('');
+    this.setLanguage.emit('');
     this.language.setValue('');
   }
 
@@ -51,12 +51,13 @@ export class FilterComponent {
     this.selectedCategory.emit(category);
     this.authorName.emit('');
     this.author.setValue('');
-    this.selectedLanguage.emit('');
+    this.setLanguage.emit('');
     this.language.setValue('');
   }
 
-  selectedLanguages(language: string) {
-    this.selectedLanguage.emit(language);
+  selectedLanguage(language: string) {
+    console.log(language);
+    this.setLanguage.emit(language);
     this.authorName.emit('');
     this.author.setValue('');
     this.selectedCategory.emit('');
