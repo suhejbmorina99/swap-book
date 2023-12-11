@@ -10,9 +10,12 @@ import { BookServices } from 'src/app/store/services/book.services';
 export class ReadyForSwapComponent implements OnChanges {
   @Input() specificAuthor = '';
   @Input() specificCategory = '';
+  @Input() specificLanguage = '';
+
   public otherBooks: any[] = [];
   public otherAuthors: any[] = [];
   public specificCategories: any[] = [];
+  public setLanguage: any[] = [];
 
   constructor(
     private bookService: BookServices,
@@ -51,6 +54,17 @@ export class ReadyForSwapComponent implements OnChanges {
         });
     } else {
       this.specificCategories = [];
+    }
+
+    if (this.specificLanguage) {
+      this.bookService
+        .getByLanguage(this.specificLanguage)
+        .subscribe((data: any[]) => {
+          this.setLanguage = data;
+          this.otherBooks = [];
+        });
+    } else {
+      this.setLanguage = [];
     }
   }
 }

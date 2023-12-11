@@ -56,7 +56,6 @@ export class FilterComponent {
   }
 
   selectedLanguage(language: string) {
-    console.log(language);
     this.setLanguage.emit(language);
     this.authorName.emit('');
     this.author.setValue('');

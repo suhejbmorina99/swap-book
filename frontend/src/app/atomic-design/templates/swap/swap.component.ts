@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class SwapComponent {
   public specificAuthor = '';
   public specificCategories = '';
+  public specificLanguage = '';
 
   authorName(name: string) {
     this.specificAuthor = name;
@@ -15,5 +16,9 @@ export class SwapComponent {
 
   selectedCategory(categories: string) {
     this.specificCategories = categories;
+  }
+
+  setLanguage(language: string) {
+    this.specificLanguage = language;
   }
 }

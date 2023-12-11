@@ -6,12 +6,14 @@
     <app-filter
       (authorName)="authorName($event)"
       (selectedCategory)="selectedCategory($event)"
+      (setLanguage)="setLanguage($event)"
     ></app-filter>
   </div>
   <div class="ready-for-swap-books">
     <app-ready-for-swap
       [specificAuthor]="specificAuthor"
       [specificCategory]="specificCategories"
+      [specificLanguage]="specificLanguage"
     ></app-ready-for-swap>
   </div>
 </div>
