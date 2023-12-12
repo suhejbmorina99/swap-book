@@ -56,5 +56,17 @@
         }
       }
     }
+
+    .clear-filter {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+
+      .clear {
+        width: 94%;
+        background-color: #3068cb;
+        color: #fff;
+      }
+    }
   }
 }

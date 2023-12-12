@@ -62,4 +62,15 @@ export class FilterComponent {
     this.selectedCategory.emit('');
     this.category.setValue('');
   }
+
+  clearFilter(event: MouseEvent) {
+    event.stopPropagation();
+    event.preventDefault();
+    this.authorName.emit('');
+    this.author.setValue('');
+    this.selectedCategory.emit('');
+    this.category.setValue('');
+    this.setLanguage.emit('');
+    this.language.setValue('');
+  }
 }
