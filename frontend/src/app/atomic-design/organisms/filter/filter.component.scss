@@ -12,6 +12,7 @@
       align-items: center;
       justify-content: center;
       background-color: #f6f7f9;
+      border-radius: 10px;
       .back-icon {
         background-color: transparent;
         color: #000;
@@ -34,7 +35,7 @@
     }
 
     .second-container {
-      padding: 13% 0;
+      margin: 13% 0;
 
       .top-filter {
         display: flex;
