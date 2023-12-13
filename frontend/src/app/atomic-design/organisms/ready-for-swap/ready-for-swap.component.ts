@@ -22,7 +22,9 @@ export class ReadyForSwapComponent implements OnChanges {
     private router: Router,
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngOnChanges(changes: SimpleChanges) {
     const userId = localStorage.getItem('userId');
     if (userId) {
       this.bookService
@@ -31,9 +33,7 @@ export class ReadyForSwapComponent implements OnChanges {
           this.otherBooks = data;
         });
     }
-  }
 
-  ngOnChanges(changes: SimpleChanges) {
     if (this.specificAuthor) {
       this.bookService
         .getFilterAuthor(this.specificAuthor)
