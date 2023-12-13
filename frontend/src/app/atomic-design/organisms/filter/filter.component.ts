@@ -18,6 +18,7 @@ export class FilterComponent {
   public otherAuthor: any[] = [];
   public categorySource: any = category;
   public languageSource: any = language;
+  public search: string = '';
 
   category = new FormControl('');
   language = new FormControl('');

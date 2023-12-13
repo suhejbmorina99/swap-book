@@ -11,55 +11,74 @@
     <button class="swap-button" mat-raised-button>SWAP BOOK</button>
     <button class="auto-button" mat-raised-button>Auto Select</button>
   </div>
-  <div class="filter-settings">
-    <div class="find-by">
-      <mat-form-field class="author">
-        <mat-label>Filter by author</mat-label>
-        <mat-select [formControl]="author">
-          <mat-option
-            *ngFor="let author of otherAuthor"
-            [value]="author"
-            (click)="returnAuthor(author)"
-            >{{ author }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
+  <div class="second-container">
+    <div class="top-filter">
+      <form class="search-form">
+        <mat-form-field class="search-full-width">
+          <mat-label>Search</mat-label>
+          <input
+            type="tel"
+            matInput
+            placeholder="Search"
+            name="search"
+            [(ngModel)]="search"
+          />
+          <button matSuffix mat-button><mat-icon>search</mat-icon></button>
+        </mat-form-field>
+        <br />
+      </form>
     </div>
-    <div class="find-by">
-      <mat-form-field class="category">
-        <mat-label>Filter by book category</mat-label>
-        <mat-select [formControl]="category">
-          <mat-option
-            *ngFor="let category of categorySource"
-            [value]="category.original"
-            (click)="selectedCategories(category.original)"
-            >{{ category.original }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
+
+    <div class="filter-settings">
+      <div class="find-by">
+        <mat-form-field class="author">
+          <mat-label>Filter by author</mat-label>
+          <mat-select [formControl]="author">
+            <mat-option
+              *ngFor="let author of otherAuthor"
+              [value]="author"
+              (click)="returnAuthor(author)"
+              >{{ author }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="find-by">
+        <mat-form-field class="category">
+          <mat-label>Filter by book category</mat-label>
+          <mat-select [formControl]="category">
+            <mat-option
+              *ngFor="let category of categorySource"
+              [value]="category.original"
+              (click)="selectedCategories(category.original)"
+              >{{ category.original }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="find-by">
+        <mat-form-field class="category">
+          <mat-label>Filter by language</mat-label>
+          <mat-select [formControl]="language">
+            <mat-option
+              *ngFor="let language of languageSource"
+              [value]="language.original"
+              (click)="selectedLanguage(language.original)"
+              >{{ language.original }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
-    <div class="find-by">
-      <mat-form-field class="category">
-        <mat-label>Filter by language</mat-label>
-        <mat-select [formControl]="language">
-          <mat-option
-            *ngFor="let language of languageSource"
-            [value]="language.original"
-            (click)="selectedLanguage(language.original)"
-            >{{ language.original }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
+    <div class="clear-filter">
+      <button
+        mat-raised-button
+        class="clear"
+        aria-label="Example icon button with a heart icon"
+        (click)="clearFilter($event)"
+      >
+        <p>Clear Filters</p>
+      </button>
     </div>
-  </div>
-  <div class="clear-filter">
-    <button
-      mat-raised-button
-      class="clear"
-      aria-label="Example icon button with a heart icon"
-      (click)="clearFilter($event)"
-    >
-      <p>Clear Filters</p>
-    </button>
   </div>
 </div>
