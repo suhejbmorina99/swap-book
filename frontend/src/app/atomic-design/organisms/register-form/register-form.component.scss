@@ -9,16 +9,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    // border: 1px solid black;
+
 
     .form-container {
         width: 40%;
       .form-field {
         display: flex;
         justify-content: center;
-        // width: 60%;
-        margin: 0 auto;
-        margin-top: 40px;
+        margin: 40px auto 0;
       }
     }
 
@@ -28,8 +26,7 @@
         display: flex;
         justify-content: center;
         // width: 60%;
-        margin: 0 auto;
-        margin-top: 40px;
+        margin: 40px auto 0;
         position: relative;
 
         .password-input {
