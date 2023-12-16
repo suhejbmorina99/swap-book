@@ -38,6 +38,44 @@ router.post(`/`, async (req, res) => {
     }
 })
 
+router.get('/search', async (req, res) => {
+    try {
+        const userId = req.query.userId
+        const searchTerm = req.query.title
+
+        if (!userId) {
+            return res.status(400).json({
+                message: 'Please provide a user ID for exclusion',
+            })
+        }
+
+        if (!searchTerm) {
+            return res.status(400).json({
+                message: 'Please provide a search term',
+            })
+        }
+
+        // Use a regular expression to perform a case-insensitive search
+        const booksWithTitle = await Book.find({
+            user: { $ne: userId },
+            title: { $regex: new RegExp(searchTerm, 'i') },
+        })
+
+        if (!booksWithTitle || booksWithTitle.length === 0) {
+            return res.status(404).json({
+                message: 'No matching books found for the specified title',
+            })
+        }
+
+        res.status(200).json(booksWithTitle)
+    } catch (err) {
+        res.status(500).json({
+            message: 'An error occurred',
+            error: err.message,
+        })
+    }
+})
+
 router.get('/categories/:category', async (req, res) => {
     try {
         const category = req.params.category
