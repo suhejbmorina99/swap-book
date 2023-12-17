@@ -14,6 +14,7 @@ export class FilterComponent {
   @Output() authorName = new EventEmitter<string>();
   @Output() selectedCategory = new EventEmitter<string>();
   @Output() setLanguage = new EventEmitter<string>();
+  @Output() searchByTitle = new EventEmitter<string>();
 
   public otherAuthor: any[] = [];
   public categorySource: any = category;
@@ -23,6 +24,7 @@ export class FilterComponent {
   category = new FormControl('');
   language = new FormControl('');
   author = new FormControl('');
+  searchForm = new FormControl('');
 
   constructor(
     private bookService: BookServices,
@@ -46,6 +48,8 @@ export class FilterComponent {
     this.category.setValue('');
     this.setLanguage.emit('');
     this.language.setValue('');
+    this.searchByTitle.emit('');
+    this.searchForm.setValue('');
   }
 
   selectedCategories(category: string) {
@@ -54,6 +58,8 @@ export class FilterComponent {
     this.author.setValue('');
     this.setLanguage.emit('');
     this.language.setValue('');
+    this.searchByTitle.emit('');
+    this.searchForm.setValue('');
   }
 
   selectedLanguage(language: string) {
@@ -62,6 +68,18 @@ export class FilterComponent {
     this.author.setValue('');
     this.selectedCategory.emit('');
     this.category.setValue('');
+    this.searchByTitle.emit('');
+    this.searchForm.setValue('');
+  }
+
+  returnTitle(title: string) {
+    this.searchByTitle.emit(title);
+    this.authorName.emit('');
+    this.author.setValue('');
+    this.selectedCategory.emit('');
+    this.category.setValue('');
+    this.setLanguage.emit('');
+    this.language.setValue('');
   }
 
   clearFilter(event: MouseEvent) {
@@ -73,5 +91,7 @@ export class FilterComponent {
     this.category.setValue('');
     this.setLanguage.emit('');
     this.language.setValue('');
+    this.searchByTitle.emit('');
+    this.searchForm.setValue('');
   }
 }
