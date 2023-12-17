@@ -24,7 +24,6 @@ export class FilterComponent {
   category = new FormControl('');
   language = new FormControl('');
   author = new FormControl('');
-  searchForm = new FormControl('');
 
   constructor(
     private bookService: BookServices,
@@ -49,7 +48,7 @@ export class FilterComponent {
     this.setLanguage.emit('');
     this.language.setValue('');
     this.searchByTitle.emit('');
-    this.searchForm.setValue('');
+    this.search = '';
   }
 
   selectedCategories(category: string) {
@@ -59,7 +58,7 @@ export class FilterComponent {
     this.setLanguage.emit('');
     this.language.setValue('');
     this.searchByTitle.emit('');
-    this.searchForm.setValue('');
+    this.search = '';
   }
 
   selectedLanguage(language: string) {
@@ -69,11 +68,11 @@ export class FilterComponent {
     this.selectedCategory.emit('');
     this.category.setValue('');
     this.searchByTitle.emit('');
-    this.searchForm.setValue('');
+    this.search = '';
   }
 
-  returnTitle(title: string) {
-    this.searchByTitle.emit(title);
+  onSearchChange() {
+    this.searchByTitle.emit(this.search);
     this.authorName.emit('');
     this.author.setValue('');
     this.selectedCategory.emit('');
@@ -92,6 +91,6 @@ export class FilterComponent {
     this.setLanguage.emit('');
     this.language.setValue('');
     this.searchByTitle.emit('');
-    this.searchForm.setValue('');
+    this.search = '';
   }
 }
