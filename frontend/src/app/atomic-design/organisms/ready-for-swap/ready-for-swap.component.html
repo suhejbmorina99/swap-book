@@ -5,7 +5,11 @@
   <div
     class="other-books"
     *ngIf="
-      otherBooks && !specificCategory && !specificAuthor && !specificLanguage
+      otherBooks &&
+      !specificCategory &&
+      !specificAuthor &&
+      !specificLanguage &&
+      !specificBook
     "
   >
     <mat-card class="example-card" *ngFor="let book of otherBooks">
@@ -36,7 +40,8 @@
       otherAuthors.length > 0 &&
       !specificCategory &&
       specificAuthor &&
-      !specificLanguage
+      !specificLanguage &&
+      !specificBook
     "
   >
     <mat-card class="example-card" *ngFor="let book of otherAuthors">
@@ -63,7 +68,9 @@
   </div>
   <div
     class="other-books"
-    *ngIf="specificCategory && !specificAuthor && !specificLanguage"
+    *ngIf="
+      specificCategory && !specificAuthor && !specificLanguage && !specificBook
+    "
   >
     <mat-card class="example-card" *ngFor="let book of specificCategories">
       <mat-card-header style="background-color: #f6f7f9">
@@ -90,9 +97,40 @@
 
   <div
     class="other-books"
-    *ngIf="specificLanguage && !specificCategory && !specificAuthor"
+    *ngIf="
+      specificLanguage && !specificCategory && !specificAuthor && !specificBook
+    "
   >
     <mat-card class="example-card" *ngFor="let book of setLanguage">
+      <mat-card-header style="background-color: #f6f7f9">
+        <mat-card-title class="title-card" style="margin-top: -4px"
+          >Title: {{ book.title }}</mat-card-title
+        >
+        <mat-card-subtitle
+          style="font-size: 10px; margin-top: -7px"
+          class="author"
+          >Author: {{ book.author }}</mat-card-subtitle
+        >
+        <mat-card-subtitle style="font-size: 10px; margin-top: -4px"
+          >Condition: {{ book.condition }}</mat-card-subtitle
+        >
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="../../../../assets/book-cover.png"
+        alt="Photo of a Book"
+        style="height: 100px"
+      />
+    </mat-card>
+  </div>
+
+  <div
+    class="other-books"
+    *ngIf="
+      specificBook && !specificCategory && !specificAuthor && !specificLanguage
+    "
+  >
+    <mat-card class="example-card" *ngFor="let book of specificTitle">
       <mat-card-header style="background-color: #f6f7f9">
         <mat-card-title class="title-card" style="margin-top: -4px"
           >Title: {{ book.title }}</mat-card-title

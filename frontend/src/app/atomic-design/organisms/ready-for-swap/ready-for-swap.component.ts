@@ -37,7 +37,6 @@ export class ReadyForSwapComponent implements OnChanges {
     }
 
     if (userId && this.specificBook) {
-      console.log('1');
       this.bookService
         .searchByTitle(userId, this.specificBook)
         .subscribe((data: any[]) => {
