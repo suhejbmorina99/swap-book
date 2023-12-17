@@ -127,7 +127,7 @@ export class BookServices {
   }
 
   public searchByTitle(userId?: string, title?: string): Observable<any> {
-    const url = `${this.baseUrl}/book/search`;
+    const url = `${this.baseUrl}/book/search?userId=${userId}&title=${title}`;
     return this.http.get<any>(url);
   }
 }

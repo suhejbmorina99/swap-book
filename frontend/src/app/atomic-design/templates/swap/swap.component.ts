@@ -9,6 +9,7 @@ export class SwapComponent {
   public specificAuthor = '';
   public specificCategories = '';
   public specificLanguage = '';
+  public specificBook = '';
 
   authorName(name: string) {
     this.specificAuthor = name;
@@ -20,5 +21,9 @@ export class SwapComponent {
 
   setLanguage(language: string) {
     this.specificLanguage = language;
+  }
+
+  searchBook(title: string) {
+    this.specificBook = title;
   }
 }

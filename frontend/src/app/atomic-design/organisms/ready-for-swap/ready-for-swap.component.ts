@@ -11,11 +11,13 @@ export class ReadyForSwapComponent implements OnChanges {
   @Input() specificAuthor = '';
   @Input() specificCategory = '';
   @Input() specificLanguage = '';
+  @Input() specificBook = '';
 
   public otherBooks: any[] = [];
   public otherAuthors: any[] = [];
   public specificCategories: any[] = [];
   public setLanguage: any[] = [];
+  public specificTitle: any[] = [];
 
   constructor(
     private bookService: BookServices,
@@ -31,6 +33,15 @@ export class ReadyForSwapComponent implements OnChanges {
         .getOtherBooks({ id: userId })
         .subscribe((data: any[]) => {
           this.otherBooks = data;
+        });
+    }
+
+    if (userId && this.specificBook) {
+      console.log('1');
+      this.bookService
+        .searchByTitle(userId, this.specificBook)
+        .subscribe((data: any[]) => {
+          this.specificTitle = data;
         });
     }
 
