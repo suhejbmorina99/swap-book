@@ -125,4 +125,9 @@ export class BookServices {
     const url = `${this.baseUrl}/book/language/${language}`;
     return this.http.get<any>(url);
   }
+
+  public searchByTitle(userId?: string, title?: string): Observable<any> {
+    const url = `${this.baseUrl}/book/search`;
+    return this.http.get<any>(url);
+  }
 }
