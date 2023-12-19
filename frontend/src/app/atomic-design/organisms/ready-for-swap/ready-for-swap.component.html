@@ -123,33 +123,68 @@
       />
     </mat-card>
   </div>
-
   <div
     class="other-books"
     *ngIf="
       specificBook && !specificCategory && !specificAuthor && !specificLanguage
     "
   >
-    <mat-card class="example-card" *ngFor="let book of specificTitle">
-      <mat-card-header style="background-color: #f6f7f9">
-        <mat-card-title class="title-card" style="margin-top: -4px"
-          >Title: {{ book.title }}</mat-card-title
-        >
-        <mat-card-subtitle
-          style="font-size: 10px; margin-top: -7px"
-          class="author"
-          >Author: {{ book.author }}</mat-card-subtitle
-        >
-        <mat-card-subtitle style="font-size: 10px; margin-top: -4px"
-          >Condition: {{ book.condition }}</mat-card-subtitle
-        >
-      </mat-card-header>
-      <img
-        mat-card-image
-        src="../../../../assets/book-cover.png"
-        alt="Photo of a Book"
-        style="height: 100px"
-      />
-    </mat-card>
+    <ng-container *ngIf="specificTitle.length > 0; else noBooksFound">
+      <mat-card class="example-card" *ngFor="let book of specificTitle">
+        <mat-card-header style="background-color: #f6f7f9">
+          <mat-card-title class="title-card" style="margin-top: -4px"
+            >Title: {{ book.title }}</mat-card-title
+          >
+          <mat-card-subtitle
+            style="font-size: 10px; margin-top: -7px"
+            class="author"
+            >Author: {{ book.author }}</mat-card-subtitle
+          >
+          <mat-card-subtitle style="font-size: 10px; margin-top: -4px"
+            >Condition: {{ book.condition }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="../../../../assets/book-cover.png"
+          alt="Photo of a Book"
+          style="height: 100px"
+        />
+      </mat-card>
+    </ng-container>
+    <ng-template #noBooksFound>
+      <div class="no-books-message">
+        No matching books found for the specified title.
+      </div>
+    </ng-template>
   </div>
+
+<!--  <div-->
+<!--    class="other-books"-->
+<!--    *ngIf="-->
+<!--      specificBook && !specificCategory && !specificAuthor && !specificLanguage-->
+<!--    "-->
+<!--  >-->
+<!--    <mat-card class="example-card" *ngFor="let book of specificTitle">-->
+<!--      <mat-card-header style="background-color: #f6f7f9">-->
+<!--        <mat-card-title class="title-card" style="margin-top: -4px"-->
+<!--          >Title: {{ book.title }}</mat-card-title-->
+<!--        >-->
+<!--        <mat-card-subtitle-->
+<!--          style="font-size: 10px; margin-top: -7px"-->
+<!--          class="author"-->
+<!--          >Author: {{ book.author }}</mat-card-subtitle-->
+<!--        >-->
+<!--        <mat-card-subtitle style="font-size: 10px; margin-top: -4px"-->
+<!--          >Condition: {{ book.condition }}</mat-card-subtitle-->
+<!--        >-->
+<!--      </mat-card-header>-->
+<!--      <img-->
+<!--        mat-card-image-->
+<!--        src="../../../../assets/book-cover.png"-->
+<!--        alt="Photo of a Book"-->
+<!--        style="height: 100px"-->
+<!--      />-->
+<!--    </mat-card>-->
+<!--  </div>-->
 </div>

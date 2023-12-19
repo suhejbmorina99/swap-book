@@ -37,11 +37,14 @@ export class ReadyForSwapComponent implements OnChanges {
     }
 
     if (userId && this.specificBook) {
-      this.bookService
-        .searchByTitle(userId, this.specificBook)
-        .subscribe((data: any[]) => {
+      this.bookService.searchByTitle(userId, this.specificBook).subscribe(
+        (data: any[]) => {
           this.specificTitle = data;
-        });
+        },
+        (error: any) => {
+          if (error.status === 404) this.specificTitle = [];
+        },
+      );
     }
 
     if (this.specificAuthor) {
