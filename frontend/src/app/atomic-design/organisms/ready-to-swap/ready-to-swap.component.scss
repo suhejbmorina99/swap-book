@@ -15,8 +15,11 @@
       display: flex;
       width: 95%;
       height: 30%;
+      align-items: center;
+      justify-content: center;
       background-color: #eef5ef;
       border-radius: 10px;
+      border-style: dashed;
     }
 
     .my-books {
@@ -26,6 +29,8 @@
       width: 95%;
       height: 68%;
       overflow-y: auto;
+      background-color: #f6f7f9;
+      border-radius: 10px;
 
       .example-card {
         margin-top: 1.5rem;
