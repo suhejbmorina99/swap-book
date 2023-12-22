@@ -2,7 +2,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  OnChanges,
   Output,
+  SimpleChanges,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookServices } from 'src/app/store/services/book.services';
@@ -13,7 +15,7 @@ import { WebsocketService } from 'src/app/store/services/websocket.service';
   templateUrl: './all-books.component.html',
   styleUrls: ['./all-books.component.scss'],
 })
-export class AllBooksComponent {
+export class AllBooksComponent implements OnChanges {
   public allBooks: any[] = [];
   public userBooks: any[] = [];
   public userBookId: any;
@@ -24,7 +26,7 @@ export class AllBooksComponent {
   constructor(
     private bookService: BookServices,
     private router: Router,
-    private websocketService: WebsocketService
+    private websocketService: WebsocketService,
   ) {}
 
   ngOnInit() {
@@ -36,18 +38,18 @@ export class AllBooksComponent {
           // Handle updates to user books in real-time
           this.userBooks.push(updatedBooks);
         });
+    }
+  }
 
+  ngOnChanges(changes: SimpleChanges) {
+    const userId = localStorage.getItem('userId');
+    if (userId)
       this.bookService.getUserBooks({ id: userId }).subscribe((data: any[]) => {
         this.userBooks = data;
+        if (this.userBooks.length > 0) {
+          this.redirectToSwap.emit(true);
+        }
       });
-    }
-
-    this.bookService.getBooks().subscribe((data: any[]) => {
-      this.allBooks = data;
-      if (this.allBooks.length > 0) {
-        this.redirectToSwap.emit(true);
-      }
-    });
   }
 
   public selectBook(bookId: string) {

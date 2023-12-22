@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
 export class MainComponent {
   public redirectTo: boolean = false;
 
-  constructor(private router: Router, private snackBar: MatSnackBar) {}
+  constructor(
+    private router: Router,
+    private snackBar: MatSnackBar,
+  ) {}
 
   navigateTo() {
     if (this.redirectTo) {
