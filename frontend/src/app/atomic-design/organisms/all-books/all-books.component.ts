@@ -31,17 +31,17 @@ export class AllBooksComponent implements OnChanges {
 
   ngOnInit() {
     const userId = localStorage.getItem('userId');
-    if (userId) {
-      this.websocketService
-        .onEvent('userBooksUpdated')
-        .subscribe((updatedBooks) => {
-          // Handle updates to user books in real-time
-          this.userBooks.push(updatedBooks);
-        });
 
+    this.websocketService
+      .onEvent('userBooksUpdated')
+      .subscribe((updatedBooks) => {
+        // Handle updates to user books in real-time
+        this.userBooks.push(updatedBooks);
+      });
+    if (userId) {
       this.bookService.getUserBooks({ id: userId }).subscribe((data: any[]) => {
         this.userBooks = data;
-        if (this.userBooks.length > 0) {
+        if (this.userBooks.length) {
           this.redirectToSwap.emit(true);
         }
       });
@@ -49,7 +49,7 @@ export class AllBooksComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.userBooks.length > 0) {
+    if (this.userBooks.length) {
       this.redirectToSwap.emit(true);
     }
   }
