@@ -19,9 +19,13 @@ export class MainComponent {
     if (this.redirectTo) {
       this.router.navigate(['swap']);
     } else {
-      this.snackBar.open('Register new book, to be able to swap', undefined, {
-        duration: 2000,
-      });
+      this.snackBar.open(
+        '\n' + 'Join the book swap adventure – Register your book now!',
+        undefined,
+        {
+          duration: 2500,
+        },
+      );
     }
   }
 
