@@ -38,18 +38,20 @@ export class AllBooksComponent implements OnChanges {
           // Handle updates to user books in real-time
           this.userBooks.push(updatedBooks);
         });
-    }
-  }
 
-  ngOnChanges(changes: SimpleChanges) {
-    const userId = localStorage.getItem('userId');
-    if (userId)
       this.bookService.getUserBooks({ id: userId }).subscribe((data: any[]) => {
         this.userBooks = data;
         if (this.userBooks.length > 0) {
           this.redirectToSwap.emit(true);
         }
       });
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.userBooks.length > 0) {
+      this.redirectToSwap.emit(true);
+    }
   }
 
   public selectBook(bookId: string) {
