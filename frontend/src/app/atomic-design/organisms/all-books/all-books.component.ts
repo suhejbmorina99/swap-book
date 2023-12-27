@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  OnChanges,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookServices } from 'src/app/store/services/book.services';
 import { WebsocketService } from 'src/app/store/services/websocket.service';
@@ -15,7 +8,7 @@ import { WebsocketService } from 'src/app/store/services/websocket.service';
   templateUrl: './all-books.component.html',
   styleUrls: ['./all-books.component.scss'],
 })
-export class AllBooksComponent implements OnChanges {
+export class AllBooksComponent {
   public allBooks: any[] = [];
   public userBooks: any[] = [];
   public userBookId: any;
@@ -37,20 +30,14 @@ export class AllBooksComponent implements OnChanges {
       .subscribe((updatedBooks) => {
         // Handle updates to user books in real-time
         this.userBooks.push(updatedBooks);
-      });
-    if (userId) {
-      this.bookService.getUserBooks({ id: userId }).subscribe((data: any[]) => {
-        this.userBooks = data;
         if (this.userBooks.length) {
           this.redirectToSwap.emit(true);
         }
       });
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (this.userBooks.length) {
-      this.redirectToSwap.emit(true);
+    if (userId) {
+      this.bookService.getUserBooks({ id: userId }).subscribe((data: any[]) => {
+        this.userBooks = data;
+      });
     }
   }
 
