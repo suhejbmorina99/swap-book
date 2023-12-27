@@ -6,6 +6,7 @@ import { getBooksData } from 'src/app/store/selectors/book.selectors';
 import { ActivatedRoute, Router } from '@angular/router';
 import { updateBookAction } from 'src/app/store/actions/book.actions';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { WebsocketService } from '../../../store/services/websocket.service';
 
 @Component({
   selector: 'app-edit-book',
@@ -22,7 +23,8 @@ export class EditBookComponent {
     private bookService: BookServices,
     private store: Store<State>,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private websocketService: WebsocketService,
   ) {}
 
   ngOnInit(): void {
@@ -50,13 +52,14 @@ export class EditBookComponent {
         numberOfPages: this.userBook.book.numberOfPages,
         category: this.userBook.book.category,
         publisher: this.userBook.book.publisher,
-      })
+      }),
     );
   }
 
   deleteBook(bookId: string) {
     if (bookId === this.bookId) {
       this.bookService.deleteUserBook(bookId).subscribe(() => {
+        // this.websocketService.emitEvent('deleteBook', { bookId });
         this.snackBar.open('The book is deleted successfully', undefined, {
           duration: 500,
         });
