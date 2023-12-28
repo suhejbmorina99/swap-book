@@ -29,11 +29,16 @@ export class ReadyForSwapComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     const userId = localStorage.getItem('userId');
     if (userId) {
-      this.bookService
-        .getOtherBooks({ id: userId })
-        .subscribe((data: any[]) => {
+      this.bookService.getOtherBooks({ id: userId }).subscribe(
+        (data: any[]) => {
           this.otherBooks = data;
-        });
+        },
+        (error: any) => {
+          if (error.status === 404) {
+            console.log('No other books exists');
+          }
+        },
+      );
     }
 
     if (userId && this.specificBook) {
