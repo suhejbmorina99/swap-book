@@ -13,36 +13,44 @@
       !specificBook
     "
   >
-    <mat-card class="example-card" *ngFor="let book of otherBooks">
-      <mat-card-header style="background-color: #f6f7f9">
-        <mat-card-title
-          class="title-card"
-          style="margin-top: -4px"
-          matTooltip="{{ book.title }}"
-          matTooltipPosition="right"
-          >Title: {{ book.title }}</mat-card-title
-        >
-        <mat-card-subtitle
-          style="font-size: 10px; margin-top: -7px"
-          class="author"
-          matTooltip="{{ book.author }}"
-          matTooltipPosition="right"
-          >Author: {{ book.author }}</mat-card-subtitle
-        >
-        <mat-card-subtitle
-          style="font-size: 10px; margin-top: -4px"
-          matTooltip="{{ book.condition }}"
-          matTooltipPosition="right"
-          >Condition: {{ book.condition }}</mat-card-subtitle
-        >
-      </mat-card-header>
-      <img
-        mat-card-image
-        src="../../../../assets/book-cover.png"
-        alt="Photo of a Book"
-        style="height: 100px"
-      />
-    </mat-card>
+    <ng-container *ngIf="otherBooks.length > 0; else noOtherBooksFound">
+      <mat-card class="example-card" *ngFor="let book of otherBooks">
+        <mat-card-header style="background-color: #f6f7f9">
+          <mat-card-title
+            class="title-card"
+            style="margin-top: -4px"
+            matTooltip="{{ book.title }}"
+            matTooltipPosition="right"
+            >Title: {{ book.title }}</mat-card-title
+          >
+          <mat-card-subtitle
+            style="font-size: 10px; margin-top: -7px"
+            class="author"
+            matTooltip="{{ book.author }}"
+            matTooltipPosition="right"
+            >Author: {{ book.author }}</mat-card-subtitle
+          >
+          <mat-card-subtitle
+            style="font-size: 10px; margin-top: -4px"
+            matTooltip="{{ book.condition }}"
+            matTooltipPosition="right"
+            >Condition: {{ book.condition }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="../../../../assets/book-cover.png"
+          alt="Photo of a Book"
+          style="height: 100px"
+        />
+      </mat-card>
+    </ng-container>
+    <ng-template #noOtherBooksFound>
+      <div class="no-books-message">
+        You're the initial spark! We're preparing more books for your swapping
+        adventure.
+      </div>
+    </ng-template>
   </div>
   <div
     class="other-books"
