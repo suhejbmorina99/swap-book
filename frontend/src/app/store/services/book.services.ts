@@ -121,8 +121,8 @@ export class BookServices {
     return this.http.get<any>(url);
   }
 
-  public getByLanguage(language: string): Observable<any> {
-    const url = `${this.baseUrl}/book/language/${language}`;
+  public getByLanguage(language: string, userId: string): Observable<any> {
+    const url = `${this.baseUrl}/book/language/${language}/${userId}`;
     return this.http.get<any>(url);
   }
 

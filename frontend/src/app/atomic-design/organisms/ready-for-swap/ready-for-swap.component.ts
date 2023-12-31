@@ -74,9 +74,9 @@ export class ReadyForSwapComponent implements OnChanges {
       this.specificCategories = [];
     }
 
-    if (this.specificLanguage) {
+    if (this.specificLanguage && userId) {
       this.bookService
-        .getByLanguage(this.specificLanguage)
+        .getByLanguage(this.specificLanguage, userId)
         .subscribe((data: any[]) => {
           this.setLanguage = data;
           this.otherBooks = [];
