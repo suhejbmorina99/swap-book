@@ -239,12 +239,15 @@ router.get('/specific-author/:authorName', async (req, res) => {
     }
 })
 
-router.get(`/language/:language`, async (req, res) => {
+router.get(`/language/:language/:userId`, async (req, res) => {
     try {
         const language = req.params.language
+        const userId = req.params.userId
 
-        // Query the database to get books based on the provided language
-        const booksWithLanguage = await Book.find({ language })
+        const booksWithLanguage = await Book.find({
+            language,
+            user: { $ne: userId },
+        })
 
         if (!booksWithLanguage || booksWithLanguage.length === 0) {
             return res.status(404).json({
