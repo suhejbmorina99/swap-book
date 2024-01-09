@@ -264,4 +264,46 @@ router.get(`/language/:language/:userId`, async (req, res) => {
     }
 })
 
+// This route moves a book to the "ready for swap" area
+router.post('/move-to-ready-for-swap/:bookId', async (req, res) => {
+    const bookId = req.params.bookId
+    const userId = req.body.userId // Assuming userId is sent in the request body
+
+    try {
+        const userBookToRemove = await Book.findOneAndRemove({
+            _id: bookId,
+            user: userId,
+        })
+
+        if (!userBookToRemove) {
+            return res
+                .status(404)
+                .json({
+                    success: false,
+                    message: "Book not found in user's collection",
+                })
+        }
+
+        // Create a new book document with the same details and mark it as "ready for swap"
+        const bookToAddToSwap = new Book({
+            title: userBookToRemove.title,
+            author: userBookToRemove.author,
+            isbn: userBookToRemove.isbn,
+            language: userBookToRemove.language,
+            condition: userBookToRemove.condition,
+            numberOfPages: userBookToRemove.numberOfPages,
+            category: userBookToRemove.category,
+            publisher: userBookToRemove.publisher,
+            user: null, // No specific user, as it's now in the "ready for swap" area
+            readyForSwap: true,
+        })
+
+        const addedBookToSwap = await bookToAddToSwap.save()
+
+        res.status(200).json({ success: true, movedBook: addedBookToSwap })
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message })
+    }
+})
+
 module.exports = router
