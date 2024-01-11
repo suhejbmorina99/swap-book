@@ -1,9 +1,25 @@
 <div class="container">
-  <div class="selected-book">
+  <div
+    class="selected-book"
+    cdkDropList
+    #readyToSwap="cdkDropList"
+    [cdkDropListData]="todo"
+    [cdkDropListConnectedTo]="[doneList]"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="example-box" *ngFor="let item of todo" cdkDrag>{{ item }}</div>
+    >
     <span>Your next read awaits a swap!</span>
-    <div class="down-arrow"></div>
+    <div class="down-arrow" *ngFor="let item of todo" cdkDrag>{{ item }}></div>
   </div>
-  <div class="my-books">
+  <div
+    class="my-books"
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="userBooks"
+    [cdkDropListConnectedTo]="[readyToSwap]"
+    (cdkDropListDropped)="drop($event)"
+  >
     <mat-card class="example-card" *ngFor="let book of userBooks">
       <mat-card-header style="background-color: #f6f7f9">
         <mat-card-title

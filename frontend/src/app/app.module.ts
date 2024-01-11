@@ -37,6 +37,7 @@ import { FilterComponent } from './atomic-design/organisms/filter/filter.compone
 import { HeaderComponent } from './atomic-design/organisms/header/header.component';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {CdkDrag, CdkDropList} from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -74,6 +75,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     FormsModule,
     MatMenuModule,
     MatTooltipModule,
+    CdkDropList,
+    CdkDrag,
   ],
   providers: [AuthServices, BookServices],
   bootstrap: [AppComponent],
