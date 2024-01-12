@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookServices } from 'src/app/store/services/book.services';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-ready-to-swap',
@@ -14,8 +10,7 @@ import {
 })
 export class ReadyToSwapComponent {
   public userBooks: any[] = [];
-
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+  public selectedBooks: any[] = [];
 
   constructor(
     private bookService: BookServices,
@@ -31,20 +26,36 @@ export class ReadyToSwapComponent {
     }
   }
 
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
+  onDrop(event: CdkDragDrop<string[]>): void {
+    // Handle drop if needed
+  }
+
+  onCardClick(book: any): void {
+    const isInSelected = this.isBookInArray(book, this.selectedBooks);
+
+    if (isInSelected) {
+      // Remove from selectedBooks and add back to userBooks
+      const index = this.selectedBooks.indexOf(book);
+      if (index !== -1) {
+        this.selectedBooks.splice(index, 1);
+        this.userBooks.push(book);
+      }
     } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
+      // Move the selected book from userBooks to selectedBooks
+      const index = this.userBooks.indexOf(book);
+      if (index !== -1) {
+        this.userBooks.splice(index, 1);
+        this.selectedBooks.push({
+          title: book.title,
+          author: book.author,
+          condition: book.condition,
+          // Add other properties as needed
+        });
+      }
     }
+  }
+
+  private isBookInArray(book: any, array: any[]): boolean {
+    return array.some((item) => item.title === book.title);
   }
 }
