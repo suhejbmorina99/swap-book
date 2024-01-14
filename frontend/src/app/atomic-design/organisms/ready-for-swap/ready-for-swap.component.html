@@ -74,7 +74,7 @@
       </mat-card>
     </ng-container>
     <ng-template #noOtherBooksFound>
-      <div class="no-books-message">
+      <div class="no-books-message" *ngIf="!selectedBooks.length">
         You're the initial spark! We're preparing more books for your swapping
         adventure.
       </div>
