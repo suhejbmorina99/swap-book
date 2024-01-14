@@ -34,15 +34,26 @@
       (click)="onCardClick(book)"
     >
       <mat-card-header style="background-color: #f6f7f9">
-        <mat-card-title class="title-card" style="margin-top: -4px">{{
-          book.title
-        }}</mat-card-title>
-        <mat-card-subtitle style="font-size: 10px; margin-top: -7px">{{
-          book.author
-        }}</mat-card-subtitle>
-        <mat-card-subtitle style="font-size: 10px; margin-top: -4px">{{
-          book.condition
-        }}</mat-card-subtitle>
+        <mat-card-title
+          class="title-card"
+          style="margin-top: -4px"
+          matTooltip="{{ book.title }}"
+          matTooltipPosition="right"
+          >Title: {{ book.title }}</mat-card-title
+        >
+        <mat-card-subtitle
+          style="font-size: 10px; margin-top: -7px"
+          class="author"
+          matTooltip="{{ book.author }}"
+          matTooltipPosition="right"
+          >Author: {{ book.author }}</mat-card-subtitle
+        >
+        <mat-card-subtitle
+          style="font-size: 10px; margin-top: -4px"
+          matTooltip="{{ book.condition }}"
+          matTooltipPosition="right"
+          >Condition: {{ book.condition }}</mat-card-subtitle
+        >
       </mat-card-header>
       <img
         mat-card-image

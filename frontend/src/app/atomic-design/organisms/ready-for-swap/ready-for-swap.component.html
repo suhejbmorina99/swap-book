@@ -86,7 +86,11 @@
       specificAuthor && !specificCategory && !specificLanguage && !specificBook
     "
   >
-    <mat-card class="example-card" *ngFor="let book of otherAuthors">
+    <mat-card
+      class="example-card"
+      *ngFor="let book of otherAuthors"
+      (click)="onCardClick(book)"
+    >
       <mat-card-header style="background-color: #f6f7f9">
         <mat-card-title class="title-card" style="margin-top: -4px"
           >Title: {{ book.title }}</mat-card-title
@@ -114,7 +118,11 @@
       specificCategory && !specificAuthor && !specificLanguage && !specificBook
     "
   >
-    <mat-card class="example-card" *ngFor="let book of specificCategories">
+    <mat-card
+      class="example-card"
+      *ngFor="let book of specificCategories"
+      (click)="onCardClick(book)"
+    >
       <mat-card-header style="background-color: #f6f7f9">
         <mat-card-title class="title-card" style="margin-top: -4px"
           >Title: {{ book.title }}</mat-card-title
@@ -143,7 +151,11 @@
       specificLanguage && !specificCategory && !specificAuthor && !specificBook
     "
   >
-    <mat-card class="example-card" *ngFor="let book of setLanguage">
+    <mat-card
+      class="example-card"
+      *ngFor="let book of setLanguage"
+      (click)="onCardClick(book)"
+    >
       <mat-card-header style="background-color: #f6f7f9">
         <mat-card-title class="title-card" style="margin-top: -4px"
           >Title: {{ book.title }}</mat-card-title
@@ -172,7 +184,11 @@
     "
   >
     <ng-container *ngIf="specificTitle.length > 0; else noBooksFound">
-      <mat-card class="example-card" *ngFor="let book of specificTitle">
+      <mat-card
+        class="example-card"
+        *ngFor="let book of specificTitle"
+        (click)="onCardClick(book)"
+      >
         <mat-card-header style="background-color: #f6f7f9">
           <mat-card-title class="title-card" style="margin-top: -4px"
             >Title: {{ book.title }}</mat-card-title
