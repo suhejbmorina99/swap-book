@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookServices } from 'src/app/store/services/book.services';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-ready-for-swap',
@@ -18,6 +19,7 @@ export class ReadyForSwapComponent implements OnChanges {
   public specificCategories: any[] = [];
   public setLanguage: any[] = [];
   public specificTitle: any[] = [];
+  public selectedBooks: any[] = [];
 
   constructor(
     private bookService: BookServices,
@@ -84,5 +86,38 @@ export class ReadyForSwapComponent implements OnChanges {
     } else {
       this.setLanguage = [];
     }
+  }
+
+  onDrop(event: CdkDragDrop<string[]>): void {
+    // Handle drop if needed
+  }
+
+  onCardClick(book: any): void {
+    const isInSelected = this.isBookInArray(book, this.selectedBooks);
+
+    if (isInSelected) {
+      // Remove from selectedBooks and add back to userBooks
+      const index = this.selectedBooks.indexOf(book);
+      if (index !== -1) {
+        this.selectedBooks.splice(index, 1);
+        this.otherBooks.push(book);
+      }
+    } else {
+      // Move the selected book from userBooks to selectedBooks
+      const index = this.otherBooks.indexOf(book);
+      if (index !== -1) {
+        this.otherBooks.splice(index, 1);
+        this.selectedBooks.push({
+          title: book.title,
+          author: book.author,
+          condition: book.condition,
+          // Add other properties as needed
+        });
+      }
+    }
+  }
+
+  private isBookInArray(book: any, array: any[]): boolean {
+    return array.some((item) => item.title === book.title);
   }
 }

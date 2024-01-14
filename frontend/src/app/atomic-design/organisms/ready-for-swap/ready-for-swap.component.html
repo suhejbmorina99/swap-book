@@ -1,7 +1,31 @@
 <div class="container">
-  <div class="selected-book">
-    <span>Handpick your literary gem!</span>
-    <div class="down-arrow"></div>
+  <div class="selected-book" cdkDropList (cdkDropListDropped)="onDrop($event)">
+    <span *ngIf="!selectedBooks.length">Your next read awaits a swap!</span>
+    <div *ngIf="!selectedBooks.length" class="down-arrow"></div>
+    <mat-card
+      class="example-card"
+      *ngFor="let book of selectedBooks"
+      cdkDrag
+      (click)="onCardClick(book)"
+    >
+      <mat-card-header style="background-color: #f6f7f9">
+        <mat-card-title class="title-card" style="margin-top: -4px">{{
+          book.title
+        }}</mat-card-title>
+        <mat-card-subtitle style="font-size: 10px; margin-top: -7px">{{
+          book.author
+        }}</mat-card-subtitle>
+        <mat-card-subtitle style="font-size: 10px; margin-top: -4px">{{
+          book.condition
+        }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="../../../../assets/book-cover.png"
+        alt="Photo of a Book"
+        style="height: 100px"
+      />
+    </mat-card>
   </div>
   <div
     class="other-books"
@@ -14,7 +38,11 @@
     "
   >
     <ng-container *ngIf="otherBooks.length > 0; else noOtherBooksFound">
-      <mat-card class="example-card" *ngFor="let book of otherBooks">
+      <mat-card
+        class="example-card"
+        *ngFor="let book of otherBooks"
+        (click)="onCardClick(book)"
+      >
         <mat-card-header style="background-color: #f6f7f9">
           <mat-card-title
             class="title-card"
