@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BookServices } from 'src/app/store/services/book.services';
 import { category } from 'src/shared/stores/categories-data.store';
 import { language } from 'src/shared/stores/language-store';
+import { FilterService } from '../../../../shared/services/shared.service';
 
 @Component({
   selector: 'app-filter',
@@ -28,6 +29,7 @@ export class FilterComponent {
   constructor(
     private bookService: BookServices,
     private router: Router,
+    private filterService: FilterService,
   ) {}
 
   ngOnInit() {
@@ -92,5 +94,7 @@ export class FilterComponent {
     this.language.setValue('');
     this.searchByTitle.emit('');
     this.search = '';
+
+    this.filterService.clearFilter();
   }
 }

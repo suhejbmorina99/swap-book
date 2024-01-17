@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookServices } from 'src/app/store/services/book.services';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { FilterService } from '../../../../shared/services/shared.service';
 
 @Component({
   selector: 'app-ready-for-swap',
@@ -24,6 +25,7 @@ export class ReadyForSwapComponent implements OnChanges {
   constructor(
     private bookService: BookServices,
     private router: Router,
+    private filterService: FilterService,
   ) {}
 
   ngOnInit() {}
@@ -86,6 +88,12 @@ export class ReadyForSwapComponent implements OnChanges {
     } else {
       this.setLanguage = [];
     }
+
+    this.filterService.clearFilter$.subscribe(() => {
+      // Clear the selected books when the clear filter is triggered
+      this.selectedBooks = [];
+      this.fetchBooksAgain();
+    });
   }
 
   onDrop(event: CdkDragDrop<string[]>): void {
@@ -142,5 +150,21 @@ export class ReadyForSwapComponent implements OnChanges {
 
   private isBookInArray(book: any, array: any[]): boolean {
     return array.some((item) => item.title === book.title);
+  }
+
+  fetchBooksAgain() {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.bookService.getOtherBooks({ id: userId }).subscribe(
+        (data: any[]) => {
+          this.otherBooks = data;
+        },
+        (error: any) => {
+          if (error.status === 404) {
+            console.log('No other books exists');
+          }
+        },
+      );
+    }
   }
 }
