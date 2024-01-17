@@ -94,27 +94,49 @@ export class ReadyForSwapComponent implements OnChanges {
 
   onCardClick(book: any): void {
     const isInSelected = this.isBookInArray(book, this.selectedBooks);
-    console.log(isInSelected);
 
     if (isInSelected) {
-      // Remove from selectedBooks and add back to userBooks
-      const index = this.selectedBooks.indexOf(book);
+      console.log('1');
+      // Remove from selectedBooks and add back to otherBooks or specificCategories
+      const index = this.selectedBooks.findIndex(
+        (item) => item.title === book.title,
+      );
       if (index !== -1) {
         this.selectedBooks.splice(index, 1);
-        this.otherBooks.push(book);
+
+        if (this.specificAuthor) {
+          // If specificAuthor is set, add back to otherAuthors
+          this.otherAuthors.push(book);
+        } else if (this.specificCategory) {
+          // If specificCategory is set, add back to specificCategories
+          this.specificCategories.push(book);
+        } else {
+          // If neither specificAuthor nor specificCategory is set, add back to otherBooks
+          this.otherBooks.push(book);
+        }
       }
     } else {
-      // Move the selected book from userBooks to selectedBooks
-      const index = this.otherBooks.indexOf(book);
-      if (index !== -1) {
-        this.otherBooks.splice(index, 1);
-        this.selectedBooks.push({
-          title: book.title,
-          author: book.author,
-          condition: book.condition,
-          // Add other properties as needed
-        });
+      console.log('2');
+      // Move the selected book from otherBooks or specificCategories to selectedBooks
+      const indexInOtherBooks = this.otherBooks.findIndex(
+        (item) => item.title === book.title,
+      );
+      const indexInSpecificCategories = this.specificCategories.findIndex(
+        (item) => item.title === book.title,
+      );
+
+      if (indexInOtherBooks !== -1) {
+        this.otherBooks.splice(indexInOtherBooks, 1);
+      } else if (indexInSpecificCategories !== -1) {
+        this.specificCategories.splice(indexInSpecificCategories, 1);
       }
+
+      this.selectedBooks.push({
+        title: book.title,
+        author: book.author,
+        condition: book.condition,
+        // Add other properties as needed
+      });
     }
   }
 
