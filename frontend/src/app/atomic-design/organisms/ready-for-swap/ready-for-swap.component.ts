@@ -106,8 +106,6 @@ export class ReadyForSwapComponent implements OnChanges {
     } else {
       // Move the selected book from userBooks to selectedBooks
       const index = this.otherBooks.indexOf(book);
-      const indexOfCategories = this.specificCategories.indexOf(book);
-      console.log(index);
       if (index !== -1) {
         this.otherBooks.splice(index, 1);
         this.selectedBooks.push({
