@@ -104,7 +104,6 @@ export class ReadyForSwapComponent implements OnChanges {
     const isInSelected = this.isBookInArray(book, this.selectedBooks);
 
     if (isInSelected) {
-      console.log('1');
       // Remove from selectedBooks and add back to otherBooks or specificCategories
       const index = this.selectedBooks.findIndex(
         (item) => item.title === book.title,
@@ -121,7 +120,6 @@ export class ReadyForSwapComponent implements OnChanges {
         }
       }
     } else {
-      console.log('2');
       // Move the selected book from otherBooks or specificCategories to selectedBooks
       const indexInOtherBooks = this.otherBooks.findIndex(
         (item) => item.title === book.title,
@@ -131,10 +129,8 @@ export class ReadyForSwapComponent implements OnChanges {
       );
 
       if (indexInOtherBooks !== -1 && !this.specificCategory) {
-        console.log('heree');
         this.otherBooks.splice(indexInOtherBooks, 1);
       } else if (indexInSpecificCategories !== -1 && this.specificCategory) {
-        console.log('then here');
         this.specificCategories.splice(indexInSpecificCategories, 1);
       }
 
