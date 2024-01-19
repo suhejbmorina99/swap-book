@@ -112,10 +112,7 @@ export class ReadyForSwapComponent implements OnChanges {
       if (index !== -1) {
         this.selectedBooks.splice(index, 1);
 
-        if (this.specificAuthor) {
-          // If specificAuthor is set, add back to otherAuthors
-          this.otherAuthors.push(book);
-        } else if (this.specificCategory) {
+        if (this.specificCategory) {
           // If specificCategory is set, add back to specificCategories
           this.specificCategories.push(book);
         } else {
@@ -133,9 +130,11 @@ export class ReadyForSwapComponent implements OnChanges {
         (item) => item.title === book.title,
       );
 
-      if (indexInOtherBooks !== -1) {
+      if (indexInOtherBooks !== -1 && !this.specificCategory) {
+        console.log('heree');
         this.otherBooks.splice(indexInOtherBooks, 1);
-      } else if (indexInSpecificCategories !== -1) {
+      } else if (indexInSpecificCategories !== -1 && this.specificCategory) {
+        console.log('then here');
         this.specificCategories.splice(indexInSpecificCategories, 1);
       }
 
