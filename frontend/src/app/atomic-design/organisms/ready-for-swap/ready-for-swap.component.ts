@@ -114,6 +114,8 @@ export class ReadyForSwapComponent implements OnChanges {
         if (this.specificCategory) {
           // If specificCategory is set, add back to specificCategories
           this.specificCategories.push(book);
+        } else if (this.specificBook) {
+          this.specificTitle.push(book);
         } else {
           // If neither specificAuthor nor specificCategory is set, add back to otherBooks
           this.otherBooks.push(book);
@@ -128,10 +130,28 @@ export class ReadyForSwapComponent implements OnChanges {
         (item) => item.title === book.title,
       );
 
-      if (indexInOtherBooks !== -1 && !this.specificCategory) {
+      const indexInSpecificTitle = this.specificTitle.findIndex(
+        (item) => item.title === book.title,
+      );
+
+      if (
+        indexInOtherBooks !== -1 &&
+        !this.specificCategory &&
+        !this.specificBook
+      ) {
         this.otherBooks.splice(indexInOtherBooks, 1);
-      } else if (indexInSpecificCategories !== -1 && this.specificCategory) {
+      } else if (
+        indexInSpecificCategories !== -1 &&
+        this.specificCategory &&
+        !this.specificBook
+      ) {
         this.specificCategories.splice(indexInSpecificCategories, 1);
+      } else if (
+        indexInSpecificTitle !== -1 &&
+        this.specificBook &&
+        !this.specificCategory
+      ) {
+        this.specificTitle.splice(indexInSpecificTitle, 1);
       }
 
       this.selectedBooks.push({
