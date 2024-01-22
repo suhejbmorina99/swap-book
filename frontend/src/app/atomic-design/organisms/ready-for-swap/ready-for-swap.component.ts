@@ -116,6 +116,8 @@ export class ReadyForSwapComponent implements OnChanges {
           this.specificCategories.push(book);
         } else if (this.specificBook) {
           this.specificTitle.push(book);
+        } else if (this.specificLanguage) {
+          this.setLanguage.push(book);
         } else {
           // If neither specificAuthor nor specificCategory is set, add back to otherBooks
           this.otherBooks.push(book);
@@ -134,24 +136,38 @@ export class ReadyForSwapComponent implements OnChanges {
         (item) => item.title === book.title,
       );
 
+      const indexInSpecificLanguage = this.setLanguage.findIndex(
+        (item) => item.title === book.title,
+      );
+
       if (
         indexInOtherBooks !== -1 &&
         !this.specificCategory &&
-        !this.specificBook
+        !this.specificBook &&
+        !this.specificLanguage
       ) {
         this.otherBooks.splice(indexInOtherBooks, 1);
       } else if (
         indexInSpecificCategories !== -1 &&
         this.specificCategory &&
-        !this.specificBook
+        !this.specificBook &&
+        !this.specificLanguage
       ) {
         this.specificCategories.splice(indexInSpecificCategories, 1);
       } else if (
         indexInSpecificTitle !== -1 &&
         this.specificBook &&
-        !this.specificCategory
+        !this.specificCategory &&
+        !this.specificLanguage
       ) {
         this.specificTitle.splice(indexInSpecificTitle, 1);
+      } else if (
+        indexInSpecificLanguage !== -1 &&
+        this.setLanguage &&
+        !this.specificCategory &&
+        !this.specificBook
+      ) {
+        this.setLanguage.splice(indexInSpecificLanguage, 1);
       }
 
       this.selectedBooks.push({
