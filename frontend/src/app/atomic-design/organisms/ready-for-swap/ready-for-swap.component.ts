@@ -99,6 +99,7 @@ export class ReadyForSwapComponent implements OnChanges {
     this.filterService.clearFilter$.subscribe(() => {
       // Clear the selected books when the clear filter is triggered
       this.selectedBooks = [];
+      this.fetchBooksAgain();
     });
   }
 
@@ -198,6 +199,24 @@ export class ReadyForSwapComponent implements OnChanges {
   }
 
   fetchBooksAgain() {
-
+    const userId = localStorage.getItem('userId');
+    if (
+      userId &&
+      !this.specificAuthor &&
+      !this.specificCategory &&
+      !this.specificLanguage &&
+      !this.specificBook
+    ) {
+      this.bookService.getOtherBooks({ id: userId }).subscribe(
+        (data: any[]) => {
+          this.otherBooks = data;
+        },
+        (error: any) => {
+          if (error.status === 404) {
+            console.log('No other books exists');
+          }
+        },
+      );
+    }
   }
 }
