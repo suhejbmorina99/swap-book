@@ -39,7 +39,6 @@ export class ReadyForSwapComponent implements OnChanges {
       !this.specificLanguage &&
       !this.specificBook
     ) {
-      console.log('gjeth qetu a');
       this.bookService.getOtherBooks({ id: userId }).subscribe(
         (data: any[]) => {
           this.otherBooks = data;
@@ -100,7 +99,6 @@ export class ReadyForSwapComponent implements OnChanges {
     this.filterService.clearFilter$.subscribe(() => {
       // Clear the selected books when the clear filter is triggered
       this.selectedBooks = [];
-      // this.fetchBooksAgain();
     });
   }
 
@@ -199,19 +197,7 @@ export class ReadyForSwapComponent implements OnChanges {
     return array.some((item) => item.title === book.title);
   }
 
-  // fetchBooksAgain() {
-  //   const userId = localStorage.getItem('userId');
-  //   if (userId) {
-  //     this.bookService.getOtherBooks({ id: userId }).subscribe(
-  //       (data: any[]) => {
-  //         this.otherBooks = data;
-  //       },
-  //       (error: any) => {
-  //         if (error.status === 404) {
-  //           console.log('No other books exists');
-  //         }
-  //       },
-  //     );
-  //   }
-  // }
+  fetchBooksAgain() {
+
+  }
 }
