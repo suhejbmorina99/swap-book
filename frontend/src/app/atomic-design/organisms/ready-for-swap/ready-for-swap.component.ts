@@ -32,7 +32,14 @@ export class ReadyForSwapComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const userId = localStorage.getItem('userId');
-    if (userId) {
+    if (
+      userId &&
+      !this.specificAuthor &&
+      !this.specificCategory &&
+      !this.specificLanguage &&
+      !this.specificBook
+    ) {
+      console.log('gjeth qetu a');
       this.bookService.getOtherBooks({ id: userId }).subscribe(
         (data: any[]) => {
           this.otherBooks = data;
@@ -49,6 +56,7 @@ export class ReadyForSwapComponent implements OnChanges {
       this.bookService.searchByTitle(userId, this.specificBook).subscribe(
         (data: any[]) => {
           this.specificTitle = data;
+          this.otherBooks = [];
         },
         (error: any) => {
           if (error.status === 404) this.specificTitle = [];
@@ -92,7 +100,7 @@ export class ReadyForSwapComponent implements OnChanges {
     this.filterService.clearFilter$.subscribe(() => {
       // Clear the selected books when the clear filter is triggered
       this.selectedBooks = [];
-      this.fetchBooksAgain();
+      // this.fetchBooksAgain();
     });
   }
 
@@ -118,13 +126,15 @@ export class ReadyForSwapComponent implements OnChanges {
           this.specificTitle.push(book);
         } else if (this.specificLanguage) {
           this.setLanguage.push(book);
+        } else if (this.specificAuthor) {
+          this.otherAuthors.push(book);
         } else {
           // If neither specificAuthor nor specificCategory is set, add back to otherBooks
           this.otherBooks.push(book);
         }
       }
     } else {
-      // Move the selected book from otherBooks or specificCategories to selectedBooks
+      // Move the selected book from filters to selectedBooks
       const indexInOtherBooks = this.otherBooks.findIndex(
         (item) => item.title === book.title,
       );
@@ -137,6 +147,10 @@ export class ReadyForSwapComponent implements OnChanges {
       );
 
       const indexInSpecificLanguage = this.setLanguage.findIndex(
+        (item) => item.title === book.title,
+      );
+
+      const indexInSpecificAuthor = this.otherAuthors.findIndex(
         (item) => item.title === book.title,
       );
 
@@ -168,6 +182,8 @@ export class ReadyForSwapComponent implements OnChanges {
         !this.specificBook
       ) {
         this.setLanguage.splice(indexInSpecificLanguage, 1);
+      } else if (indexInSpecificAuthor !== -1 && this.otherAuthors) {
+        this.otherAuthors.splice(indexInSpecificAuthor, 1);
       }
 
       this.selectedBooks.push({
@@ -183,19 +199,19 @@ export class ReadyForSwapComponent implements OnChanges {
     return array.some((item) => item.title === book.title);
   }
 
-  fetchBooksAgain() {
-    const userId = localStorage.getItem('userId');
-    if (userId) {
-      this.bookService.getOtherBooks({ id: userId }).subscribe(
-        (data: any[]) => {
-          this.otherBooks = data;
-        },
-        (error: any) => {
-          if (error.status === 404) {
-            console.log('No other books exists');
-          }
-        },
-      );
-    }
-  }
+  // fetchBooksAgain() {
+  //   const userId = localStorage.getItem('userId');
+  //   if (userId) {
+  //     this.bookService.getOtherBooks({ id: userId }).subscribe(
+  //       (data: any[]) => {
+  //         this.otherBooks = data;
+  //       },
+  //       (error: any) => {
+  //         if (error.status === 404) {
+  //           console.log('No other books exists');
+  //         }
+  //       },
+  //     );
+  //   }
+  // }
 }
