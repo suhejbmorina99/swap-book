@@ -11,6 +11,8 @@ export class WebsocketService {
   // Add a new observable for the deleteBook event
   private deleteBook = new Subject<any>();
 
+  private swapRequest = new Subject<any>();
+
   constructor() {
     // Connect to the WebSocket server (replace 'http://localhost:3000' with your server URL)
     this.socket = io('http://localhost:3000');
@@ -20,6 +22,12 @@ export class WebsocketService {
     this.socket.on('userBooksUpdated', (createdBook) => {
       // Handle the book created event here
       console.log('userBooksUpdated:', createdBook);
+    });
+
+    // Listen for the swapRequest event
+    this.socket.on('swapRequest', (swapData) => {
+      // Notify subscribers about the swapRequest event
+      this.swapRequest.next(swapData);
     });
 
     // Listen for the deleteBook event
@@ -37,6 +45,8 @@ export class WebsocketService {
   // Listen for custom events from the server
   onEvent(eventName: string): Observable<any> {
     switch (eventName) {
+      case 'swapRequest':
+        return this.swapRequest.asObservable();
       case 'deleteBook':
         return this.deleteBook.asObservable();
       default:
