@@ -102,10 +102,18 @@ export class FilterComponent {
 
   swapBook() {
     console.log('1');
-    this.webSocketService.onEvent('swapRequest').subscribe((swapData: any) => {
-      // Display a notification or open a dialog to show the swap request
-      console.log('Swap Request Received:', swapData);
-      // You can trigger the display of a dialog or notification here
-    });
+
+    // Assuming you have the bookId and otherUserId, replace them with actual values
+    const bookId = 123; // Replace with the actual bookId
+    const otherUserId = 456; // Replace with the actual otherUserId
+
+    // Emit a swap request to the server
+    this.webSocketService.emitEvent('swapRequest', { bookId, otherUserId });
+    console.log(bookId);
+
+    // You can also handle the success or error response from the server if needed
+    // this.webSocketService.onEvent('swapResponse').subscribe((response: any) => {
+    //   console.log('Swap Response:', response);
+    // });
   }
 }
