@@ -5,6 +5,7 @@ import { BookServices } from 'src/app/store/services/book.services';
 import { category } from 'src/shared/stores/categories-data.store';
 import { language } from 'src/shared/stores/language-store';
 import { FilterService } from '../../../../shared/services/shared.service';
+import { WebsocketService } from '../../../store/services/websocket.service';
 
 @Component({
   selector: 'app-filter',
@@ -30,6 +31,7 @@ export class FilterComponent {
     private bookService: BookServices,
     private router: Router,
     private filterService: FilterService,
+    private webSocketService: WebsocketService,
   ) {}
 
   ngOnInit() {
@@ -96,5 +98,14 @@ export class FilterComponent {
     this.search = '';
 
     this.filterService.clearFilter();
+  }
+
+  swapBook() {
+    console.log('1');
+    this.webSocketService.onEvent('swapRequest').subscribe((swapData: any) => {
+      // Display a notification or open a dialog to show the swap request
+      console.log('Swap Request Received:', swapData);
+      // You can trigger the display of a dialog or notification here
+    });
   }
 }
