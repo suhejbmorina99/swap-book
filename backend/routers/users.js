@@ -135,7 +135,11 @@ router.post(`/login`, async (req, res) => {
             // { expiresIn: '1d' }
         )
 
-        res.status(200).send({ user: user.id, token: token, userName: user.name })
+        res.status(200).send({
+            user: user.id,
+            token: token,
+            userName: user.name,
+        })
     } else if (
         !user ||
         !bcrypt.compareSync(req.body.password, user.passwordHash)
