@@ -76,6 +76,30 @@ router.get('/search', async (req, res) => {
     }
 })
 
+// Add a new route for handling swap requests
+router.post('/swap-request', async (req, res) => {
+    try {
+        const bookId = req.body.bookId
+        const otherUserId = req.body.userId // Replace with the actual user ID
+
+        // Perform the necessary logic for handling the swap request
+
+        // Assuming you have the book details, you can emit the swapRequest event
+        io.to(otherUserId).emit('swapRequest', {
+            bookId: bookId,
+            senderUserId: req.user.id, // Replace with the actual sender user ID
+            // Add other relevant details you want to send to the other user
+        })
+
+        res.status(200).json({ success: true, message: 'Swap request sent' })
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            error: err.message,
+        })
+    }
+})
+
 router.get('/categories/:category', async (req, res) => {
     try {
         const category = req.params.category
